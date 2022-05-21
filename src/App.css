@@ -1,0 +1,47 @@
+.nav {
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  height: 30px;
+  width: 100%;
+  z-index: 100;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+
+.navBlack {
+  background-color: #111;
+}
+
+.navContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navContainer .navLogo {
+  position: fixed;
+  left: 0;
+  cursor: pointer;
+  width: 100px;
+  padding-left: 20px;
+}
+
+.navContainer .navAvatar {
+  position: fixed;
+  right: 20px;
+  cursor: pointer;
+  width: 30px;
+}
+
+.jumbotron {
+  position: relative;
+  -o-object-fit: contain;
+     object-fit: contain;
+  color: white;
+  height: 448px;
+}
+/*# sourceMappingURL=App.css.map */

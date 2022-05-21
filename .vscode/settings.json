@@ -1,0 +1,29 @@
+{
+	"emmet.includeLanguages": {
+		"html": "html",
+		"javascript": "javascript",
+		"javascriptreact": "javascriptreact",
+		"scss": "scss",
+		"typescript": "typrscript"
+	},
+	"emmet.preferences": {},
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+	"cSpell.patterns": [],
+	"editor.quickSuggestions": {
+		"other": "true",
+		"comments": "false",
+		"strings": "false"
+	},
+	"emmet.optimizeStylesheetParsing": true,
+	"editor.autoClosingBrackets": "languageDefined",
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+	"prettier.jsxBracketSameLine": true,
+	"indentRainbow.indentSetter": {},
+	"indentRainbow.lightIndicatorStyleLineWidth": 2,
+	"editor.bracketPairColorization.independentColorPoolPerBracketType": false,
+	"workbench.tree.indent": 8,
+	"html.format.indentInnerHtml": true,
+	"html.format.indentHandlebars": true,
+	"typescript.tsdk": "node_modules\\typescript\\lib"
+}
