@@ -25,6 +25,11 @@ yarn-debug.log*
 yarn-error.log*
 
 .sass-cache
-**.sass-cache/*
-*.css
+.sass-cache/
+.sass-cache/
 *.css.map
+*.sass.map
+*.scss.map
+
+
+*.vscode
