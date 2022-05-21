@@ -1,0 +1,38 @@
+//homescreen
+//nav
+.nav {
+    position: fixed;
+    top:0;
+    padding:20px;
+    height:30px;
+    width: 100%;
+    z-index:100;
+
+    transition: all 0.5s ease-in;
+}
+
+.navBlack {
+    background-color: #111;
+}
+
+.navContainer {
+    display:flex;
+    justify-content: space-between;
+    
+    
+    .navLogo {
+        position:fixed;
+        left: 0;
+        cursor: pointer;
+        width: 100px;
+        padding-left:20px
+    }
+
+    .navAvatar {
+        position:fixed;
+        right: 20px;
+        cursor: pointer;
+        width: 30px;
+    }
+}
+

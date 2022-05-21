@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import NavBar from './navBar'
 
 function HomeScreen() {
     return (
         <div className='homeScreen'>
-            {/* Nav */}
+            <NavBar/>
+            
+
             {/* Banner */}
             {/* Movie Rows */}
         </div>
