@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "../services/axios";
-import requests from "../services/requsts";
+import axios from "../../services/axios";
+import requests from "../../services/requests";
 
 function Jumbotron() {
 	const [movie, setMovie] = useState([]);

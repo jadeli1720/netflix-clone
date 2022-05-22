@@ -2,10 +2,9 @@ import React from 'react';
 import NavBar from './navBar';
 import Jumbotron from './jumboTron.js';
 import Row from './row';
-import requsts from '../services/requsts'
-import requests from '../services/requsts';
+import requests from '../../services/requests';
 
-function HomeScreen() {
+function HomePage() {
     return (
 
         <div className='homeScreen'>
@@ -34,4 +33,4 @@ function HomeScreen() {
     )
 }
 
-export default HomeScreen;
+export default HomePage;
