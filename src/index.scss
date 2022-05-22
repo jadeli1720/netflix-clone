@@ -41,7 +41,6 @@
 }
 
 * {
-    box-sizing: border-box;
     margin:0;
     padding:0;
 }
@@ -51,4 +50,8 @@ html, body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 1rem;
+}
+
+body {
+    background: #111;
 }
