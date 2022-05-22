@@ -1,0 +1,58 @@
+.jumboContainer {
+  display: flex;
+  border-bottom: 8px solid #222;
+  padding: 50px 5%;
+  color: white;
+  overflow: hidden;
+  &:nth-last-child(2) h2, &:nth-child(4) h2 {
+    margin-bottom: 50px;
+  }
+}
+
+.jumboTron {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: auto;
+  width:100%;
+
+  @media (max-width: 1000px) {
+    flex-direction: column !important;
+  }
+
+  .content {
+    width: 50%;
+
+    @media (max-width: 1000px) {
+      width: 100%;
+      padding: 0 45px;
+      text-align: center;
+    }
+  }
+
+  h1 {
+    font-size: 50px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+
+    @media (max-width: 600px) {
+      font-size: 35px;
+    }
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: normal;
+
+    @media (max-width: 600px) {
+      font-size: 18px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

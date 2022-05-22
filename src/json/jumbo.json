@@ -29,6 +29,6 @@
         "subTitle": "Send kids on adventures with their favorite characters in a space made just for them—free with your membership.",
         "image": "/images/misc/kidsValueProp.png",
         "alt": "Kids cartoon image",
-        "direction": "row"
+        "direction": "row-reverse"
     }
 ]
