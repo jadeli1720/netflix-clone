@@ -46,12 +46,11 @@
 }
 
 html, body {
+    background: black;
     font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 1rem;
+    color: white;
 }
 
-body {
-    background: #111;
-}

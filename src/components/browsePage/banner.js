@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "../services/axios";
-import requests from "../services/requsts";
+import axios from "../../services/axios";
+import requests from "../../services/requests";
 
-function Jumbotron() {
+export default function Banner(){
 	const [movie, setMovie] = useState([]);
 	const BASE_URL= 'https://image.tmdb.org/t/p/original'
 
@@ -26,7 +26,7 @@ function Jumbotron() {
 
 	return (
 		<header
-			className="jumbotron"
+			className="banner"
 			style={{
 				backgroundSize: "cover",
 				backgroundImage: `url('${BASE_URL}${movie?.backdrop_path}')`,
@@ -34,7 +34,7 @@ function Jumbotron() {
 				backgroundRepeat: "no-repeat",
 			}}
 		>
-			<div className="container">
+			<div className="copyContainer">
 				<h1 className="title">
 					{movie?.title || movie?.name || movie?.original_title}
 				</h1>
@@ -51,4 +51,4 @@ function Jumbotron() {
 	);
 }
 
-export default Jumbotron;
+
