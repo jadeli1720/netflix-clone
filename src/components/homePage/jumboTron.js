@@ -15,7 +15,6 @@ function Jumbotron() {
             <div class="tvContainer">
               <video class="tvVideo" autoPlay playsInline muted loop data-video="0">
                 <source src="/videos/video-tv.m4v" tpe="video/mp4"/>
-              {/* src="/videos/video-tv.m4v" autoPlay/> */}
               </video> 
             </div>
           </div>
@@ -25,7 +24,7 @@ function Jumbotron() {
       <div className="jumboTron" id="download">
           <div className='content' >
             <h1>Download your shows to watch offline.</h1>
-            <h2>Save your data and watch all your favorites offline.</h2>
+            <h2>Save your favorites easily and always have something to watch</h2>
           </div>
           <div className='content'>
             <img src="/images/misc/mobile.jpg" alt="Watch on mobile" />
@@ -36,7 +35,7 @@ function Jumbotron() {
     <div className="jumboTron" id="watch">
           <div className='content' >
             <h1>Watch everywhere.</h1>
-            <h2>Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.</h2>
+            <h2>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV without paying more.</h2>
           </div>
           <div className='content'>
             <img src="/images/misc/home-imac.jpg" alt="Money Heist on Netflix" />
