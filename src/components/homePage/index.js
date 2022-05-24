@@ -3,6 +3,7 @@ import jumboData from '../../json/jumbo.json';
 import faqData from '../../json/faqs.json'
 import Jumbotron from './jumbotron';
 import Faq from './faq';
+import FaqOptForm from './faqOptForm';
 import Footer from './footer';
 import "./styles/index.scss";
 
@@ -19,6 +20,7 @@ const HomePage = () => {
           {faqData.map((item) => (
             <Faq key={item.id} header={item.header} body={item.body} />
           ))}
+          <FaqOptForm/>
         </div>
       </div>
       <Footer/>

@@ -1,215 +1,299 @@
-.jumboContainer {
-  display: flex;
-  border-bottom: 8px solid #222;
-  padding: 50px 5%;
-  color: white;
-  overflow: hidden;
-  &:nth-last-child(2) h2, &:nth-child(4) h2 {
-    margin-bottom: 50px;
+@mixin inputPlaceholder() {
+	$selector: "";
+	$prefixes: (
+		moz: "::-moz",
+		webkit: "::-webkit",
+		ie: ":-ms",
+	);
+	@each $prop, $value in $prefixes {
+		@if $prop != "moz" {
+			$selector: #{$value}-input-placeholder;
+		} @else {
+			$selector: #{$value}-placeholder;
+		}
+		@if & {
+			&#{$selector} {
+				@content;
+			}
+		} @else {
+			#{$selector} {
+				@content;
+			}
+		}
+	}
+	&::placeholder {
+		@content;
+	}
+}
+
+svg {
+  height: 1.2em;
+  width: 1.2em;
+
+  @media (max-width: 600px) {
+    height: 1em;
+    width: 1em;
   }
 }
 
+.jumboContainer {
+	display: flex;
+	border-bottom: 8px solid #222;
+	padding: 50px 5%;
+	color: white;
+	overflow: hidden;
+	&:nth-last-child(2) h2,
+	&:nth-child(4) h2 {
+		margin-bottom: 50px;
+	}
+}
+
 .jumboTron {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  margin: auto;
-  width:100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 1100px;
+	margin: auto;
+	width: 100%;
 
-  @media (max-width: 1000px) {
-    flex-direction: column !important;
-  }
+	@media (max-width: 1000px) {
+		flex-direction: column !important;
+	}
 
-  .content {
-    width: 50%;
+	.content {
+		width: 50%;
 
-    @media (max-width: 1000px) {
-      width: 100%;
-      padding: 0 45px;
-      text-align: center;
+		@media (max-width: 1000px) {
+			width: 100%;
+			padding: 0 45px;
+			text-align: center;
+		}
+	}
+
+	h1 {
+		font-size: 50px;
+		line-height: 1.1;
+		margin-bottom: 8px;
+
+		@media (max-width: 600px) {
+			font-size: 35px;
+		}
+	}
+
+	h2 {
+		font-size: 26px;
+		font-weight: normal;
+		line-height: normal;
+
+		@media (max-width: 600px) {
+			font-size: 18px;
+		}
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+//accordion section
+.accordionContainer {
+	display: flex;
+	border-bottom: 8px solid #222;
+
+	.inner {
+		display: flex;
+		padding: 70px 45px;
+		flex-direction: column;
+		max-width: 815px;
+		margin: auto;
+	}
+
+	h1 {
+		font-size: 50px;
+		line-height: 1.1;
+		margin-top: 0;
+		margin-bottom: 48px;
+		color: white;
+		text-align: center;
+
+		@media (max-width: 600px) {
+			font-size: 35px;
+		}
+	}
+
+	.wrapper {
+		color: white;
+		margin: auto;
+		margin-bottom: 10px;
+		max-width: 728px;
+		width: 100%;
+	}
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		cursor: pointer;
+		margin-bottom: 1px;
+		font-size: 20px;
+		font-weight: normal;
+		background: #303030;
+		padding: 0.8em 1.2em 0.8em 1.2em;
+		user-select: none;
+		align-items: center;
+
+		@media (max-width: 600px) {
+			font-size: 16px;
+		}
+	}
+
+	#accBody {
+		font-size: 20px;
+		font-weight: normal;
+		line-height: normal;
+		background: #303030;
+		//white space recognizes the \n\n space breaks in the json and applies them accordingly
+		white-space: pre-wrap;
+		user-select: none;
+		overflow: hidden;
+
+		p {
+			padding: 24px;
+		}
+
+		&.closed {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+		}
+
+		&.open {
+			max-height: 1200px;
+			transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+		}
+
+		span {
+			display: block;
+			padding: 0.8em 2.2em 0.8em 1.2em;
+		}
+
+		@media (max-width: 600px) {
+			font-size: 16px;
+			line-height: 22px;
+		}
+	}
+}
+
+//faq opt form
+.optFormSection {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	height: 100%;
+	margin-top: 48px;
+
+	form {
+		display: flex;
+		justify-content: center;
+		max-width: 782px;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	input {
+		max-width: 450px;
+		width: 100%;
+		border: 0;
+		border-radius: 2px;
+		padding: 10px;
+		height: 60px;
+		box-sizing: border-box;
+
+    @include inputPlaceholder() {
+      font-size: 1rem;
     }
-  }
+	}
 
-  h1 {
-    font-size: 50px;
-    line-height: 1.1;
-    margin-bottom: 8px;
+	button {
+		display: flex;
+		align-items: center;
+		background: #e50914;
+		border: 0;
+		border-radius: 2px;
+		font-size: 26px;
+		color: white;
+		height: 60px;
+		padding: 0 32px;
+		cursor: pointer;
 
-    @media (max-width: 600px) {
-      font-size: 35px;
+		svg {
+      margin-left: 10px;
     }
-  }
+	}
 
-  h2 {
-    font-size: 26px;
-    font-weight: normal;
-    line-height: normal;
-
-    @media (max-width: 600px) {
-      font-size: 18px;
-    }
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+	p {
+		font-size: 1.25rem;
+		color: white;
+		text-align: center;
+		max-width: none;
+		padding-bottom: 20px;
+	}
 }
 
 //footer
 .footerContainer {
-  display: flex;
-  padding: 70px 0;
-  margin: auto;
-  max-width: 1000px;
-  flex-direction: column;
+	display: flex;
+	padding: 70px 0;
+	margin: auto;
+	max-width: 1000px;
+	flex-direction: column;
 
-  @media (max-width: 1000px) {
-    padding: 70px 30px;
-  }
+	@media (max-width: 1000px) {
+		padding: 70px 30px;
+	}
 
-  .break {
-    flex-basis: 100%;
-    height: 0;
-  }
+	.break {
+		flex-basis: 100%;
+		height: 0;
+	}
 
-  .row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 15px;
+	.row {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+		grid-gap: 15px;
 
-    margin-left: 0;
+		margin-left: 0;
 
-    @media (max-width: 1000px) {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-  }
+		@media (max-width: 1000px) {
+			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		}
+	}
 
-  .column {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+	.column {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
 
-    a {
-      cursor: pointer;
-      color: #757575;
-      margin-bottom: 20px;
-      font-size: 13px;
-      text-decoration: none;
-    }
-  }
+		a {
+			cursor: pointer;
+			color: #757575;
+			margin-bottom: 20px;
+			font-size: 13px;
+			text-decoration: none;
+		}
+	}
 
-  .footerTitle {
-    font-size: 16px;
-    color: #757575;
-    margin-bottom: 40px;
-  }
+	.footerTitle {
+		font-size: 16px;
+		color: #757575;
+		margin-bottom: 40px;
+	}
 
-  .copyright {
-    font-size: 13px;
-    color: #757575;
-    margin-bottom: 40px;
-  }
-}
-
-.accordionContainer {
-  display: flex;
-  border-bottom: 8px solid #222;
-
-  .inner {
-    display: flex;
-    padding: 70px 45px;
-    flex-direction: column;
-    max-width: 815px;
-    margin: auto;
-  }
-
-  h1 {
-    font-size: 50px;
-    line-height: 1.1;
-    margin-top: 0;
-    margin-bottom: 48px;
-    color: white;
-    text-align: center;
-
-    @media (max-width: 600px) {
-      font-size: 35px;
-    }
-  }
-
-  .wrapper {
-    color: white;
-    margin: auto;
-    margin-bottom: 10px;
-    max-width: 728px;
-    width: 100%;
-
-    
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    margin-bottom: 1px;
-    font-size: 20px;
-    font-weight: normal;
-    background: #303030;
-    padding: 0.8em 1.2em 0.8em 1.2em;
-    user-select: none;
-    align-items: center;
-    
-
-    img {
-      filter: brightness(0) invert(1);
-      width: 24px;
-      user-select: none;
-
-      @media (max-width: 600px) {
-        width: 16px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      font-size: 16px;
-    }
-  }
-
-  #accBody {
-    font-size: 20px;
-    font-weight: normal;
-    line-height: normal;
-    background: #303030;
-    //white space recognizes the \n\n space breaks in the json and applies them accordingly
-    white-space: pre-wrap;
-    user-select: none;
-    overflow: hidden;
-
-    p {
-      padding:24px;
-    }
-
-    &.closed {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
-      
-    }
-
-    &.open {
-      max-height: 1200px;
-      transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
-    }
-
-    span {
-      display: block;
-      padding: 0.8em 2.2em 0.8em 1.2em;
-    }
-
-    @media (max-width: 600px) {
-      font-size: 16px;
-      line-height: 22px;
-    }
-  }
+	.copyright {
+		font-size: 13px;
+		color: #757575;
+		margin-bottom: 40px;
+	}
 }

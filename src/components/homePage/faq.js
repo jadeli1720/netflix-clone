@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { BsPlusLg, BsXLg} from "react-icons/bs";
 
 export default  function Faq({ id, header, body }) {
   const [toggleShow, setToggleShow] = useState(false);
@@ -11,9 +12,9 @@ export default  function Faq({ id, header, body }) {
           <div className={`header ${toggleShow}`}  onClick={() => setToggleShow(!toggleShow)} >
               <p>{header}</p>
               {toggleShow ? (
-                <img src="/images/icons/close-thin.svg" alt="Close" />
+                <BsXLg/>
               ) : (
-                <img src="/images/icons/add-thin.svg" alt="Open" />
+                <BsPlusLg/>
               )}
           </div>
           <div id="accBody" className={ toggleShow ? 'open' : 'closed'}  >
