@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './header';
 import Jumbotron from './jumbotron';
-import jumboData from '../../json/jumbo.json';
+// import jumboData from '../../json/jumbo.json';
 import Faq from './faq';
 import faqData from '../../json/faqs.json'
 import OptForm from './optForm';
@@ -12,9 +12,11 @@ const HomePage = () => {
   return (
     <div>
       <Header/>
-      {jumboData.map((item) => (
+      {/* {jumboData.map((item) => (
 				<Jumbotron key={item.id} title={item.title} subTitle={item.subTitle} image={item.image} alt={item.alt} direction={item.direction}></Jumbotron>
-			))}
+			))} */}
+
+      <Jumbotron/>
 
       <div className="accordionContainer">
         <div className="inner">
