@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsChevronRight } from "react-icons/bs";
 
-function FaqOptForm() {
+function OptForm() {
   return (
     <div class="optFormSection">
       <p>Ready to watch? Enter your email to create or restart your membership.</p>
@@ -16,4 +16,4 @@ function FaqOptForm() {
   )
 }
 
-export default FaqOptForm
+export default OptForm

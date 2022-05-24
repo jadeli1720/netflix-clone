@@ -1,3 +1,4 @@
+
 @mixin inputPlaceholder() {
 	$selector: "";
 	$prefixes: (
@@ -26,13 +27,74 @@
 	}
 }
 
-svg {
-  height: 1.2em;
-  width: 1.2em;
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  background: url('../../../../public/images/misc/home-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  .headerNav {
+    display: flex;
+    flex: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    margin: 0 3.5rem;
+    padding-top: 28px;
 
-  @media (max-width: 600px) {
-    height: 1em;
-    width: 1em;
+    img {
+      cursor: pointer;
+      margin-right: auto;
+      width: 8.375rem;
+      height: 2.25rem;
+    }
+
+    // This may be changed to an a tag
+    button {
+      background-color: #e50914;
+      border:none;
+      border-radius: 3px;
+      color:white;
+      font-size: 1rem;
+      font-weight: 400;
+
+      cursor: pointer;
+      padding: 7px 17px;
+    }
+
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 8px solid #222;
+    text-align: center;
+    padding: 165px 45px;
+
+    h1 {
+      color: white;
+      max-width: 640px;
+      font-size: 50px;
+      font-weight: 700;
+      margin: auto;
+    
+      @media (max-width: 600px) {
+        font-size: 35px;
+      }
+    }
+
+    h2 {
+      color: white;
+      font-size: 26px;
+      font-weight: normal;
+      margin: 16px auto;
+    
+      @media (max-width: 600px) {
+        font-size: 18px;
+      }
+    }
   }
 }
 
@@ -46,55 +108,55 @@ svg {
 	&:nth-child(4) h2 {
 		margin-bottom: 50px;
 	}
+  .jumboTron {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: auto;
+    width: 100%;
+  
+    @media (max-width: 1000px) {
+      flex-direction: column !important;
+    }
+  
+    .content {
+      width: 50%;
+  
+      @media (max-width: 1000px) {
+        width: 100%;
+        padding: 0 45px;
+        text-align: center;
+      }
+    }
+  
+    h1 {
+      font-size: 50px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+  
+      @media (max-width: 600px) {
+        font-size: 35px;
+      }
+    }
+  
+    h2 {
+      font-size: 26px;
+      font-weight: normal;
+      line-height: normal;
+  
+      @media (max-width: 600px) {
+        font-size: 18px;
+      }
+    }
+  
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
 }
 
-.jumboTron {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	max-width: 1100px;
-	margin: auto;
-	width: 100%;
-
-	@media (max-width: 1000px) {
-		flex-direction: column !important;
-	}
-
-	.content {
-		width: 50%;
-
-		@media (max-width: 1000px) {
-			width: 100%;
-			padding: 0 45px;
-			text-align: center;
-		}
-	}
-
-	h1 {
-		font-size: 50px;
-		line-height: 1.1;
-		margin-bottom: 8px;
-
-		@media (max-width: 600px) {
-			font-size: 35px;
-		}
-	}
-
-	h2 {
-		font-size: 26px;
-		font-weight: normal;
-		line-height: normal;
-
-		@media (max-width: 600px) {
-			font-size: 18px;
-		}
-	}
-
-	img {
-		max-width: 100%;
-		height: auto;
-	}
-}
 
 //accordion section
 .accordionContainer {

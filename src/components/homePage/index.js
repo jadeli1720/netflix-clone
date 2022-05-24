@@ -1,15 +1,17 @@
 import React from 'react'
-import jumboData from '../../json/jumbo.json';
-import faqData from '../../json/faqs.json'
+import Header from './header';
 import Jumbotron from './jumbotron';
+import jumboData from '../../json/jumbo.json';
 import Faq from './faq';
-import FaqOptForm from './faqOptForm';
+import faqData from '../../json/faqs.json'
+import OptForm from './optForm';
 import Footer from './footer';
 import "./styles/index.scss";
 
 const HomePage = () => {
   return (
     <div>
+      <Header/>
       {jumboData.map((item) => (
 				<Jumbotron key={item.id} title={item.title} subTitle={item.subTitle} image={item.image} alt={item.alt} direction={item.direction}></Jumbotron>
 			))}
@@ -20,7 +22,7 @@ const HomePage = () => {
           {faqData.map((item) => (
             <Faq key={item.id} header={item.header} body={item.body} />
           ))}
-          <FaqOptForm/>
+          <OptForm/>
         </div>
       </div>
       <Footer/>
