@@ -1,5 +1,7 @@
 import React from 'react'
 
+//TODO: Could we achieve the breaks with padding and margins?
+
 export default function Footer() {
   return (
     <div  className="footerContainer">
