@@ -181,6 +181,7 @@
     font-weight: normal;
     line-height: normal;
     background: #303030;
+    //white space recognizes the \n\n space breaks in the json and applies them accordingly
     white-space: pre-wrap;
     user-select: none;
     overflow: hidden;

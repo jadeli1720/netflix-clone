@@ -4,6 +4,8 @@ import "./App.scss";
 import HomePage from "./components/homePage";
 import BrowsePage from "./components/browsePage";
 
+//TODO: Consider refactoring css font and image sizes for smaller screens
+
 function App() {
 	// const user = null;
 	return (
