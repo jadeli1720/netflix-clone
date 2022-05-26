@@ -8,16 +8,13 @@ import OptForm from './optForm';
 import Footer from './footer';
 import "./styles/index.scss";
 
+//TODO:overall need to make things big or small based on screen size. 
+
 const HomePage = () => {
   return (
     <div>
       <Header/>
-      {/* {jumboData.map((item) => (
-				<Jumbotron key={item.id} title={item.title} subTitle={item.subTitle} image={item.image} alt={item.alt} direction={item.direction}></Jumbotron>
-			))} */}
-
       <Jumbotron/>
-
       <div className="accordionContainer">
         <div className="inner">
           <h1 className="title">Frequently Asked Questions</h1>
