@@ -4,7 +4,7 @@ function Jumbotron() {
 	return (
 		<>
 			{/* 1 */}
-			<div class="jumboContainer">
+			<div className="jumboContainer">
 				<div className="jumboTron">
 					<div className="content">
 						<h1>Enjoy on your TV.</h1>
@@ -16,9 +16,9 @@ function Jumbotron() {
 					<div className="content" id="tv" >
 						{/* may need the full tag to get it to play */}
 						<img src="/images/misc/tv.png" alt="Tv on tv table" />
-						<div class="tvContainer">
+						<div className="tvContainer">
 							<video
-								class="tvVideo"
+								className="tvVideo"
 								autoPlay
 								playsInline
 								muted
@@ -35,7 +35,7 @@ function Jumbotron() {
 				</div>
 			</div>
 			{/* 2 */}
-			<div class="jumboContainer">
+			<div className="jumboContainer">
 				<div className="jumboTron" >
 					<div className="content">
 						<h1>Download your shows to watch offline.</h1>
@@ -58,7 +58,7 @@ function Jumbotron() {
 				</div>
 			</div>
 			{/* 3 */}
-			<div class="jumboContainer">
+			<div className="jumboContainer">
 				<div className="jumboTron" >
 					<div className="content">
 						<h1>Watch everywhere.</h1>
@@ -90,7 +90,7 @@ function Jumbotron() {
 				</div>
 			</div>
       {/* 4 */}
-			<div class="jumboContainer">
+			<div className="jumboContainer">
 				<div className="jumboTron" >
 					<div className="content">
 						<h1>Create profiles for kids</h1>

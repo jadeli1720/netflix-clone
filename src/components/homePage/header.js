@@ -1,7 +1,6 @@
 import React from 'react';
 import  HeaderNav from './headerNav';
 import OptForm from './optForm';
-import * as ROUTES from '../../constants/routes'
 
 function Header() {
   return (

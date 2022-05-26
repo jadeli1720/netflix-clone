@@ -74,6 +74,7 @@
     width: 100%;
 
     &:disabled {
+      cursor: auto;
       opacity: 0.5;
     }
   }
