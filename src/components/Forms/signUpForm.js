@@ -5,38 +5,67 @@ import * as ROUTES from '../../constants/routes';
 import './index.scss';
 
 export default function SignUpForm(){
-  
+  //navigate = useHistory
+  const navigate = useNavigate();
+  const { firebase } = useContext(FirebaseContext);
+
+  const [ firstName, setFirstName ] = useState('');
+  const [ emailAddress, setEmailAddress ] = useState('');
+  const [ password, setPassword] = useState('');
+  const [ error, setError ] = useState('');
+
+  const isInvalid = password === '' || emailAddress === '';
 
   const handleSignup = (e) => {
     e.prevent.Default()
+
+    return firebase
+      .auth()
+      .createUserWithEmailAndPassword(emailAddress, password)
+      .then((result) => 
+        result.user
+          .updateProfile({
+            displayName: firstName,
+            photoURL: Math.floor(Math.random() * 16) + 1,
+          })
+          .then(() => {
+            navigate.push(ROUTES.BROWSE)
+          })
+      )
+      .catch((error) => {
+        setFirstName('');
+        setEmailAddress('');
+        setPassword('');
+        setError(error.message)
+      })
   }
 
   return (
     <div className='signInUpContainer'>
       <h1>Sign Up</h1>
-      {/* {<div className="error" data-testid="error">{error}</div>} */}
+      {<div className="error" data-testid="error">{error}</div>}
       <form onSubmit={handleSignup} method='POST'>
         <input
           type='text'
           placeholder='First name'
-          // value={firstName}
+          value={firstName}
           // onChange={({ target }) => setFirstName(target.value)}
         />
         <input
           type='text'
           placeholder='Email Address'
-          // value={emailAddress}
+          value={emailAddress}
           // onChange={({target}) => setEmailAddress(target.value)}
         />
         <input
           type="password"
           placeholder='Password'
-          // value={password}
+          value={password}
           autoComplete='off'
           // onChange={({target}) => setPassword(target.value)}
         />
         <button 
-          // disabled={isInvalid} 
+          disabled={isInvalid} 
           type="submit" 
           >
             Sign Up
