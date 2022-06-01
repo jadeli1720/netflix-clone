@@ -1,19 +1,23 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import * as ROUTES from '../../constants/routes';
 import { BsChevronRight } from "react-icons/bs";
 
-function FaqOptForm() {
+
+
+function OptForm() {
   return (
-    <div class="optFormSection">
+    <div className="optFormSection">
       <p>Ready to watch? Enter your email to create or restart your membership.</p>
         <form>
           <input type="text" placeholder="Email address" name="email address"/>
-          <button type="submit" >
-            Get Started
+          <Link to={ROUTES.SIGN_UP} >
+            <p>Get Started</p>
             <BsChevronRight/>
-          </button>
+          </Link>
         </form>
     </div>
   )
 }
 
-export default FaqOptForm
+export default OptForm

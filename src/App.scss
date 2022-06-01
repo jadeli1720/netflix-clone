@@ -1,5 +1,15 @@
+.app {
+  overflow-x: hidden;
+}
+svg {
+  height: 1.2em;
+  width: 1.2em;
 
-
+  @media (max-width: 600px) {
+    height: 1em;
+    width: 1em;
+  }
+}
 
 
 

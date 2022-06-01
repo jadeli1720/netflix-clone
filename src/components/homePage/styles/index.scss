@@ -1,99 +1,248 @@
-@mixin inputPlaceholder() {
-	$selector: "";
-	$prefixes: (
-		moz: "::-moz",
-		webkit: "::-webkit",
-		ie: ":-ms",
-	);
-	@each $prop, $value in $prefixes {
-		@if $prop != "moz" {
-			$selector: #{$value}-input-placeholder;
-		} @else {
-			$selector: #{$value}-placeholder;
-		}
-		@if & {
-			&#{$selector} {
-				@content;
-			}
-		} @else {
-			#{$selector} {
-				@content;
-			}
-		}
-	}
-	&::placeholder {
-		@content;
-	}
-}
+@import '../../../mixins.scss';
 
-svg {
-  height: 1.2em;
-  width: 1.2em;
+.headerContainer, #headerContainer {
+	position: relative;
+  display: flex;
+  flex-direction: column;
+  background: url('../../../../public/images/misc/home-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+	border-bottom: 8px solid #222;
+	
+  .headerGradient {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left:0;
+		background-color: rgba(0,0,0,.4);
+		background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
+		height: 100%;
+		width:100vw;
+	}
 
-  @media (max-width: 600px) {
-    height: 1em;
-    width: 1em;
+	.headerNav, .feature {
+		position: relative;
+		z-index:2
+	}
+
+  .headerNav {
+    display: flex;
+    flex: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    margin: 0 3.5rem;
+    padding-top: 28px;
+
+    .netflixLogo, img {
+      cursor: pointer;
+      margin-right: auto;
+      width: 8.375rem;
+      height: 2.25rem;
+    }
+
+    // This may be changed to an a tag
+    .signInButton {
+      background-color: #e50914;
+      border:none;
+      border-radius: 3px;
+      color:white;
+      font-size: 1rem;
+      font-weight: 400;
+
+      cursor: pointer;
+      padding: 7px 17px;
+			text-decoration: none;
+    }
+
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    // border-bottom: 8px solid #222;
+    text-align: center;
+    padding: 165px 45px;
+
+    h1 {
+      color: white;
+      max-width: 640px;
+      font-size: 50px;
+      font-weight: 700;
+      margin: auto;
+    
+      @media (max-width: 600px) {
+        font-size: 35px;
+      }
+    }
+
+    h2 {
+      color: white;
+      font-size: 26px;
+      font-weight: normal;
+      margin: 16px auto;
+    
+      @media (max-width: 600px) {
+        font-size: 18px;
+      }
+    }
   }
 }
 
+//jumbotrons
 .jumboContainer {
 	display: flex;
 	border-bottom: 8px solid #222;
+	
 	padding: 50px 5%;
 	color: white;
 	overflow: hidden;
+
 	&:nth-last-child(2) h2,
 	&:nth-child(4) h2 {
 		margin-bottom: 50px;
 	}
-}
 
-.jumboTron {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	max-width: 1100px;
-	margin: auto;
-	width: 100%;
-
-	@media (max-width: 1000px) {
-		flex-direction: column !important;
+	&:nth-child(3) .jumboTron, &:nth-child(5) .jumboTron {
+		flex-direction: row-reverse ;
 	}
 
-	.content {
-		width: 50%;
+  .jumboTron{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+		
+    margin: auto;
+    max-width: 1163px !important;
+    width: 100% !important;
 
-		@media (max-width: 1000px) {
+    @media (max-width: 1000px) {
+      flex-direction: column !important;
+    }
+
+    .content {
+			position: relative;
+      width: 50%;
+			margin: 0 auto;
+  
+      @media (max-width: 1000px) {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+      }
+
+			h1 {
+				font-size: 50px;
+				line-height: 1.1;
+				margin-bottom: 8px;
+		
+				@media (max-width: 600px) {
+					font-size: 35px;
+				}
+			}
+		
+			h2 {
+				font-size: 26px;
+				font-weight: normal;
+				line-height: normal;
+				margin-top: 22px;
+		
+				@media (max-width: 600px) {
+					font-size: 18px;
+				}
+			}
+
+    }
+
+    img {
+			position: relative;
+      max-width: 100%;
+      height: auto;
+			z-index: 2;
+    }
+
+		.tvContainer {
+			position: absolute;
+			top: 21%;
+			left: 13%;
+			max-width: 73%;
+			max-height: 54%;
 			width: 100%;
-			padding: 0 45px;
-			text-align: center;
+			height: 100%;
+
+			@media(max-width:1000px) {
+				top: 20.75%;
+				left: -23.35%;
+			}
+
+			.tvVideo {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
 		}
-	}
 
-	h1 {
-		font-size: 50px;
-		line-height: 1.1;
-		margin-bottom: 8px;
-
-		@media (max-width: 600px) {
-			font-size: 35px;
+		#download {
+			.downloadContainer {
+				position: absolute;
+				left: 49%;
+				bottom: 8%;
+				display: flex;
+				align-items: center;
+				background: black;
+				border:2px solid rgba(255,255,255,.25);
+				border-radius: 0.75rem;
+				box-shadow: 0 0 2em 0 #000;
+				margin: 0 auto;
+				padding: 0.35em 0.75em;
+				min-width:15rem;
+				width: 60%;
+				transform: translateX(-50%);
+				z-index: 2;
+	
+				img {
+					height: 4.5rem;
+					margin-right: 1rem;
+				}
+	
+				p {
+					font-weight: 600;
+					text-align: left;
+					margin: 0.3em 0;
+					width: 76%;
+				}
+	
+				.animation {
+					position: relative;
+					left: 2px;
+					background: url('../../../../public/images/misc/download-icon.gif') center center no-repeat;
+					background-size: 100%;
+					height: 4rem;
+					width: 3.5rem;
+				}
+			}
 		}
-	}
-
-	h2 {
-		font-size: 26px;
-		font-weight: normal;
-		line-height: normal;
-
-		@media (max-width: 600px) {
-			font-size: 18px;
+		
+		#watch {
+			z-index: 2;
 		}
-	}
-
-	img {
-		max-width: 100%;
-		height: auto;
-	}
+		.imacContainer {
+			position: absolute;
+			top: 10%;
+    	left: 18%;
+			max-height: 47%;
+			height: 100%;
+			max-width: 63%;
+			width: 100%;
+			
+			video {
+				height: 100%;
+				width: 100%;
+			}
+		}
+  }
 }
 
 //accordion section
@@ -222,18 +371,29 @@ svg {
     }
 	}
 
-	button {
+	a {
 		display: flex;
 		align-items: center;
 		background: #e50914;
 		border: 0;
 		border-radius: 2px;
-		font-size: 26px;
+		
     text-align: center;
 		color: white;
 		height: 60px;
 		padding: 0 32px;
 		cursor: pointer;
+		text-decoration: none;
+
+		p {
+			font-size: 26px;
+			padding-bottom: 0;
+
+			@media(max-width: 778px) {
+				font-size: 1rem;
+				margin-left: 4px;
+			}
+		}
 
 		svg {
       margin-left: 11px;
@@ -245,6 +405,7 @@ svg {
     }
 
     @media(max-width: 778px) {
+			justify-content: center;
       font-size: 1rem;
       margin: 16px 0 0;
       padding: 0px 8px;
