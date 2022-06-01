@@ -2,7 +2,7 @@ import React from 'react';
 import * as ROUTES from '../../constants/routes'
 import HeaderNav from '../homePage/headerNav';
 import Footer from '../homePage/footer';
-import SignInForm from '../Form/signInForm';
+import SignInForm from '../Forms/signInForm';
 
 
 export default function SignIn() {

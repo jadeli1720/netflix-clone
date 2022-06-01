@@ -12,12 +12,12 @@ const appId =  process.env.REACT_APP_FIREBASE_APPID;
 
 //This  works!!! Make sure your .env file variable does not contain spaces on either side of the '=' symbol.
 const config = { 
-    apiKey: `${apiKey}`,
-    authDomain: `${authDomain}`,
-    projectId: `${projectId}`,
-    storageBucket: `${storageBucket}`,
-    messagingSenderId: `${messagingSenderId}`,
-    appId: `${appId}`
+    apiKey:`${apiKey}`,
+    authDomain:`${authDomain}`,
+    projectId:`${projectId}`,
+    storageBucket:`${storageBucket}`,
+    messagingSenderId:`${messagingSenderId}`,
+    appId:`${appId}`
 };
 
 

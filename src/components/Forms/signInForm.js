@@ -33,7 +33,7 @@ export default function SignInForm() {
 
 
   return (
-    <div className="signInContainer">
+    <div className="signInUpContainer">
       <h1>Sign In</h1>
       {error && <div className="error" data-testid="error">{error}</div>}
       <form onSubmit={handleSignin} method='POST'>

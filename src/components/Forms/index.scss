@@ -1,6 +1,6 @@
 @import '../../mixins.scss';
 
-.signInContainer {
+.signInUpContainer {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -79,7 +79,7 @@
     }
   }
 
-  .signUpText {
+  .signUpText, .signInText {
     color: #737373;
     font-size: 16px;
     font-weight: 500;
