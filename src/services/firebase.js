@@ -2,7 +2,7 @@ import Firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
-//not working for some reason!!!!
+
 const apiKey = process.env.REACT_APP_FIREBASE_APIKEY;
 const authDomain = process.env.REACT_APP_FIREBASE_AUTHDOMAIN;
 const projectId = process.env.REACT_APP_FIREBASE_PROJECTID;
@@ -19,9 +19,6 @@ const config = {
     messagingSenderId:`${messagingSenderId}`,
     appId:`${appId}`
 };
-
-
-
 
 
 const firebase = Firebase.initializeApp(config);

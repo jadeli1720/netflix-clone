@@ -17,7 +17,8 @@ export default function SignUpForm(){
   const isInvalid = password === '' || emailAddress === '';
 
   const handleSignup = (e) => {
-    e.prevent.Default()
+    e.preventDefault()
+    
 
     return firebase
       .auth()
@@ -29,7 +30,7 @@ export default function SignUpForm(){
             photoURL: Math.floor(Math.random() * 16) + 1,
           })
           .then(() => {
-            navigate.push(ROUTES.BROWSE)
+            navigate(ROUTES.BROWSE)
           })
       )
       .catch((error) => {
@@ -43,30 +44,31 @@ export default function SignUpForm(){
   return (
     <div className='signInUpContainer'>
       <h1>Sign Up</h1>
-      {<div className="error" data-testid="error">{error}</div>}
+      {error && <div className="error" >{error}</div>}
       <form onSubmit={handleSignup} method='POST'>
         <input
           type='text'
           placeholder='First name'
           value={firstName}
-          // onChange={({ target }) => setFirstName(target.value)}
+          onChange={({ target }) => setFirstName(target.value)}
         />
         <input
           type='text'
           placeholder='Email Address'
           value={emailAddress}
-          // onChange={({target}) => setEmailAddress(target.value)}
+          onChange={({target}) => setEmailAddress(target.value)}
         />
         <input
           type="password"
           placeholder='Password'
           value={password}
           autoComplete='off'
-          // onChange={({target}) => setPassword(target.value)}
+          onChange={({target}) => setPassword(target.value)}
         />
         <button 
           disabled={isInvalid} 
           type="submit" 
+          data-testid="sign-up"
           >
             Sign Up
           </button>

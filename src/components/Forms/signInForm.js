@@ -17,12 +17,13 @@ export default function SignInForm() {
 
   const handleSignin = (e) => {
     e.preventDefault();
-    firebase
+    
+    return firebase
       .auth()
       .signInWithEmailAndPassword(emailAddress, password)
       .then(() => {
         //push to the browse page
-        navigate.push(ROUTES.BROWSE)
+        navigate(ROUTES.BROWSE)
       })
       .catch((error) => {
         setEmailAddress('');
