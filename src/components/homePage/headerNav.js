@@ -7,7 +7,9 @@ function HeaderNav() {
     <>
     <div className="headerNav">
           <Link className="netflixLogo" to={ROUTES.HOME}>
-            <img  src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Netflix logo" />
+            <img  
+            className='navLogo'
+            src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Netflix logo" />
           </Link>
         {/* below may need to change to an a tag instead of a button */}
         <Link className='signInButton' to={ROUTES.SIGN_IN} >Sign In</Link>

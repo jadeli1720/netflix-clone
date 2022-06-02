@@ -8,9 +8,15 @@ import HomePage from "./components/homePage";
 import BrowsePage from "./components/browsePage";
 import { ProtectedRoute, UserSignedIn } from "./helpers";
 
+import useAuthListener from "./hooks";
+
 //TODO: Consider refactoring css font and image sizes for smaller screens
 
 function App() {
+
+	const { user } = useAuthListener();
+
+	// console.log("app.js", user)
 
 	return (
 		<div className="app">
@@ -19,7 +25,7 @@ function App() {
 					<Route
 						path={ROUTES.HOME}
 						element={
-							<UserSignedIn>
+							<UserSignedIn user = { user }>
 								<HomePage />
 							</UserSignedIn>
 						}
@@ -27,7 +33,7 @@ function App() {
 					<Route
 						path={ROUTES.SIGN_IN}
 						element={
-							<UserSignedIn>
+							<UserSignedIn user = { user }>
 								<SignIn/>
 							</UserSignedIn>
 						}
@@ -35,7 +41,7 @@ function App() {
 					<Route
 						path={ROUTES.SIGN_UP}
 						element={
-							<UserSignedIn>
+							<UserSignedIn user = { user }>
 								<SignUp/>
 							</UserSignedIn>
 						}
@@ -43,7 +49,7 @@ function App() {
 					<Route 
 						path={ROUTES.BROWSE} 
 						element={
-							<ProtectedRoute>
+							<ProtectedRoute user = { user }>
 								<BrowsePage />
 							</ProtectedRoute>
 						}

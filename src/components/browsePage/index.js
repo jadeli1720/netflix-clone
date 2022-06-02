@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import * as ROUTES from '../../constants/routes';
 import NavBar from './navBar';
 import Banner from './banner.js';
 import Row from './row';
+import Loading from '../spinner/loading';
 import requests from '../../services/requests';
+import { FirebaseContext } from '../../context/firebase';
 
 import "./styles/index.scss";
+import SelectedProfile from '../profilePage';
 
 export default function BrowsePage() {
     /**
@@ -25,32 +29,50 @@ export default function BrowsePage() {
     * 
     * 5. footer?
     **/
+    const [profile, setProfile] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
 
-    return (
+    const { firebase } = useContext(FirebaseContext);
+    const user = firebase.auth().currentUser || {};
 
-        <div className='homeScreen'>
-            <NavBar/>
-            <Banner/>
-            <Row 
-                title="NETFLIX ORIGINALS" 
-                fetchUrl={requests.fetchNetflixOriginals}
-                isLargeRow
-                />
-            <Row title="Trending Now" fetchUrl={requests.fetchTrending}/>
-            <Row title="Top Rated Movie" fetchUrl={requests.fetchTopRatedMovie}/>
-            <Row title="Top Rated Tv" fetchUrl={requests.fetchTopRatedTv}/>
-            <Row title="Action Packed" fetchUrl={requests.fetchActionMovies}/>
-            <Row title="Animation" fetchUrl={requests.fetchAnimationMovies}/>
-            <Row title="Comedies" fetchUrl={requests.fetchComedyMovies}/>
-            <Row title="Drama" fetchUrl={requests.fetchDramaMovies}/>
-            <Row title="Documentaries" fetchUrl={requests.fetchDocumntaries}/>
-            <Row title="Movies for the Family" fetchUrl={requests.fetchFamilyMovies}/>
-            <Row title="Historical Dramas" fetchUrl={requests.fetchHistoryMovies}/>
-            <Row title="Horrifying Flicks" fetchUrl={requests.fetchHorrorMovies}/>
-            <Row title="Seasons of Love" fetchUrl={requests.fetchRomanceMovies}/>
-            <Row title="Sci-Fi Movies" fetchUrl={requests.fetchSciFiMovies}/>
-            <Row title="Westerns" fetchUrl={requests.fetchWesternMovies}/>
-        </div>
-    )
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 3000)
+
+    }, [profile?.displayName])
+    
+
+    return profile?.displayName ? (
+        <>
+        {loading ? <Loading user={ user } /> : <div className='releaseBody'></div>}
+            <div className='homeScreen'>
+                <NavBar user={ user }/>
+                <Banner/>
+                <Row 
+                    title="NETFLIX ORIGINALS" 
+                    fetchUrl={requests.fetchNetflixOriginals}
+                    isLargeRow
+                    />
+                <Row title="Trending Now" fetchUrl={requests.fetchTrending}/>
+                <Row title="Top Rated Movie" fetchUrl={requests.fetchTopRatedMovie}/>
+                <Row title="Top Rated Tv" fetchUrl={requests.fetchTopRatedTv}/>
+                <Row title="Action Packed" fetchUrl={requests.fetchActionMovies}/>
+                <Row title="Animation" fetchUrl={requests.fetchAnimationMovies}/>
+                <Row title="Comedies" fetchUrl={requests.fetchComedyMovies}/>
+                <Row title="Drama" fetchUrl={requests.fetchDramaMovies}/>
+                <Row title="Documentaries" fetchUrl={requests.fetchDocumntaries}/>
+                <Row title="Movies for the Family" fetchUrl={requests.fetchFamilyMovies}/>
+                <Row title="Historical Dramas" fetchUrl={requests.fetchHistoryMovies}/>
+                <Row title="Horrifying Flicks" fetchUrl={requests.fetchHorrorMovies}/>
+                <Row title="Seasons of Love" fetchUrl={requests.fetchRomanceMovies}/>
+                <Row title="Sci-Fi Movies" fetchUrl={requests.fetchSciFiMovies}/>
+                <Row title="Westerns" fetchUrl={requests.fetchWesternMovies}/>
+            </div>
+        </>
+    ): (
+        <SelectedProfile user = {user} setProfile={setProfile}/>
+    );
 }
 

@@ -17,7 +17,6 @@ export default function SignInForm() {
 
   const handleSignin = (e) => {
     e.preventDefault();
-    
     return firebase
       .auth()
       .signInWithEmailAndPassword(emailAddress, password)
