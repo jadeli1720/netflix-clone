@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from './header';
-import Jumbotron from './jumbotron';
-// import jumboData from '../../json/jumbo.json';
+import Jumbotron from './jumboTron';
 import Faq from './faq';
 import faqData from '../../json/faqs.json'
 import OptForm from './optForm';
