@@ -20,18 +20,22 @@ function NavBar({ user, setProfile }) {
 	return (
 		<div className={`nav ${show && "navBlack"}`}>
 			<div className="navContainer">
-				<Link className='netflixLogo' to={ ROUTES.HOME }>
+				<div className='group'>
+					<Link className='netflixLogo' to={ ROUTES.HOME }>
+						<img
+						className="navLogo"
+						src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+						alt="Netflix logo"
+					/>
+					</Link>
+				</div>
+				<div className='group' id="right">
 					<img
-					className="navLogo"
-					src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
-					alt="Netflix logo"
-				/>
-				</Link>
-				<img
-					className="navAvatar"
-					src={ `/images/users/${user?.photoURL}.png`}
-					alt="teal netflix avatar icon"
-				/>
+						className="navAvatar"
+						src={ `/images/users/${user?.photoURL}.png`}
+						alt="teal netflix avatar icon"
+					/>
+				</div>
 			</div>
 		</div>
 	);
