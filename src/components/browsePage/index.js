@@ -48,7 +48,7 @@ export default function BrowsePage() {
         <>
         {loading ? <Loading user={ user } /> : <div className='releaseBody'></div>}
             <div className='homeScreen'>
-                <NavBar user={ user }/>
+                <NavBar user={ user } searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 <Banner/>
                 <Row 
                     title="NETFLIX ORIGINALS" 
