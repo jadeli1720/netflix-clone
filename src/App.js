@@ -10,7 +10,7 @@ import { ProtectedRoute, UserSignedIn } from "./helpers";
 
 import useAuthListener from "./hooks";
 
-//TODO: Consider refactoring css font and image sizes for smaller screens
+//TODO: Consider refactoring css font and image sizes for smaller screens --> smaller fonts, smaller images, different icons, hamburger menus
 
 function App() {
 

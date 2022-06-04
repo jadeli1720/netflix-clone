@@ -25,6 +25,7 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 
 	return (
 		<div className={`nav ${show && "navBlack"}`}>
+				{/*TODO: At smaller screen size make this a hamburger menu and use the N icon instead */}
 			<div className="navContainer">
 				<div className='group'>
 					<Link className='netflixLogo' to={ ROUTES.HOME }>
@@ -34,7 +35,6 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 						alt="Netflix logo"
 					/>
 					</Link>
-					{/*TODO: At smaller screen size make this a hamburger menu */}
 						{/* What do we want the below to do. Is active not working style={({isActive}) => isActive ? activeStyle : undefined}*/}
 					<NavLink  to={'/'}>TV Shows</NavLink>
 					<NavLink to={'/'}>Movies</NavLink>
