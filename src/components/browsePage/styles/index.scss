@@ -2,9 +2,9 @@
 .nav {
 	position: fixed;
 	top:0;
-	padding:20px;
-	height:30px;
-	width: 100vw;
+	height:70px;
+	min-width: 100vw;
+	width: 100%;
 	z-index:100;
 
 	transition: all 0.5s ease-in;
@@ -17,20 +17,159 @@
 .navContainer {
 	display:flex;
 	justify-content: space-between;
+	align-items: center;
+	margin: 15px 20px 10px;
 
-	.navLogo {
-		position:fixed;
-		left: 0;
-		cursor: pointer;
-		width: 8.375rem;
-		padding-left:20px
+	.group, .navProfile, .search {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 	}
 
-	.navAvatar {
-		position:fixed;
-		right: 20px;
+	.netflixLogo {
+		margin-right: 2rem;
+	}
+
+	.navLogo {
 		cursor: pointer;
-		width: 30px;
+		width: 8.375rem;
+		height: 2.25rem;
+	}
+
+	a {
+		color: white;
+		font-size: 18px;
+		text-decoration: none;
+		text-shadow: 
+		0px 2px 3px rgba(0,0,0,0.5),
+		0px -2px 13px rgba(0,0,0,0.4),
+		0px 18px 23px rgba(0,0,0,0.2);
+
+		margin-right: 1.5rem;
+		cursor: pointer;
+
+		&:hover {
+			font-weight: 800;
+		}
+	}
+
+	.displayName {
+		cursor: default;
+	}
+
+	.search{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-right: 1.5rem;
+
+		.searchIcon {
+			position: relative;
+			border: none;
+			background-color: transparent;
+			color: white;
+			font-size: 26px;
+			filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+			cursor: pointer;
+			outline: 0;
+			padding: 0;
+			margin-top: 5px;
+		}
+
+		.inputContainer {
+			position: relative;
+		
+			input {
+				background-color: rgba(64, 64, 64, 0.65);
+				border: 1px solid white;
+				border-radius: 4px;
+				color: white;
+				font-size: 14px;
+				margin-left: 0;
+				padding: 0;
+				opacity: 0;
+				height: 30px;
+				width: 0px;
+				transition: width 0.5s;
+
+				&::placeholder {
+					color: white;
+				}
+
+				&:focus {
+					background-color: rgba(0, 0, 0, 0.8);
+				}
+			}
+			.toggleSearch {
+				margin-left: 10px;
+				padding: 0 10px;
+				opacity: 1;
+				width:200px;
+			}
+		}
+
+		@media (max-width: 700px) {
+			display: none;
+		}
+	}
+
+	.navAvatar, img {
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		margin-right:.5rem;
+		width: 40px;
+		height: 40px;
+	}
+
+	.dropAvatar {
+		cursor: default;
+	}
+	
+	.dropDown {
+		position:absolute;
+		top: 50px;
+    right: 6px;
+		background-color: rgba(0, 0, 0, 0.75);
+		border-radius: 2%;
+		padding: 0;
+		height: 0px;
+		width: 100px;
+		transition: height 0.5s;
+	}
+
+	.dropDownArrow {
+		svg {
+			filter: drop-shadow(1px 0px 4px rgb(0 0 0 / 0.75));
+		}
+	}
+	
+	.toggleMenu {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		height: 90px;
+		padding: 12px 10px;
+	}
+
+	.topContent, .bottomContent {
+		display: none;
+	}
+
+	.toggleContent {
+		display: flex;
+		align-items: center;
+	}
+
+	.navProfile {
+		position: relative;
+	}
+
+	.signOutLink {
+		cursor: pointer;
+		&:hover {
+			font-weight: 800;
+		}
 	}
 }
 
@@ -48,7 +187,7 @@
 		height: 316px;
 		// height: 190px;
 		margin-left: 30px;
-		margin-top: 140px;
+		margin-top: 158px;
 		//below was for when the jumbotron did not have display flex
 		// padding-top: 140px;
 	
@@ -56,17 +195,22 @@
 			font-size: 3rem;
 			font-weight: 800;
 			text-shadow: 
-			0px 4px 3px rgba(0,0,0,0.4),
-			0px 8px 13px rgba(0,0,0,0.1),
-			0px 18px 23px rgba(0,0,0,0.1);
+			0px 2px 3px rgba(0,0,0,0.5),
+			0px -2px 13px rgba(0,0,0,0.4),
+			0px 18px 23px rgba(0,0,0,0.2);
 			padding-bottom: 0.3rem;
 			max-width:600px;
 			width:100%;
 		}
 	
 		.description {
-			font-size: 0.8rem;
+			font-size: 1.2rem;
+			font-weight: 300;
 			line-height: 1.3;
+			text-shadow: 
+			0px 2px 3px rgba(0,0,0,0.5),
+			0px -2px 10px rgba(0,0,0,0.4),
+			0px 18px 23px rgba(0,0,0,0.2);
 			padding-top: 1rem;
 			height: 80px;
 			max-width: 360px;

@@ -6,32 +6,54 @@ import SignIn from "./components/signInPage";
 import SignUp from "./components/signUpPage";
 import HomePage from "./components/homePage";
 import BrowsePage from "./components/browsePage";
+import { ProtectedRoute, UserSignedIn } from "./helpers";
+
+import useAuthListener from "./hooks";
 
 //TODO: Consider refactoring css font and image sizes for smaller screens
 
 function App() {
-	const user = null;
+
+	const { user } = useAuthListener();
+
 	return (
 		<div className="app">
 			<Router>
 				<Routes>
-					<Route path={ROUTES.HOME} element={<HomePage />}></Route>
-					<Route path={ROUTES.SIGN_IN} element={<SignIn />}></Route>
-					<Route path={ROUTES.SIGN_UP} element={<SignUp />}></Route>
-					<Route path={ROUTES.BROWSE} element={<BrowsePage />}></Route>
+					<Route
+						path={ROUTES.HOME}
+						element={
+							<UserSignedIn user = { user }>
+								<HomePage />
+							</UserSignedIn>
+						}
+					/>
+					<Route
+						path={ROUTES.SIGN_IN}
+						element={
+							<UserSignedIn user = { user }>
+								<SignIn/>
+							</UserSignedIn>
+						}
+					/>
+					<Route
+						path={ROUTES.SIGN_UP}
+						element={
+							<UserSignedIn user = { user }>
+								<SignUp/>
+							</UserSignedIn>
+						}
+					/>
+					<Route 
+						path={ROUTES.BROWSE} 
+						element={
+							<ProtectedRoute user = { user }>
+								<BrowsePage />
+							</ProtectedRoute>
+						}
+						/>
 				</Routes>
 			</Router>
-
-			{/* <Router>
-				{!user ? (
-					<HomePage/>
-				) : (
-					<Routes>
-						<Route path={ROUTES.BROWSE} element={<BrowsePage />}></Route>
-						<Route path={ROUTES.SIGN_IN} element={<SignIn />}></Route>
-					</Routes>
-				)}
-			</Router> */}
 		</div>
 	);
 }

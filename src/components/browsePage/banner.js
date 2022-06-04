@@ -38,6 +38,7 @@ export default function Banner(){
 				<h1 className="title">
 					{movie?.title || movie?.name || movie?.original_title}
 				</h1>
+				{/*TODO: move the buttons? */}
 				<div className="buttons">
 					<button className="">Play</button>
 					<button className="">My List</button>
