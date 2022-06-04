@@ -2,27 +2,25 @@ import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 export default function SearchForm({ searchTerm, setSearchTerm }) {
-  const [toggleSearch, setToggleSearch] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
 
-  const handleSearchClick = () => !toggleSearch ? setToggleSearch(true) : setToggleSearch(false);
+  const activateSearch = () => !searchActive ? setSearchActive(true) : setSearchActive(false);
 
   return (
     <div className='search'>
-      {/* Needs a shadow for lighter backgrounds */}
-      <button className='searchIcon'>
+      <button className='searchIcon' onClick={activateSearch}>
         <FaSearch />
       </button>
-      {/* <div className='inputContainer'>
+      <div className={`inputContainer + ${searchActive ? 'toggleSearch' : ''}`}>
         <input
+        className={`${searchActive ? 'toggleSearch' : ''}`}
           value={searchTerm}
           onChange={({ target }) => setSearchTerm(target.value)}
           type='text'
-          placeholder="Search movies as TV Shows"
-          // active={searchActive}
+          placeholder="Search movies & TV Shows"
         />
-      </div> */}
+      </div>
     </div>
-    
   )
 }
 

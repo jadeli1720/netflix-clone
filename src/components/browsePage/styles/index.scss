@@ -59,7 +59,8 @@
 
 	.search{
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		align-items: center;
 		margin-right: 1.5rem;
 
 		.searchIcon {
@@ -76,18 +77,39 @@
 		}
 
 		.inputContainer {
-			position: absolute;
-			top: 70px;	
-
+			position: relative;
+		
 			input {
-				background-color: rgba(64, 64, 64, 0.5);
-				color: white;
+				background-color: rgba(64, 64, 64, 0.65);
 				border: 1px solid white;
-				transition: width 0.5s;
-				height: 30px;
-				font-size: 14px;
 				border-radius: 4px;
+				color: white;
+				font-size: 14px;
+				margin-left: 0;
+				padding: 0;
+				opacity: 0;
+				height: 30px;
+				width: 0px;
+				transition: width 0.5s;
+
+				&::placeholder {
+					color: white;
+				}
+
+				&:focus {
+					background-color: rgba(0, 0, 0, 0.8);
+				}
 			}
+			.toggleSearch {
+				margin-left: 10px;
+				padding: 0 10px;
+				opacity: 1;
+				width:200px;
+			}
+		}
+
+		@media (max-width: 700px) {
+			display: none;
 		}
 	}
 
@@ -105,21 +127,38 @@
 	}
 	
 	.dropDown {
-		display: none;
 		position:absolute;
 		top: 50px;
     right: 6px;
 		background-color: rgba(0, 0, 0, 0.75);
 		border-radius: 2%;
-		padding: 12px 10px;
-		height: 90px;
+		padding: 0;
+		height: 0px;
 		width: 100px;
+		transition: height 0.5s;
 	}
 
+	.dropDownArrow {
+		svg {
+			filter: drop-shadow(1px 0px 4px rgb(0 0 0 / 0.75));
+		}
+	}
+	
 	.toggleMenu {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
+		height: 90px;
+		padding: 12px 10px;
+	}
+
+	.topContent, .bottomContent {
+		display: none;
+	}
+
+	.toggleContent {
+		display: flex;
+		align-items: center;
 	}
 
 	.navProfile {

@@ -16,8 +16,6 @@ function App() {
 
 	const { user } = useAuthListener();
 
-	// console.log("app.js", user)
-
 	return (
 		<div className="app">
 			<Router>

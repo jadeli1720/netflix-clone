@@ -6,34 +6,26 @@ import SearchForm from '../Forms/searchForm';
 import { FaCaretDown } from 'react-icons/fa';
 
 
-
 function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 	const [show, handleShow] = useState(false);
 	const [toggleMenu, setToggleMenu] = useState(false);
-	
+
 	const { firebase } = useContext(FirebaseContext);
 
 	const transitionNavBar = () => window.scrollY > 100 ? handleShow(true) : handleShow(false);
 	
-	let activeStyle = {
-		'font-weight': 800,
-	}
-
 	const handleMenuClick = () => !toggleMenu ? setToggleMenu(true) : setToggleMenu(false);
-
-	
 
 
 	useEffect(() => {
 		window.addEventListener("scroll", transitionNavBar);
-		//clean-up- not always needed
+		//clean-up code, not always needed
 		return () => window.removeEventListener("scroll", transitionNavBar);
 	}, []);
 
 	return (
 		<div className={`nav ${show && "navBlack"}`}>
 			<div className="navContainer">
-				{/* left side */}
 				<div className='group'>
 					<Link className='netflixLogo' to={ ROUTES.HOME }>
 						<img
@@ -42,17 +34,13 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 						alt="Netflix logo"
 					/>
 					</Link>
-					{/* At smaller screen size make this a hamburger menu */}
-					{/* <div className='navLinks'> */}
+					{/*TODO: At smaller screen size make this a hamburger menu */}
 						{/* What do we want the below to do. Is active not working style={({isActive}) => isActive ? activeStyle : undefined}*/}
-						{/* <NavLink style={{fontWeight:800}} to={ROUTES.BROWSE}>Home</NavLink> */}
-						<NavLink  to={'/'}>TV Shows</NavLink>
-						<NavLink to={'/'}>Movies</NavLink>
-						<NavLink to={'/'}>Recently Added</NavLink>
-						<NavLink to={'/'}>My List</NavLink>
-					{/* </div> */}
+					<NavLink  to={'/'}>TV Shows</NavLink>
+					<NavLink to={'/'}>Movies</NavLink>
+					<NavLink to={'/'}>Recently Added</NavLink>
+					<NavLink to={'/'}>My List</NavLink>
 				</div>
-				{/* right side */}
 				<div className='group' id="right">
 					<SearchForm  searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
 					<div className='navProfile'  onClick={handleMenuClick}>
@@ -63,8 +51,7 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 							/>
 						</button>
 						<div className={`dropDown + ${toggleMenu ? 'toggleMenu' : ''} `}>
-							<div className='group'>
-								{/* will below need to be a button instead? */}
+							<div className={`group + topContent + ${toggleMenu ? 'toggleContent' : ''}`} >
 								<img
 									className="dropAvatar"
 									src={ `/images/users/${user?.photoURL}.png`}
@@ -72,7 +59,7 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 								/>
 								<Link className='displayName' to={'/'}>{user.displayName}</Link>
 							</div>
-							<div className='group'>
+							<div className={` group + bottomContent + ${toggleMenu ? 'toggleContent' : ''}`} >
 								<p className='signOutLink' onClick={() => firebase.auth().signOut()}>Sign Out</p>
 							</div>
 						</div>

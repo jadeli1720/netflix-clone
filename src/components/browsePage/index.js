@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import * as ROUTES from '../../constants/routes';
 import NavBar from './navBar';
 import Banner from './banner.js';
 import Row from './row';
@@ -13,21 +12,18 @@ import SelectedProfile from '../profilePage';
 export default function BrowsePage() {
     /**
     * TODO: This may need a complete re-design css wise and maybe add styled components, react bootstrap, semantic UI or some thing else of that nature.
-    * 1. Search bar feature
+    * 1. Search bar feature --> styled now needs functionality
     * 
-    * 2. Maybe add additional navigation -Home, Movies, Featured
-    * 
-    * 3. Banner:
+    * 2. Banner:
     *    - Fix the Banner. Maybe make it bigger, fix the fade
     *    - On description add a more button to see the rest of it and make it a bigger font size and maybe smaller font-weight.
     *    - Add a play icon to play button that when clicked will play a trailer maybe
     * 
-    * 4.Rows:
+    * 3.Rows:
     *  - need a hover action over movie cards that bring up the movie title. 
     *  - pop-up.modal that gives us  the ability to click on a still image of movie trailer (play it), The movie title, release fate, cast and director, any other movie/tv details, rating, and description
     *  - Add scroll buttons to control scroll feature. Some sort of slider maybe?
-    * 
-    * 5. footer?
+    
     **/
     const [profile, setProfile] = useState({});
     const [loading, setLoading] = useState(true);
