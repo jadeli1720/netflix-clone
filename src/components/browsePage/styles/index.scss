@@ -3,7 +3,8 @@
 	position: fixed;
 	top:0;
 	height:70px;
-	width: 100vw;
+	min-width: 100vw;
+	width: 100%;
 	z-index:100;
 
 	transition: all 0.5s ease-in;
@@ -14,29 +15,15 @@
 }
 
 .navContainer {
-	// border: teal solid 1px;
 	display:flex;
 	justify-content: space-between;
 	align-items: center;
 	margin: 15px 20px 10px;
 
-
 	.group, .navProfile, .search {
-		// border: purple solid 1px;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-	}
-
-	#right {
-		.search{
-			margin-right: 1.5rem;
-			svg {
-				font-size: 26px;
-				cursor: pointer;
-				margin-top: 5px;
-			}
-		}
 	}
 
 	.netflixLogo {
@@ -46,45 +33,104 @@
 	.navLogo {
 		cursor: pointer;
 		width: 8.375rem;
+		height: 2.25rem;
 	}
 
-	.navLinks{
+	a {
+		color: white;
+		font-size: 18px;
+		text-decoration: none;
+		text-shadow: 
+		0px 2px 3px rgba(0,0,0,0.5),
+		0px -2px 13px rgba(0,0,0,0.4),
+		0px 18px 23px rgba(0,0,0,0.2);
+
+		margin-right: 1.5rem;
+		cursor: pointer;
+
+		&:hover {
+			font-weight: 800;
+		}
+	}
+
+	.displayName {
+		cursor: default;
+	}
+
+	.search{
 		display: flex;
-    justify-content: space-evenly;
+		flex-direction: column;
+		margin-right: 1.5rem;
 
-		a {
+		.searchIcon {
+			position: relative;
+			border: none;
+			background-color: transparent;
 			color: white;
-			font-size: 18px;
-			text-decoration: none;
-			text-shadow: 
-			0px 2px 3px rgba(0,0,0,0.5),
-			0px -2px 13px rgba(0,0,0,0.4),
-			0px 18px 23px rgba(0,0,0,0.2);
-
-			margin-right: 1.5rem;
+			font-size: 26px;
+			filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
 			cursor: pointer;
-
-			// .active {
-			// 	font-weight: 800 !important;
-			// }
-
-			[aria-current="page"] {
-				background-color: purple;
+			outline: 0;
+			padding: 0;
+			margin-top: 5px;
 		}
 
+		.inputContainer {
+			position: absolute;
+			top: 70px;	
 
+			input {
+				background-color: rgba(64, 64, 64, 0.5);
+				color: white;
+				border: 1px solid white;
+				transition: width 0.5s;
+				height: 30px;
+				font-size: 14px;
+				border-radius: 4px;
+			}
 		}
 	}
 
-	.navAvatar {
+	.navAvatar, img {
+		border: none;
+		background: transparent;
 		cursor: pointer;
 		margin-right:.5rem;
 		width: 40px;
 		height: 40px;
 	}
 
-	.navProfile {
+	.dropAvatar {
+		cursor: default;
+	}
+	
+	.dropDown {
+		display: none;
+		position:absolute;
+		top: 50px;
+    right: 6px;
+		background-color: rgba(0, 0, 0, 0.75);
+		border-radius: 2%;
+		padding: 12px 10px;
+		height: 90px;
+		width: 100px;
+	}
 
+	.toggleMenu {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+
+	.navProfile {
+		position: relative;
+	}
+
+	.signOutLink {
+		cursor: pointer;
+		&:hover {
+			font-weight: 800;
+		}
 	}
 }
 

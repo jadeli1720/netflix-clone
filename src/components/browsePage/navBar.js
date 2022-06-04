@@ -9,6 +9,8 @@ import { FaCaretDown } from 'react-icons/fa';
 
 function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 	const [show, handleShow] = useState(false);
+	const [toggleMenu, setToggleMenu] = useState(false);
+	
 	const { firebase } = useContext(FirebaseContext);
 
 	const transitionNavBar = () => window.scrollY > 100 ? handleShow(true) : handleShow(false);
@@ -16,6 +18,10 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 	let activeStyle = {
 		'font-weight': 800,
 	}
+
+	const handleMenuClick = () => !toggleMenu ? setToggleMenu(true) : setToggleMenu(false);
+
+	
 
 
 	useEffect(() => {
@@ -27,6 +33,7 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 	return (
 		<div className={`nav ${show && "navBlack"}`}>
 			<div className="navContainer">
+				{/* left side */}
 				<div className='group'>
 					<Link className='netflixLogo' to={ ROUTES.HOME }>
 						<img
@@ -36,38 +43,39 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 					/>
 					</Link>
 					{/* At smaller screen size make this a hamburger menu */}
-					<div className='navLinks'>
+					{/* <div className='navLinks'> */}
 						{/* What do we want the below to do. Is active not working style={({isActive}) => isActive ? activeStyle : undefined}*/}
-						<NavLink style={{fontWeight:800}} to={ROUTES.BROWSE}>Home</NavLink>
-						<NavLink to={'/'}>TV Shows</NavLink>
+						{/* <NavLink style={{fontWeight:800}} to={ROUTES.BROWSE}>Home</NavLink> */}
+						<NavLink  to={'/'}>TV Shows</NavLink>
 						<NavLink to={'/'}>Movies</NavLink>
-						{/* <NavLink to={'/'}>Recently Added</NavLink> */}
+						<NavLink to={'/'}>Recently Added</NavLink>
 						<NavLink to={'/'}>My List</NavLink>
-					</div>
+					{/* </div> */}
 				</div>
+				{/* right side */}
 				<div className='group' id="right">
 					<SearchForm  searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-					<div className='navProfile'>
-						<img
-							className="navAvatar"
-							src={ `/images/users/${user?.photoURL}.png`}
-							alt="teal netflix avatar icon"
-						/>
-						{/* Need to see how he does the following */}
-						{/* <div className='dropDown'>
+					<div className='navProfile'  onClick={handleMenuClick}>
+						<button className="navAvatar">
+							<img
+								src={ `/images/users/${user?.photoURL}.png`}
+								alt="teal netflix avatar icon"
+							/>
+						</button>
+						<div className={`dropDown + ${toggleMenu ? 'toggleMenu' : ''} `}>
 							<div className='group'>
+								{/* will below need to be a button instead? */}
 								<img
-									className="navAvatar"
+									className="dropAvatar"
 									src={ `/images/users/${user?.photoURL}.png`}
 									alt="teal netflix avatar icon"
 								/>
-								<Link to={'/'}>{user.displayName}</Link>
+								<Link className='displayName' to={'/'}>{user.displayName}</Link>
 							</div>
 							<div className='group'>
-								<p onClick={() => firebase.auth().signOut()}>Sign Out</p>
+								<p className='signOutLink' onClick={() => firebase.auth().signOut()}>Sign Out</p>
 							</div>
-						</div> */}
-
+						</div>
 						<div className='dropDownArrow'>
 							<FaCaretDown/>
 						</div>
