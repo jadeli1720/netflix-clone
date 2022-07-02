@@ -50,9 +50,9 @@ export default function BrowsePage() {
                     title="NETFLIX ORIGINALS" 
                     fetchUrl={requests.fetchNetflixOriginals}
                     isLargeRow
-                    />
+                />
                 <Row title="Trending Now" fetchUrl={requests.fetchTrending}/>
-                <Row title="Top Rated Movie" fetchUrl={requests.fetchTopRatedMovie}/>
+                {/* <Row title="Top Rated Movie" fetchUrl={requests.fetchTopRatedMovie}/>
                 <Row title="Top Rated Tv" fetchUrl={requests.fetchTopRatedTv}/>
                 <Row title="Action Packed" fetchUrl={requests.fetchActionMovies}/>
                 <Row title="Animation" fetchUrl={requests.fetchAnimationMovies}/>
@@ -64,7 +64,7 @@ export default function BrowsePage() {
                 <Row title="Horrifying Flicks" fetchUrl={requests.fetchHorrorMovies}/>
                 <Row title="Seasons of Love" fetchUrl={requests.fetchRomanceMovies}/>
                 <Row title="Sci-Fi Movies" fetchUrl={requests.fetchSciFiMovies}/>
-                <Row title="Westerns" fetchUrl={requests.fetchWesternMovies}/>
+                <Row title="Westerns" fetchUrl={requests.fetchWesternMovies}/> */}
             </div>
         </>
     ): (

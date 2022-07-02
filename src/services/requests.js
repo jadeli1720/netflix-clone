@@ -3,7 +3,7 @@ const API_KEY= process.env.REACT_APP_TMDB_APIKEY;
 
 //tmdb requests
 const requests = {
-    fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,
+    fetchTrending: `/trending/all/week?api_key=${API_KEY}&append_to_response=videos`,
     //This is not working. Need to fix
     fetchBannerMovies:`/discover/movie?api_key=${API_KEY}&with_networks=213`,
     fetchNetflixOriginals: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
