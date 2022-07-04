@@ -397,7 +397,7 @@
 	height: 100%;
 
 	p {
-		color: white;
+		color: #dadada;
 		// font-size: 40px;
 	}
 	
@@ -440,9 +440,36 @@
 
 			.metaDataRow {
 				display: flex;
+				align-items: center;
+				p {
+					color: #afafaf;
+				}
 
 				p, .widget-ratings {
 					margin-right: 1rem;
+				}
+
+				.mediaRatingContainer{
+					border: #afafaf 1px solid;
+					margin-right: 1rem;
+
+					p {
+						text-align: center;
+						margin-right: 0;
+						padding: 2px 4px;
+					}
+
+				}
+				.hdContainer {
+					background: #535353;
+					border-radius: 2px;
+					p {
+						color:#101010;
+						font-weight: 900;
+						text-align: center;
+						padding-left:1px;
+						margin: 0.5px 4px 1px;
+					}
 				}
 			}
 
@@ -452,8 +479,10 @@
 
 			.cast, .director {
 				display:flex;
+				flex-wrap: wrap;
 				
 				p {
+					color: #afafaf;
 					display: flex;
 					margin-right: .25rem;
 				}

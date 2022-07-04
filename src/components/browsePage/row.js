@@ -4,17 +4,12 @@ import FeatureModal from "./featureModal";
 
 function Row({ title, fetchUrl, isLargeRow=false }) {
 	const [movies, setMovies] = useState([]);
-	//do i need
-	// const [ movieIds , setMovieIds ] = useState([]);
-	// const [ mediaTrailer , setMediaTrailer ] = useState([])
 
 	//following is to control showing a movie/tv's data/details/trailer when a card is clicked and the info drops down
 	//TODO: may need to pass s
 	const [showFeatureModal, setShowFeatureModal] = useState(false);
 
 	//When the above state is true, this shows the SINGLE detail for a SINGLE card that is clicked and not all of them opening at once.
-
-	// change to
 	const [ featureDetails, setFeatureDetails ] = useState([])
 
 	const BASE_URL= 'https://image.tmdb.org/t/p/original'
@@ -42,13 +37,10 @@ function Row({ title, fetchUrl, isLargeRow=false }) {
 		fetchData();
 	}, [fetchUrl]);
 
-	// console.log(showFeatureModal)
-
 
 	return (
 		<div className="row">
 			<h2 style={{ 'marginTop': '10px'}}>{title}</h2>
-			{/* TODO: revert the poster features don't forget to revert the css as well */}
 			<div className="moviesContainer" >
 				{movies.map((movie) => (
 					((isLargeRow && movie?.poster_path) ||
@@ -63,13 +55,9 @@ function Row({ title, fetchUrl, isLargeRow=false }) {
 								src={`${ BASE_URL}${ isLargeRow ? movie?.poster_path : movie?.backdrop_path }`}
 								alt={movie?.title || movie?.name || movie?.original_title}
 								/>
-								
 						</div>
-						//Need a trailer feature  container
-						//for video: if undefined or null, play the available trailer, else play fill in
 					)
 				))}
-				{/* Later feature for backend to grab data*/}
 			</div>
 				{showFeatureModal && <FeatureModal show={showFeatureModal} closeFeatureModal={setShowFeatureModal} details={featureDetails} setDetails={setFeatureDetails}/>}
 		</div>
