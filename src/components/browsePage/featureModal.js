@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
-// import axios from '../../services/axios';
 import axios from "axios";
+import { convertRuntime, grabCastInfo,grabCrewInfo, grabMediaRatings, grabYear, roundNum } from '../../helpers/'
 import Ratings from 'react-ratings-declarative';
+
+
 
 export default function FeatureModal({show, closeFeatureModal, details, setDetails}) {
   const [ cast, setCast ] = useState();
   const [ crew, setCrew ] = useState();
   const [ runtime, setRuntime] = useState('');
   const [ mediaRating, setMediaRating ] = useState('');
-  const [trailer, setTrailer] = useState('');
+  // const [trailer, setTrailer] = useState('');
 
   const IMG_BASE_URL= 'https://image.tmdb.org/t/p/original';
   const API_KEY = process.env.REACT_APP_TMDB_APIKEY;
   
-// console.log(details)
-  /*Future TODO:
 
+  /*Future TODO:
     => fill in the modal with:
   
     => on playButtonClick - use to make a call to movie api
@@ -25,81 +26,6 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
     =>Add close button icon that will setFeatureShowModal to false and setItemDetail to empty array. May need to import the setter functions
    */
 
-    //convert rating from 10 based decimal system to 5 star rating decimal
-    const roundNum = (value) => {
-      const step = 0.5 || 1.0;
-      let inv = 1.0/step;
-      // let conversion = value/2
-      let rating = Math.round(value * inv)/inv
-      return rating
-    }
-
-    const grabYear = (value) => {
-      return value.substring(0,4)
-    }
-
-    const grabCrewInfo = (data) => {;
-      let crewArr = [];
-
-      data.forEach(el => {
-        let dept = el?.department;
-        let job = el?.job;
-
-        if(dept.toLowerCase() === "directing" && job.toLowerCase() === 'director'){
-          let director = {
-            id: el?.id,
-            name:el?.name,
-            job:el?.job
-          }
-          return crewArr.push(director);
-        } else if(dept.toLowerCase() === "production" && job.toLowerCase() === 'producer'){
-          let producer = {
-            id: el?.id,
-            name:el?.name,
-            job:el?.job
-          }
-
-          return crewArr.push(producer)
-        }
-      })
-      return crewArr
-    }
-
-    const grabCastInfo = (data) => {
-      let actorsArr = [];
-      let actorsData = data.slice(0,3);
-
-      actorsData.forEach(el => {
-        // console.log(el)
-        let actor = {
-          id: el?.id,
-          name: el?.name
-        }
-
-        return actorsArr.push(actor)
-      })
-      return actorsArr
-    }
-
-    const convertRuntime = (n) => {
-      let hours = (n/60);
-      let roundedHours = Math.floor(hours);
-      let minutes = Math.round((hours - roundedHours) * 60)
-      return  roundedHours + 'hr ' + minutes + "min"
-    }
-
-    const grabMediaRatings = (adult, genres) => {
-      let genreIdArr = []
-      genres.forEach((g) => genreIdArr.push(g.id))
-      
-      if(adult === true) {
-        return 'R'
-      }else if ((adult === false && genreIdArr.includes(10751)) || (adult === false && genreIdArr.includes(10762))) {
-        return 'PG'
-      } else {
-        return 'PG-13'
-      }
-    }
 
 
     useEffect(() => {
@@ -135,7 +61,7 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
             })
           ).catch((err) => {
             if(err.response && err.response.status === 404){
-              
+              // console.clear()
               //TV
               let fetchTvDetails = `https://api.themoviedb.org/3/tv/${details?.id}?&api_key=${API_KEY}&append_to_response=videos`;
 
@@ -161,9 +87,11 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
                       setRuntime(mediaRuntime);
                       setCrew(directors.slice(0,2));
                       setCast(actors);
+                      // console.clear()
                     }
                   })
                 )
+                .catch((err) =>{console.log(err)})
               }
           })
         };
@@ -178,33 +106,36 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
         <header>
           {/* TODO: play button and close button */}
           <img src={`${IMG_BASE_URL}${details?.backdrop_path}`} alt={details?.name} />
-          <h1>{details?.name || details?.title}</h1>
+          <div className='titleMetaContainer'>
+            <h1>{details?.name || details?.title}</h1>
+            <div className='metaDataRow'>
+              <Ratings
+                rating={roundNum(details?.vote_average)/2}
+                widgetRatedColors ='#FFDB58' 
+                widgetEmptyColors = "grey"
+                widgetDimensions="16px"
+                widgetSpacings="1px"
+              >
+                <Ratings.Widget/>
+                <Ratings.Widget/>
+                <Ratings.Widget/>
+                <Ratings.Widget/>
+                <Ratings.Widget/>
+              </Ratings>
+              <p>{!details?.release_date ? grabYear(details?.first_air_date) : grabYear(details?.release_date)}</p>
+              <div className="mediaRatingContainer">
+                <p>{mediaRating}</p>
+              </div>
+              <p>{runtime}</p>
+              <div className="hdContainer">
+                <p>HD</p>
+              </div>
+            </div>
+          </div>
           <div className="bottomFade"></div>
         </header>
         <div className="content">
-          <div className='metaDataRow'>
-            <Ratings
-              rating={roundNum(details?.vote_average)/2}
-              widgetRatedColors ='#FFDB58' 
-              widgetEmptyColors = "grey"
-              widgetDimensions="16px"
-              widgetSpacings="1px"
-            >
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-            </Ratings>
-            <p>{!details?.release_date ? grabYear(details?.first_air_date) : grabYear(details?.release_date)}</p>
-            <div className="mediaRatingContainer">
-              <p>{mediaRating}</p>
-            </div>
-            <p>{runtime}</p>
-            <div className="hdContainer">
-              <p>HD</p>
-            </div>
-          </div>
+          
           <div className='description'>
             <p>{details?.overview}</p>
           </div>
