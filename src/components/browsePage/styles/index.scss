@@ -178,8 +178,6 @@
 	display: flex;
 	flex-direction: column;
 	position:relative;
-	//need to fix on bigger screens after 1024
-	// object-fit: contain;
 	height: 574px;
 	margin-bottom: 24px;
 
@@ -313,7 +311,6 @@
 
 //TODO:
 .moviesContainer {
-	
 	display: flex;
 	overflow-y: hidden;
 	overflow-x: scroll;
@@ -353,7 +350,6 @@
 		}
 	}
 
-
 	.subtitle, .description{
 		display: none;
 		user-select: none;
@@ -379,14 +375,15 @@
 	}
 
 }
+
 .modalContainer {
-	border: darkorchid 1px solid;
 	position: absolute;
 	display: none;
 	background-color: #000000db;
 	z-index: 100;
 
 }
+
 .detailOpen {
 	display: block;
 	position: fixed;
@@ -398,7 +395,6 @@
 
 	p {
 		color: #dadada;
-		// font-size: 40px;
 	}
 	
 	.modal {
@@ -414,6 +410,49 @@
 				img {
 					// border: deeppink 1px solid;
 					width: 100%;
+				}
+
+				.closeContainer, .playBtnContainer {
+					svg {
+						cursor: pointer;
+					}
+				}
+
+				.closeContainer {
+					position: absolute;
+					top: 0;
+					right: 0;
+					font-size: 2rem;
+					z-index: 4;
+					svg {
+						opacity: .65;
+						transition: all 0.2s ease-in-out;
+						&:hover {
+							transition: all 0.2s ease-in-out;
+							opacity: 1;
+						}
+					}
+				}
+
+				.playBtnContainer {
+					position:absolute;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					top:0;
+					font-size: 4rem;
+					width: 100%;
+					height: 100%;
+					z-index: 3;
+					
+					svg {
+						opacity: .65;
+						transition: all 0.2s ease-in-out;
+						&:hover {
+							transition: all 0.2s ease-in-out;
+							opacity: 1;
+						}
+					}
 				}
 
 				.titleMetaContainer, .bottomFade {
@@ -476,7 +515,6 @@
 				padding:0.2rem 2rem 2rem;
 			}
 
-			
 			.cast, .description {
 				margin-top: 1rem;
 			}
@@ -504,6 +542,6 @@
 			}
 
 		}
-	}
+}
 
 

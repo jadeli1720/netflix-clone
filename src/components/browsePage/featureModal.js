@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { convertRuntime, grabCastInfo,grabCrewInfo, grabMediaRatings, grabYear, roundNum } from '../../helpers/'
 import Ratings from 'react-ratings-declarative';
-
+import { BsX, BsPlayCircle} from "react-icons/bs";
+//BsX
 
 
 export default function FeatureModal({show, closeFeatureModal, details, setDetails}) {
-  const [ cast, setCast ] = useState();
-  const [ crew, setCrew ] = useState();
+  const [ cast, setCast ] = useState([]);
+  const [ crew, setCrew ] = useState([]);
   const [ runtime, setRuntime] = useState('');
   const [ mediaRating, setMediaRating ] = useState('');
-  // const [trailer, setTrailer] = useState('');
+  const [mediaTrailer, setMediaTrailer] = useState([]);
+  const [showVideo, setShowVideo] = useState(false)
 
   const IMG_BASE_URL= 'https://image.tmdb.org/t/p/original';
   const API_KEY = process.env.REACT_APP_TMDB_APIKEY;
@@ -26,7 +28,23 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
     =>Add close button icon that will setFeatureShowModal to false and setItemDetail to empty array. May need to import the setter functions
    */
 
+    const handleCloseButton = () => {
+      setCast([]);
+      setCrew([]);
+      setRuntime('');
+      setMediaRating('');
+      setMediaTrailer([]);
+      closeFeatureModal(false);
+    }
 
+    const handlePlayButton = () => {
+      console.log('play btn clicks', mediaTrailer)
+      setShowVideo(true)
+
+      // mediaTrailer.map(m => {
+      //   console.log(m.key)
+      // })
+    }
 
     useEffect(() => {
       const fetchMediaDetailsById = () => {
@@ -45,13 +63,44 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
             axios.spread((...res) => {
               const movieDetailRes = res[0]?.data;
               const movieCrewRes = res[1]?.data;
-              
+              // console.log(movieDetailRes.videos)
+
               if(res) {
                 let rating = grabMediaRatings(movieDetailRes?.adult, movieDetailRes?.genres);
+                //The below function does not work in another file! keep getting a type void
+                // let movieTrailer = grabMediaTrailer(movieDetailRes?.videos?.results);
                 let mediaRuntime = convertRuntime(movieDetailRes.runtime);
-                let directors = grabCrewInfo(movieCrewRes?.crew);
                 let actors = grabCastInfo(movieCrewRes?.cast);
-  
+                let directors = grabCrewInfo(movieCrewRes?.crew);
+
+                //Below items don't work
+                let officialTrailerString = 'official trailer';
+                let trailerData = movieDetailRes?.videos?.results;
+                
+                let keyArr = []
+
+                trailerData.forEach(el => {
+                  let trailerName = el?.name;
+                  let trailerType = el?.type;
+              
+                  if((trailerName.toLowerCase().includes("official trailer") && trailerType.toLowerCase().includes("trailer")) && (trailerName.length === officialTrailerString.length)){
+              
+                      let trailerObj = {
+                        id: el?.id,
+                        key: el?.key,
+                        site: el?.site
+                      }
+              
+                      return keyArr.push(trailerObj)
+                  }
+                  //(trailerName.toLowerCase().includes("trailer") && trailerType.toLowerCase().includes("trailer")) 
+              
+          
+              
+                  return setMediaTrailer(keyArr)
+                })
+
+
                 setMediaRating(rating);
                 setRuntime(mediaRuntime);
                 setCrew(directors.slice(0,2));
@@ -79,14 +128,15 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
 
                     if(res) {
                       let rating = grabMediaRatings(tvDetailRes?.adult, tvDetailRes?.genres);
-                      let directors = grabCrewInfo(tvCrewRes?.crew);
-                      let actors = grabCastInfo(tvCrewRes?.cast);
                       let mediaRuntime = `${tvDetailRes.seasons.length} Seasons`
+                      let actors = grabCastInfo(tvCrewRes?.cast);
+                      let directors = grabCrewInfo(tvCrewRes?.crew);
+                      // let trailer = grabTrailer()
         
                       setMediaRating(rating);
                       setRuntime(mediaRuntime);
-                      setCrew(directors.slice(0,2));
                       setCast(actors);
+                      setCrew(directors.slice(0,2));
                       // console.clear()
                     }
                   })
@@ -100,12 +150,21 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
 
     }, [API_KEY, details])
 
+
+    
   return (
     <div className={`modalContainer + ${show ? 'detailOpen' : '' }`}>
       <div className='modal'>
         <header>
-          {/* TODO: play button and close button */}
-          <img src={`${IMG_BASE_URL}${details?.backdrop_path}`} alt={details?.name} />
+          <img src={`${IMG_BASE_URL}${details?.backdrop_path}`} alt={details?.name}/>
+          <div className='closeContainer'>
+            <BsX onClick={() => handleCloseButton()} />
+          </div>
+          <div className='playBtnContainer'>
+            <div onClick={() => handlePlayButton()}>
+              <BsPlayCircle />
+            </div>
+          </div>
           <div className='titleMetaContainer'>
             <h1>{details?.name || details?.title}</h1>
             <div className='metaDataRow'>
@@ -135,7 +194,6 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
           <div className="bottomFade"></div>
         </header>
         <div className="content">
-          
           <div className='description'>
             <p>{details?.overview}</p>
           </div>

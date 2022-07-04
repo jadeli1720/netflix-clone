@@ -24,7 +24,6 @@ function Row({ title, fetchUrl, isLargeRow=false }) {
 			setShowFeatureModal(false) ;
 			setFeatureDetails([]);
 		}
-		
 	}
 	
 	useEffect(() => {
@@ -36,7 +35,6 @@ function Row({ title, fetchUrl, isLargeRow=false }) {
 		
 		fetchData();
 	}, [fetchUrl]);
-
 
 	return (
 		<div className="row">
