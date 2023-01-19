@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { convertRuntime, grabCastInfo,grabCrewInfo, grabMediaRatings, grabYear, roundNum } from '../../helpers/'
+import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabMediaRatings, grabYear, roundNum } from '../../helpers/'
 import Ratings from 'react-ratings-declarative';
 import { BsX, BsPlayCircle} from "react-icons/bs";
 //BsX
@@ -64,6 +64,7 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
               const movieDetailRes = res[0]?.data;
               const movieCrewRes = res[1]?.data;
               // console.log(movieDetailRes.videos)
+              console.log("first", res)
 
               if(res) {
                 let rating = grabMediaRatings(movieDetailRes?.adult, movieDetailRes?.genres);
@@ -79,6 +80,8 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
                 
                 let keyArr = []
 
+                //TODO: What if video[] is empty => make another call for trailer. This is tricky because some of the tv shows that have available data inside here have empty videos. Do we take the id and try to find the video seperately?
+
                 trailerData.forEach(el => {
                   let trailerName = el?.name;
                   let trailerType = el?.type;
@@ -93,6 +96,7 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
               
                       return keyArr.push(trailerObj)
                   }
+                  //TODO: else if string is trailer and lengths match
                   //(trailerName.toLowerCase().includes("trailer") && trailerType.toLowerCase().includes("trailer")) 
               
           
@@ -118,12 +122,12 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
 
               const requestTvDetails = axios.get(fetchTvDetails);
               const requestTvCrewDetails = axios.get(fetchTvCrewDetails);
-
+              
               axios
                 .all([ requestTvDetails, requestTvCrewDetails])
                 .then(
                   axios.spread((...res) => {
-                    const tvDetailRes = res[0].data;
+                    const tvDetailRes = res[0]?.data;
                     const tvCrewRes = res[1]?.data;
 
                     if(res) {
@@ -132,16 +136,22 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
                       let actors = grabCastInfo(tvCrewRes?.cast);
                       let directors = grabCrewInfo(tvCrewRes?.crew);
                       // let trailer = grabTrailer()
+                      if(directors == ''){
+                        let creators = grabCreators(tvDetailRes?.created_by)
+                        setCrew(creators.slice(0,2))
+                      } else {
+                        setCrew(directors.slice(0,2));
+                      }
         
                       setMediaRating(rating);
                       setRuntime(mediaRuntime);
                       setCast(actors);
-                      setCrew(directors.slice(0,2));
+                      
                       // console.clear()
                     }
                   })
                 )
-                .catch((err) =>{console.log(err)})
+                .catch((err) =>{console.log("No Information",err)})
               }
           })
         };
