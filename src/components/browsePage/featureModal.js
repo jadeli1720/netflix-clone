@@ -6,7 +6,7 @@ import { BsX, BsPlayCircle} from "react-icons/bs";
 //BsX
 
 
-export default function FeatureModal({show, closeFeatureModal, details, setDetails}) {
+export default function FeatureModal({show, closeFeatureModal, details}) {
   const [ cast, setCast ] = useState([]);
   const [ crew, setCrew ] = useState([]);
   const [ runtime, setRuntime] = useState('');
@@ -64,7 +64,7 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
               const movieDetailRes = res[0]?.data;
               const movieCrewRes = res[1]?.data;
               // console.log(movieDetailRes.videos)
-              console.log("first", res)
+              // console.log("first", res)
 
               if(res) {
                 let rating = grabMediaRatings(movieDetailRes?.adult, movieDetailRes?.genres);
@@ -98,13 +98,10 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
                   }
                   //TODO: else if string is trailer and lengths match
                   //(trailerName.toLowerCase().includes("trailer") && trailerType.toLowerCase().includes("trailer")) 
-              
-          
-              
                   return setMediaTrailer(keyArr)
                 })
-
-
+  
+                //NOTE: Not using rating for right now. The database is now setting these all to false as of 1/21/23. This used to not be the case
                 setMediaRating(rating);
                 setRuntime(mediaRuntime);
                 setCrew(directors.slice(0,2));
@@ -161,7 +158,7 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
     }, [API_KEY, details])
 
 
-    
+
   return (
     <div className={`modalContainer + ${show ? 'detailOpen' : '' }`}>
       <div className='modal'>
@@ -192,9 +189,10 @@ export default function FeatureModal({show, closeFeatureModal, details, setDetai
                 <Ratings.Widget/>
               </Ratings>
               <p>{!details?.release_date ? grabYear(details?.first_air_date) : grabYear(details?.release_date)}</p>
-              <div className="mediaRatingContainer">
+              {/* This data is now coming back incorrect, all coming back as false */}
+              {/* <div className="mediaRatingContainer">
                 <p>{mediaRating}</p>
-              </div>
+              </div> */}
               <p>{runtime}</p>
               <div className="hdContainer">
                 <p>HD</p>

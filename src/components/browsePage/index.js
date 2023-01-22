@@ -46,25 +46,29 @@ export default function BrowsePage() {
             <div className='homeScreen'>
                 <NavBar user={ user } searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 <Banner/>
-                <Row 
+                {/* Can we make the requests (its an object) an array of objects in the utils file that is set in a certain order like it is now.We will map within the fetch url, then we change/filter/rerender what is at the top based on if its a film category or tv category. We will need to add the category to the array. Use a function inside the fetchUrl props?
+                Or I can put an id on the row in here to use to filter the rows
+                */}
+                <Row
+                    rowID='1'
                     title="NETFLIX ORIGINALS" 
                     fetchUrl={requests.fetchNetflixOriginals}
                     isLargeRow
                 />
-                <Row title="Trending Now" fetchUrl={requests.fetchTrending}/>
-                <Row title="Top Rated Movie" fetchUrl={requests.fetchTopRatedMovie}/>
-                <Row title="Top Rated Tv" fetchUrl={requests.fetchTopRatedTv}/>
-                <Row title="Action Packed" fetchUrl={requests.fetchActionMovies}/>
-                <Row title="Animation" fetchUrl={requests.fetchAnimationMovies}/>
-                <Row title="Comedies" fetchUrl={requests.fetchComedyMovies}/>
-                <Row title="Drama" fetchUrl={requests.fetchDramaMovies}/>
-                <Row title="Documentaries" fetchUrl={requests.fetchDocumntaries}/>
-                <Row title="Movies for the Family" fetchUrl={requests.fetchFamilyMovies}/>
-                <Row title="Historical Dramas" fetchUrl={requests.fetchHistoryMovies}/>
-                <Row title="Horrifying Flicks" fetchUrl={requests.fetchHorrorMovies}/>
-                <Row title="Seasons of Love" fetchUrl={requests.fetchRomanceMovies}/>
-                <Row title="Sci-Fi Movies" fetchUrl={requests.fetchSciFiMovies}/>
-                <Row title="Westerns" fetchUrl={requests.fetchWesternMovies}/>
+                <Row rowID='2' title="Trending Now" fetchUrl={requests.fetchTrending}/>
+                <Row rowID='3' title="Top Rated Movie" fetchUrl={requests.fetchTopRatedMovie}/>
+                <Row rowID='4' title="Top Rated Tv" fetchUrl={requests.fetchTopRatedTv}/>
+                <Row rowID='5' title="Action Packed" fetchUrl={requests.fetchActionMovies}/>
+                <Row rowID='6' title="Animation" fetchUrl={requests.fetchAnimationMovies}/>
+                <Row rowID='7' title="Comedies" fetchUrl={requests.fetchComedyMovies}/>
+                <Row rowID='8' title="Drama" fetchUrl={requests.fetchDramaMovies}/>
+                <Row rowID='9' title="Documentaries" fetchUrl={requests.fetchDocumntaries}/>
+                <Row rowID='10' title="Movies for the Family" fetchUrl={requests.fetchFamilyMovies}/>
+                <Row rowID='11' title="Historical Dramas" fetchUrl={requests.fetchHistoryMovies}/>
+                <Row rowID='12' title="Horrifying Flicks" fetchUrl={requests.fetchHorrorMovies}/>
+                <Row rowID='13' title="Seasons of Love" fetchUrl={requests.fetchRomanceMovies}/>
+                <Row rowID='14' title="Sci-Fi Movies" fetchUrl={requests.fetchSciFiMovies}/>
+                <Row rowID='15' title="Westerns" fetchUrl={requests.fetchWesternMovies}/>
             </div>
         </>
     ): (

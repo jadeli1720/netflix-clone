@@ -17,6 +17,7 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 	const handleMenuClick = () => !toggleMenu ? setToggleMenu(true) : setToggleMenu(false);
 
 
+	//NOTE: header activity work --> Karl Hadwen 6:50
 	useEffect(() => {
 		window.addEventListener("scroll", transitionNavBar);
 		//clean-up code, not always needed
@@ -35,11 +36,13 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 						alt="Netflix logo"
 					/>
 					</Link>
-						{/* What do we want the below to do. Is active not working style={({isActive}) => isActive ? activeStyle : undefined}*/}
-					<NavLink  to={'/'}>TV Shows</NavLink>
-					<NavLink to={'/'}>Movies</NavLink>
-					<NavLink to={'/'}>Recently Added</NavLink>
-					<NavLink to={'/'}>My List</NavLink>
+						{/* What do we want the below to do. Is active not working style={({isActive}) => isActive ? activeStyle : undefined}
+						Also we want the rows to rerender when we click on these
+						*/}
+					<NavLink  to={''}>TV Shows</NavLink>
+					<NavLink to={''}>Movies</NavLink>
+					<NavLink to={''}>Recently Added</NavLink>
+					<NavLink to={''}>My List</NavLink>
 				</div>
 				<div className='group' id="right">
 					<SearchForm  searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>

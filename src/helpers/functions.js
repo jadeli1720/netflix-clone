@@ -91,7 +91,7 @@ export const grabMediaRatings = (adult, genres) => {
 	}
 };
 
-//does not work from here
+//NOTE:does not work from here - future get trailer data instead of using bunny video
 export const grabMediaTrailer = (trailerData) => {
 	let keyArr = [];
 

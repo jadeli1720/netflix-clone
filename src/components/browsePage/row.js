@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from '../../services/axios'
 import FeatureModal from "./featureModal";
+// may no longer have the material ui chevron used here:https://www.youtube.com/watch?v=ATz8wg6sg30
+import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
-function Row({ title, fetchUrl, isLargeRow=false }) {
+function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 	const [movies, setMovies] = useState([]);
 
 	//following is to control showing a movie/tv's data/details/trailer when a card is clicked and the info drops down
@@ -36,10 +38,40 @@ function Row({ title, fetchUrl, isLargeRow=false }) {
 		fetchData();
 	}, [fetchUrl]);
 
+
+	const slideLeft = () => {
+		let slider = document.getElementById('slider' + rowID)
+		let viewportWidth =window.innerWidth;
+
+		if(rowID === 1){
+			slider.scrollLeft = slider.scrollLeft + viewportWidth;
+		} else {
+			slider.scrollLeft = slider.scrollLeft + viewportWidth;
+		}
+	}
+
+	//TODO: Whenever we hover over this scroll button, the window scroll on the y axis shows up regardless if we have scrolled or not. How so we fix this? 
+	const slideRight = () => {
+		let slider = document.getElementById('slider' + rowID);
+		let viewportWidth =window.innerWidth;
+
+		if(rowID === 1){
+			slider.scrollLeft = slider.scrollLeft - viewportWidth;
+		} else {
+			slider.scrollLeft = slider.scrollLeft - viewportWidth;
+		}
+	}
+
 	return (
 		<div className="row">
 			<h2 style={{ 'marginTop': '10px'}}>{title}</h2>
-			<div className="moviesContainer" >
+			<div className="moviesContainer" id={'slider' + rowID}>
+				<div 
+					className={` arrow-container-left + ${isLargeRow ? 'isLarge' : ''} `}  
+					onClick={slideLeft}
+					>
+						<BsChevronLeft  />
+				</div>
 				{movies.map((movie) => (
 					((isLargeRow && movie?.poster_path) ||
 					(!isLargeRow && movie?.backdrop_path)) && (
@@ -54,10 +86,17 @@ function Row({ title, fetchUrl, isLargeRow=false }) {
 								alt={movie?.title || movie?.name || movie?.original_title}
 								/>
 						</div>
+						
 					)
 				))}
+				<div 
+					className={` arrow-container-right + ${isLargeRow ? 'isLarge' : ''} `} 
+					onClick={slideRight}
+					>
+						<BsChevronRight />
+				</div>
 			</div>
-				{showFeatureModal && <FeatureModal show={showFeatureModal} closeFeatureModal={setShowFeatureModal} details={featureDetails} setDetails={setFeatureDetails}/>}
+				{showFeatureModal && <FeatureModal show={showFeatureModal} closeFeatureModal={setShowFeatureModal} details={featureDetails} />}
 		</div>
 	);
 }

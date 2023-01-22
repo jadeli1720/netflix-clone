@@ -280,10 +280,6 @@
 		.playButton {
 			margin-right: 1rem;
 		}
-
-		
-
-	
 	}
 	
 	.fadeBottom {
@@ -312,13 +308,54 @@
 //TODO:
 .moviesContainer {
 	display: flex;
-	overflow-y: hidden;
+	overflow-y: hidden !important;
 	overflow-x: scroll;
-	padding: 20px;
+	padding: 20px 20px 20px 0;
+	scroll-behavior: smooth;
 	cursor: pointer;
 
 	&::-webkit-scrollbar {
 		display: none;
+	}
+
+	.isLarge {
+		height: 290px;
+	}
+
+	.arrow-container-left, .arrow-container-right {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(0, 0, 0, 0.70);
+		height: 140px;
+		width: 50px;
+		z-index: 10;
+		cursor: pointer;
+		opacity: 0;
+		transition: all 450ms;
+		
+		&:hover {
+			transform: scale(1.08) ;
+			opacity: 1;
+		}
+		svg {
+			font-size: 20px;
+			padding-right: 4px;
+		}
+	}
+
+
+	.arrow-container-left {
+		left: 20px;
+	}
+
+	.arrow-container-right {
+		right: 0 ;
+	}
+
+	.isLarge{
+		height: 290px;
 	}
 
 	.posterContainer {
@@ -373,7 +410,6 @@
 		margin-left: 10px;
 		margin-right: 10px;
 	}
-
 }
 
 .modalContainer {
@@ -381,7 +417,6 @@
 	display: none;
 	background-color: #000000db;
 	z-index: 100;
-
 }
 
 .detailOpen {
@@ -408,7 +443,6 @@
 				position: relative;
 		
 				img {
-					// border: deeppink 1px solid;
 					width: 100%;
 				}
 
@@ -538,9 +572,7 @@
 
 			.director {
 				margin-top:.25rem;
-				
 			}
-
 		}
 }
 

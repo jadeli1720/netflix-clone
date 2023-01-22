@@ -98,7 +98,7 @@ function Jumbotron() {
 					</div>
 					<div className="content" id="download">
 						<img
-						class="mobile"
+						className="mobile"
 							src="/images/misc/mobile.jpg"
 							alt="Watch on mobile"
 						/>
