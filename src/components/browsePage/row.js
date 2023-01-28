@@ -38,7 +38,6 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 		fetchData();
 	}, [fetchUrl]);
 
-
 	const slideLeft = () => {
 		let slider = document.getElementById('slider' + rowID)
 		let viewportWidth =window.innerWidth;
@@ -50,7 +49,6 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 		}
 	}
 
-	//TODO: Whenever we hover over this scroll button, the window scroll on the y axis shows up regardless if we have scrolled or not. How so we fix this? 
 	const slideRight = () => {
 		let slider = document.getElementById('slider' + rowID);
 		let viewportWidth =window.innerWidth;
@@ -85,8 +83,11 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 								src={`${ BASE_URL}${ isLargeRow ? movie?.poster_path : movie?.backdrop_path }`}
 								alt={movie?.title || movie?.name || movie?.original_title}
 								/>
+								<div className={`title-container ${!isLargeRow && 'posterSmall' }`}>
+									<p className="title">{movie?.title || movie?.name || movie?.original_title}</p>
+									<div className="bottom-fade"></div>
+								</div>
 						</div>
-						
 					)
 				))}
 				<div 

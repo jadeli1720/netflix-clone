@@ -133,7 +133,7 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
                       let actors = grabCastInfo(tvCrewRes?.cast);
                       let directors = grabCrewInfo(tvCrewRes?.crew);
                       // let trailer = grabTrailer()
-                      if(directors == ''){
+                      if(directors === ''){
                         let creators = grabCreators(tvDetailRes?.created_by)
                         setCrew(creators.slice(0,2))
                       } else {
