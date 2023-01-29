@@ -38,29 +38,6 @@ function Jumbotron() {
 			<div className="jumboContainer">
 				<div className="jumboTron" >
 					<div className="content">
-						<h1>Download your shows to watch offline.</h1>
-						<h2>
-							Save your favorites easily and always have something
-							to watch
-						</h2>
-					</div>
-					<div className="content" id="download">
-						<img
-							src="/images/misc/mobile.jpg"
-							alt="Watch on mobile"
-						/>
-            <div className="downloadContainer">
-              <img src="/images/misc/strangerThings_poster.png" alt="Stranger Things poster"/>
-              <p>Downloading...</p>
-              <div className="animation"></div>
-            </div>
-					</div>
-				</div>
-			</div>
-			{/* 3 */}
-			<div className="jumboContainer">
-				<div className="jumboTron" >
-					<div className="content">
 						<h1>Watch everywhere.</h1>
 						<h2>
 							Stream unlimited movies and TV shows on your phone,
@@ -89,10 +66,10 @@ function Jumbotron() {
 					</div>
 				</div>
 			</div>
-      {/* 4 */}
+      {/* 3 */}
 			<div className="jumboContainer">
 				<div className="jumboTron" >
-					<div className="content">
+				<div className="content">
 						<h1>Create profiles for kids</h1>
 						<h2>
 							Send kids on adventures with their favorite
@@ -105,6 +82,31 @@ function Jumbotron() {
 							src="/images/misc/kidsValueProp.png"
 							alt="Kids cartoon"
 						/>
+					</div>
+
+				</div>
+			</div>
+			{/* 4 */}
+			<div className="jumboContainer">
+				<div className="jumboTron" >
+					<div className="content">
+						<h1>Download your shows to watch offline.</h1>
+						<h2>
+							Save your favorites easily and always have something
+							to watch
+						</h2>
+					</div>
+					<div className="content" id="download">
+						<img
+						className="mobile"
+							src="/images/misc/mobile.jpg"
+							alt="Watch on mobile"
+						/>
+            <div className="downloadContainer">
+              <img src="/images/misc/strangerThings_poster.png" alt="Stranger Things poster"/>
+              <p>Downloading...</p>
+              <div className="animation"></div>
+            </div>
 					</div>
 				</div>
 			</div>

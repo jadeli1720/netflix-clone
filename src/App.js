@@ -10,7 +10,9 @@ import { ProtectedRoute, UserSignedIn } from "./helpers";
 
 import useAuthListener from "./hooks";
 
-//TODO: Consider refactoring css font and image sizes for smaller screens
+//TODO: Consider refactoring css font and image sizes for smaller screens --> smaller fonts, smaller images, different icons, hamburger menus
+
+//TODO: May want to deploy on firebase when we decide to put in stipe payment processing. Sonny Sangha Netflix 2.0 1:28:42
 
 function App() {
 
@@ -23,9 +25,9 @@ function App() {
 					<Route
 						path={ROUTES.HOME}
 						element={
-							<UserSignedIn user = { user }>
 								<HomePage />
-							</UserSignedIn>
+							// <UserSignedIn user = { user }>
+							// </UserSignedIn>
 						}
 					/>
 					<Route
@@ -51,7 +53,7 @@ function App() {
 								<BrowsePage />
 							</ProtectedRoute>
 						}
-						/>
+					/>
 				</Routes>
 			</Router>
 		</div>

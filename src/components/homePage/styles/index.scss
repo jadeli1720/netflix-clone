@@ -120,6 +120,7 @@
 
     @media (max-width: 1000px) {
       flex-direction: column !important;
+	
     }
 
     .content {
@@ -153,7 +154,6 @@
 					font-size: 18px;
 				}
 			}
-
     }
 
     img {
@@ -183,11 +183,50 @@
 				height: 100%;
 			}
 		}
+		
+		#watch {
+			z-index: 2;
+			img {
+				left: -3rem;
+			}
+
+			@media (max-width: 1000px) {
+				img {
+					left: 0rem;
+				}
+			}
+		}
+
+		.imacContainer {
+			position: absolute;
+			top: 10%;
+			left: 9%;
+			max-height: 47%;
+			height: 100%;
+			max-width: 63%;
+			width: 100%;
+			
+			video {
+				height: 100%;
+				width: 100%;
+			}
+
+			@media (max-width: 1000px) {
+				left: 18%;
+			}
+		}
 
 		#download {
+			.mobile {
+				right: 17%;
+				@media (max-width: 1000px) {
+					right: 0;
+				}
+			}
+
 			.downloadContainer {
 				position: absolute;
-				left: 49%;
+				left: 33%;
 				bottom: 8%;
 				display: flex;
 				align-items: center;
@@ -201,8 +240,12 @@
 				width: 60%;
 				transform: translateX(-50%);
 				z-index: 2;
+
+				@media (max-width: 1000px){
+					left:49%
+				}
 	
-				img {
+				img { 
 					height: 4.5rem;
 					margin-right: 1rem;
 				}
@@ -222,24 +265,6 @@
 					height: 4rem;
 					width: 3.5rem;
 				}
-			}
-		}
-		
-		#watch {
-			z-index: 2;
-		}
-		.imacContainer {
-			position: absolute;
-			top: 10%;
-    	left: 18%;
-			max-height: 47%;
-			height: 100%;
-			max-width: 63%;
-			width: 100%;
-			
-			video {
-				height: 100%;
-				width: 100%;
 			}
 		}
   }
@@ -300,8 +325,7 @@
 		font-size: 20px;
 		font-weight: normal;
 		line-height: normal;
-		background: #303030;
-		//white space recognizes the \n\n space breaks in the json and applies them accordingly
+		background: #303030;  
 		white-space: pre-wrap;
 		user-select: none;
 		overflow: hidden;
