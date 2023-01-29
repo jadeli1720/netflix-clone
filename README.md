@@ -7,6 +7,7 @@ This application is a clone of the Netflix app, and will be an ongoing and itera
 
 ## :computer: Demo
 
+:construction: Coming Soon!!
 ## :clipboard: Features
 
 ### :package: Current
