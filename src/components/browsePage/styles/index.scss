@@ -1,4 +1,4 @@
-//navbar
+//NAVBAR
 .nav {
 	position: fixed;
 	top:0;
@@ -173,7 +173,7 @@
 	}
 }
 
-//jumbotron
+//JUMBOTRON
 .banner {
 	display: flex;
 	flex-direction: column;
@@ -300,12 +300,11 @@
 	}
 }
 
-//movie rows
+//MOVIE ROWS
 .row {
 	margin-left: 20px;
 }
 
-//TODO:
 .moviesContainer {
 	display: flex;
 	overflow-y: hidden !important;
@@ -441,6 +440,7 @@
 	}
 }
 
+//MODAL
 .modalContainer {
 	position: absolute;
 	display: none;
@@ -605,7 +605,6 @@
 	}
 
 	.video-player-container {
-		// background-color: #101010;
 		position: absolute;
 		top: 0;
 		left: 0;

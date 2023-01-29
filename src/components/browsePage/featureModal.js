@@ -4,6 +4,10 @@ import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabMediaRati
 import Ratings from 'react-ratings-declarative';
 import { BsX, BsPlayCircle} from "react-icons/bs";
 
+    /**
+    FUTURE TODO's:
+    1. Can we fill the bottom of the modal with suggestions to fill the rest of the modal. This may need to be done in the parent and passed down
+  **/ 
 
 export default function FeatureModal({show, closeFeatureModal, details}) {
   const [ cast, setCast ] = useState([]);
@@ -18,11 +22,6 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
   const IMG_BASE_URL= 'https://image.tmdb.org/t/p/original';
   const API_KEY = process.env.REACT_APP_TMDB_APIKEY;
 
-  /**
-    FUTURE TODO's:
-    1.) for videos that don't have a trailer, the bunny video is use in its stead. Do we want to make another call to search for a youtube trailer or use the api
-    2. ) Can we fill the bottom of the modal with suggestions to fill the rest of the modal. This may need to be done in the parent and passed down
-  **/ 
 
     const handleModelCloseButton = () => {
       setCast([]);
