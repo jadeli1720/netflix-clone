@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from '../../services/axios'
 import FeatureModal from "./featureModal";
-// may no longer have the material ui chevron used here:https://www.youtube.com/watch?v=ATz8wg6sg30
 import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
 function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 	const [movies, setMovies] = useState([]);
-
-	//following is to control showing a movie/tv's data/details/trailer when a card is clicked and the info drops down
-	//TODO: may need to pass s
 	const [showFeatureModal, setShowFeatureModal] = useState(false);
 
 	//When the above state is true, this shows the SINGLE detail for a SINGLE card that is clicked and not all of them opening at once.
@@ -22,7 +18,6 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 			setFeatureDetails(m);
 		} 
 		else {
-		//This portion should get set with the clicking of the x
 			setShowFeatureModal(false) ;
 			setFeatureDetails([]);
 		}

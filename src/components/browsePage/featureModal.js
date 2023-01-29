@@ -3,47 +3,35 @@ import axios from "axios";
 import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabMediaRatings, grabYear, roundNum } from '../../helpers/'
 import Ratings from 'react-ratings-declarative';
 import { BsX, BsPlayCircle} from "react-icons/bs";
-//BsX
 
 
 export default function FeatureModal({show, closeFeatureModal, details}) {
   const [ cast, setCast ] = useState([]);
   const [ crew, setCrew ] = useState([]);
   const [ runtime, setRuntime] = useState('');
+  //Not working as of 1/21/2023 from api
   const [ mediaRating, setMediaRating ] = useState('');
   const [mediaTrailer, setMediaTrailer] = useState([]);
+  const [srcVideo, setVideoSrc] = useState('')
   const [showVideo, setShowVideo] = useState(false)
 
   const IMG_BASE_URL= 'https://image.tmdb.org/t/p/original';
   const API_KEY = process.env.REACT_APP_TMDB_APIKEY;
-  
 
-  /*Future TODO:
-    => fill in the modal with:
-  
-    => on playButtonClick - use to make a call to movie api
-      => Either  use the axios instance or grab the http portion to make the request
-      => loop through the data received, filter out any types !Trailer, and set the trailer (useState) to the first occurance of it.
+  /**
+    FUTURE TODO's:
+    1.) for videos that don't have a trailer, the bunny video is use in its stead. Do we want to make another call to search for a youtube trailer or use the api
+    2. ) Can we fill the bottom of the modal with suggestions to fill the rest of the modal. This may need to be done in the parent and passed down
+  **/ 
 
-    =>Add close button icon that will setFeatureShowModal to false and setItemDetail to empty array. May need to import the setter functions
-   */
-
-    const handleCloseButton = () => {
+    const handleModelCloseButton = () => {
       setCast([]);
       setCrew([]);
       setRuntime('');
       setMediaRating('');
       setMediaTrailer([]);
+      setVideoSrc('')
       closeFeatureModal(false);
-    }
-
-    const handlePlayButton = () => {
-      console.log('play btn clicks', mediaTrailer)
-      setShowVideo(true)
-
-      // mediaTrailer.map(m => {
-      //   console.log(m.key)
-      // })
     }
 
     useEffect(() => {
@@ -63,8 +51,6 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
             axios.spread((...res) => {
               const movieDetailRes = res[0]?.data;
               const movieCrewRes = res[1]?.data;
-              // console.log(movieDetailRes.videos)
-              // console.log("first", res)
 
               if(res) {
                 let rating = grabMediaRatings(movieDetailRes?.adult, movieDetailRes?.genres);
@@ -80,8 +66,6 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
                 
                 let keyArr = []
 
-                //TODO: What if video[] is empty => make another call for trailer. This is tricky because some of the tv shows that have available data inside here have empty videos. Do we take the id and try to find the video seperately?
-
                 trailerData.forEach(el => {
                   let trailerName = el?.name;
                   let trailerType = el?.type;
@@ -93,12 +77,10 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
                         key: el?.key,
                         site: el?.site
                       }
-              
+
                       return keyArr.push(trailerObj)
                   }
-                  //TODO: else if string is trailer and lengths match
-                  //(trailerName.toLowerCase().includes("trailer") && trailerType.toLowerCase().includes("trailer")) 
-                  return setMediaTrailer(keyArr)
+                  setMediaTrailer(keyArr)
                 })
   
                 //NOTE: Not using rating for right now. The database is now setting these all to false as of 1/21/23. This used to not be the case
@@ -107,7 +89,6 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
                 setCrew(directors.slice(0,2));
                 setCast(actors);
               } 
-  
             })
           ).catch((err) => {
             if(err.response && err.response.status === 404){
@@ -152,12 +133,28 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
               }
           })
         };
-
         fetchMediaDetailsById()
-
     }, [API_KEY, details])
 
+    const handlePlayButton = () => {
+      let src =''
 
+      if(mediaTrailer.length === 1){
+        mediaTrailer.map(m => {
+          src = `https://youtube.com/embed/${m.key}?autoplay=1`
+        })
+      } else if(mediaTrailer.length === 0) {
+        src ="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+      }
+
+      setVideoSrc(src)
+      setShowVideo(true)
+    }
+
+    const handleVideoCloseButton = () => {
+      setVideoSrc('')
+      setShowVideo(false)
+    }
 
   return (
     <div className={`modalContainer + ${show ? 'detailOpen' : '' }`}>
@@ -165,10 +162,28 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
         <header>
           <img src={`${IMG_BASE_URL}${details?.backdrop_path}`} alt={details?.name}/>
           <div className='closeContainer'>
-            <BsX onClick={() => handleCloseButton()} />
+            <BsX onClick={() => handleModelCloseButton()} />
           </div>
+          {console.log(srcVideo)}
+          {showVideo ? (
+            <div className="video-player-container">
+              <div className='closeContainer'>
+                <BsX id="videoCloseButton" onClick={() => handleVideoCloseButton()} />
+              </div>
+              <iframe 
+                className="video-player" 
+                src={srcVideo} 
+                title={`${details?.name} + Trailer`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture full"
+                loading='eager'
+                ></iframe>
+            </div>
+            ): null
+          }
           <div className='playBtnContainer'>
-            <div onClick={() => handlePlayButton()}>
+            {/* onClick={() => handlePlayButton()} */}
+            <div onClick={() => handlePlayButton()} >
               <BsPlayCircle />
             </div>
           </div>
