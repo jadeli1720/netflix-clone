@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Fuse from 'fuse.js';
 import NavBar from './navBar';
 import Banner from './banner.js';
 import Row from './row';
@@ -23,7 +24,12 @@ export default function BrowsePage() {
             setLoading(false);
         }, 3000)
 
-    }, [profile?.displayName])
+    }, [profile?.displayName]);
+
+    //I don't think I can do this because the data fetching happens in the child component. Not this component. May need to use redux or context to pass props around easier.
+    useEffect(() => {
+        const fuse =  Fuse()
+    }, [searchTerm]);
     
 
     return profile?.displayName ? (
