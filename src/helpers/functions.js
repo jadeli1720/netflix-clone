@@ -32,6 +32,7 @@ export const grabCreators = (data) => {
     return creatorsArr.push(creator)
   })
 
+
   return creatorsArr
 };
 
@@ -45,7 +46,7 @@ export const grabCrewInfo = (data) => {
 
 		if (
 			dept.toLowerCase() === "directing" &&
-			job.toLowerCase() === "director"
+			job.toLowerCase() === "director" 
 		) {
 			let director = {
 				id: el?.id,
@@ -75,6 +76,7 @@ export const grabCrewInfo = (data) => {
 	}
 };
 
+//Not working for now. All the movies say false
 export const grabMediaRatings = (adult, genres) => {
 	let genreIdArr = [];
 	genres.forEach((g) => genreIdArr.push(g.id));

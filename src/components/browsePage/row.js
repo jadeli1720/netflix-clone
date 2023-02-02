@@ -4,21 +4,26 @@ import { BASE_IMAGE_URL } from "../../constants/urls";
 import FeatureModal from "./featureModal";
 import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
-function Row({rowID, category, url, isLargeRow }) {
+function Row({rowID, category, isLargeRow, type, url, }) {
 	const [movies, setMovies] = useState([]);
 	const [showFeatureModal, setShowFeatureModal] = useState(false);
 
 	//When the above state is true, this shows the SINGLE detail for a SINGLE card that is clicked and not all of them opening at once.
 	const [ featureDetails, setFeatureDetails ] = useState([])
+	const [ mediaType, setMediaType] = useState('')
 
 	const handleMovieModal = (m) =>{
+		console.log((m, type))
 		if(!showFeatureModal) {
+			
 			setShowFeatureModal(true) ;
 			setFeatureDetails(m);
+			setMediaType(type)
 		} 
 		else {
 			setShowFeatureModal(false) ;
 			setFeatureDetails([]);
+			setMediaType('')
 		}
 	}
 	
@@ -92,7 +97,7 @@ function Row({rowID, category, url, isLargeRow }) {
 						<BsChevronRight />
 				</div>
 			</div>
-				{/* {showFeatureModal && <FeatureModal show={showFeatureModal} closeFeatureModal={setShowFeatureModal} details={featureDetails} />} */}
+				{showFeatureModal && <FeatureModal show={showFeatureModal} closeFeatureModal={setShowFeatureModal} details={featureDetails} mediaType={mediaType} />}
 		</div>
 	);
 }

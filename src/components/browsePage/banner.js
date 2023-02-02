@@ -14,9 +14,7 @@ export default function Banner(){
 			const request = (await HTTP.get(fetchUrl)).data.results;
 
 			const bannerMovie = request[Math.floor(Math.random() * request.length - 1)];
-
 			setMovie(bannerMovie)
-			
 		}
 
 		fetchData();
