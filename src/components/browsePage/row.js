@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import HTTP from '../../services/axios'
+import HTTP from '../../services/axios';
+import { BASE_IMAGE_URL } from "../../constants/urls";
 import FeatureModal from "./featureModal";
 import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
@@ -9,8 +10,6 @@ function Row({rowID, category, url, isLargeRow }) {
 
 	//When the above state is true, this shows the SINGLE detail for a SINGLE card that is clicked and not all of them opening at once.
 	const [ featureDetails, setFeatureDetails ] = useState([])
-
-	const BASE_URL= 'https://image.tmdb.org/t/p/original'
 
 	const handleMovieModal = (m) =>{
 		if(!showFeatureModal) {
@@ -25,7 +24,7 @@ function Row({rowID, category, url, isLargeRow }) {
 	
 	useEffect(() => {
 		async function fetchData() {
-			const request = await (await HTTP.get(url)).data.results
+			const request = (await HTTP.get(url)).data.results
 			// console.log(request.map(m => m))
 			setMovies(request)
 		}
@@ -73,9 +72,10 @@ function Row({rowID, category, url, isLargeRow }) {
 							className={`posterContainer ${showFeatureModal}`} 
 							onClick={() => handleMovieModal(movie)} 
 							>
+							{/* contains 404 error message. How do we clear the console of these */}
 							<img
 								className={`poster ${isLargeRow && 'posterLarge'} `}
-								src={`${ BASE_URL}${ isLargeRow ? movie?.poster_path : movie?.backdrop_path }`}
+								src={`${ BASE_IMAGE_URL}${ isLargeRow ? movie?.poster_path : movie?.backdrop_path }`}
 								alt={movie?.title || movie?.name || movie?.original_title}
 								/>
 								<div className={`title-container ${!isLargeRow && 'posterSmall' }`}>

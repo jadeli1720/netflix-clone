@@ -4,8 +4,7 @@ import NavBar from './navBar';
 import Banner from './banner.js';
 import Row from './row';
 import Loading from '../spinner/loading';
-// import requests from '../../services/requests';
-import { bannerMovieRequests, mediaRequests } from '../../services/mediaRequests';
+import { mediaRequests } from '../../services/mediaRequests';
 import { FirebaseContext } from '../../context/firebase';
 
 import "./styles/index.scss";
@@ -39,7 +38,7 @@ export default function BrowsePage() {
         {loading ? <Loading user={ user } /> : <div className='releaseBody'></div>}
             <div className='homeScreen'>
                 <NavBar user={ user } searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-                <Banner/>
+                <Banner />
                 {mediaRequests.map(({rowId, category, isLargeRow, type, url}) => {
                     return <Row key={rowId} rowId={rowId} category={category} isLargeRow={isLargeRow} type={type} url={url} />
                 })}

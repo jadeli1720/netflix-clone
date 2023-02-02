@@ -1,11 +1,11 @@
 import {API_KEY} from '../constants/urls'
 // const API_KEY= process.env.REACT_APP_TMDB_APIKEY;
-export const bannerMovieRequests = [
-  {
+export const bannerMovieRequests = {
+  fetchBannerMovies : {
     type: 'movie',
     url: `/discover/movie?api_key=${API_KEY}&with_networks=213`
   }
-]
+}
 
 // export const mediaRequests = {
 //   fetchNetsflixOriginals: {
