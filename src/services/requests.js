@@ -1,8 +1,9 @@
 
 const API_KEY= process.env.REACT_APP_TMDB_APIKEY;
 
-//tmdb requests
+//tmdb requests => add the type,category, order (order will replace rowID in index.js and row.js) and URL> use this to clean up our code here. Maybe call this something else. Then look at his app.js and movieRow.js to see what to do in there. This may help
 const requests = {
+    //tv & movie
     fetchTrending: `/trending/all/week?api_key=${API_KEY}&append_to_response=videos`,
     //This is not working. Need to fix
     fetchBannerMovies:`/discover/movie?api_key=${API_KEY}&with_networks=213`,

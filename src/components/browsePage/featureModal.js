@@ -62,6 +62,7 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
                 //Below items don't work
                 let officialTrailerString = 'official trailer';
                 let trailerData = movieDetailRes?.videos?.results;
+                console.log("trailerData", trailerData)
                 
                 let keyArr = []
 
@@ -139,9 +140,7 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
       let src =''
 
       if(mediaTrailer.length === 1){
-        mediaTrailer.map(m => {
-          src = `https://youtube.com/embed/${m.key}?autoplay=1`
-        })
+        mediaTrailer.map(m => src = `https://youtube.com/embed/${m.key}?autoplay=1`)
       } else if(mediaTrailer.length === 0) {
         src ="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
       }

@@ -26,6 +26,7 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 	useEffect(() => {
 		async function fetchData() {
 			const request = await axios.get(fetchUrl);
+			console.log("movie info", request.data.results.map(m => m.id))
 			setMovies(request.data.results);
 			return request;
 		}
