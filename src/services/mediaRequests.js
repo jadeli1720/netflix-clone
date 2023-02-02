@@ -1,12 +1,11 @@
-
-const API_KEY= process.env.REACT_APP_TMDB_APIKEY;
-//Have as an Array of objects or an object of objects?
-export const bannerMovieRequests = {
-  fetchBannerMovies : {
+import {API_KEY} from '../constants/urls'
+// const API_KEY= process.env.REACT_APP_TMDB_APIKEY;
+export const bannerMovieRequests = [
+  {
     type: 'movie',
     url: `/discover/movie?api_key=${API_KEY}&with_networks=213`
   }
-}
+]
 
 // export const mediaRequests = {
 //   fetchNetsflixOriginals: {

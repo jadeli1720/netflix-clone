@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from '../../services/axios'
+import HTTP from '../../services/axios'
 import FeatureModal from "./featureModal";
 import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
@@ -25,10 +25,9 @@ function Row({rowID, category, url, isLargeRow }) {
 	
 	useEffect(() => {
 		async function fetchData() {
-			const request = await axios.get(url);
-			console.log("movie info", request.data.results.map(m => m.id))
-			setMovies(request.data.results);
-			return request;
+			const request = await (await HTTP.get(url)).data.results
+			// console.log(request.map(m => m))
+			setMovies(request)
 		}
 		
 		fetchData();
@@ -66,7 +65,7 @@ function Row({rowID, category, url, isLargeRow }) {
 					>
 						<BsChevronLeft  />
 				</div>
-				{/* {movies.map((movie) => (
+				{movies.map((movie) => (
 					((isLargeRow && movie?.poster_path) ||
 					(!isLargeRow && movie?.backdrop_path)) && (
 						<div 
@@ -85,7 +84,7 @@ function Row({rowID, category, url, isLargeRow }) {
 								</div>
 						</div>
 					)
-				))} */}
+				))}
 				<div 
 					className={` arrow-container-right + ${isLargeRow ? 'isLarge' : ''} `} 
 					onClick={slideRight}
