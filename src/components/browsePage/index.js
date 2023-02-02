@@ -4,7 +4,8 @@ import NavBar from './navBar';
 import Banner from './banner.js';
 import Row from './row';
 import Loading from '../spinner/loading';
-import requests from '../../services/requests';
+// import requests from '../../services/requests';
+import { bannerMovieRequests, mediaRequests } from '../../services/mediaRequests';
 import { FirebaseContext } from '../../context/firebase';
 
 import "./styles/index.scss";
@@ -18,6 +19,7 @@ export default function BrowsePage() {
 
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
+    // const mediaCategories = 
 
     useEffect(() => {
         setTimeout(() => {
@@ -30,7 +32,7 @@ export default function BrowsePage() {
     // useEffect(() => {
     //     const fuse =  Fuse()
     // }, [searchTerm]);
-    
+    // console.log(typeof(mediaRequests))
 
     return profile?.displayName ? (
         <>
@@ -38,16 +40,20 @@ export default function BrowsePage() {
             <div className='homeScreen'>
                 <NavBar user={ user } searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 <Banner/>
+                {mediaRequests.map(({rowId, category, isLargeRow, type, url}) => {
+                    return <Row rowID={rowId} category={category} isLargeRow={isLargeRow} type={type} url={url} />
+                })}
+
                 {/* Can we make the requests (its an object) an array of objects in the utils file that is set in a certain order like it is now.We will map within the fetch url, then we change/filter/rerender what is at the top based on if its a film category or tv category. We will need to add the category to the array. Use a function inside the fetchUrl props?
                 Or I can put an id on the row in here to use to filter the rows
                 */}
-                <Row
+                {/* <Row
                     rowID='1'
                     title="NETFLIX ORIGINALS" 
                     fetchUrl={requests.fetchNetflixOriginals}
                     isLargeRow
-                />
-                <Row rowID='2' title="Trending Now" fetchUrl={requests.fetchTrending}/>
+                /> */}
+                {/* <Row rowID='2' title="Trending Now" fetchUrl={requests.fetchTrending}/>
                 <Row rowID='3' title="Top Rated Movie" fetchUrl={requests.fetchTopRatedMovie}/>
                 <Row rowID='4' title="Top Rated Tv" fetchUrl={requests.fetchTopRatedTv}/>
                 <Row rowID='5' title="Action Packed" fetchUrl={requests.fetchActionMovies}/>
@@ -60,7 +66,7 @@ export default function BrowsePage() {
                 <Row rowID='12' title="Horrifying Flicks" fetchUrl={requests.fetchHorrorMovies}/>
                 <Row rowID='13' title="Seasons of Love" fetchUrl={requests.fetchRomanceMovies}/>
                 <Row rowID='14' title="Sci-Fi Movies" fetchUrl={requests.fetchSciFiMovies}/>
-                <Row rowID='15' title="Westerns" fetchUrl={requests.fetchWesternMovies}/>
+                <Row rowID='15' title="Westerns" fetchUrl={requests.fetchWesternMovies}/> */}
             </div>
         </>
     ): (

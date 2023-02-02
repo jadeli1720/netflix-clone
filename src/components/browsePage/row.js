@@ -3,7 +3,7 @@ import axios from '../../services/axios'
 import FeatureModal from "./featureModal";
 import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
-function Row({rowID, title, fetchUrl, isLargeRow=false }) {
+function Row({rowID, category, url, isLargeRow }) {
 	const [movies, setMovies] = useState([]);
 	const [showFeatureModal, setShowFeatureModal] = useState(false);
 
@@ -25,14 +25,14 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 	
 	useEffect(() => {
 		async function fetchData() {
-			const request = await axios.get(fetchUrl);
+			const request = await axios.get(url);
 			console.log("movie info", request.data.results.map(m => m.id))
 			setMovies(request.data.results);
 			return request;
 		}
 		
 		fetchData();
-	}, [fetchUrl]);
+	}, [url]);
 
 	const slideLeft = () => {
 		let slider = document.getElementById('slider' + rowID)
@@ -58,7 +58,7 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 
 	return (
 		<div className="row">
-			<h2 style={{ 'marginTop': '10px'}}>{title}</h2>
+			<h2 style={{ 'marginTop': '10px'}}>{category}</h2>
 			<div className="moviesContainer" id={'slider' + rowID}>
 				<div 
 					className={` arrow-container-left + ${isLargeRow ? 'isLarge' : ''} `}  
@@ -66,7 +66,7 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 					>
 						<BsChevronLeft  />
 				</div>
-				{movies.map((movie) => (
+				{/* {movies.map((movie) => (
 					((isLargeRow && movie?.poster_path) ||
 					(!isLargeRow && movie?.backdrop_path)) && (
 						<div 
@@ -85,7 +85,7 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 								</div>
 						</div>
 					)
-				))}
+				))} */}
 				<div 
 					className={` arrow-container-right + ${isLargeRow ? 'isLarge' : ''} `} 
 					onClick={slideRight}
@@ -93,7 +93,7 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 						<BsChevronRight />
 				</div>
 			</div>
-				{showFeatureModal && <FeatureModal show={showFeatureModal} closeFeatureModal={setShowFeatureModal} details={featureDetails} />}
+				{/* {showFeatureModal && <FeatureModal show={showFeatureModal} closeFeatureModal={setShowFeatureModal} details={featureDetails} />} */}
 		</div>
 	);
 }
