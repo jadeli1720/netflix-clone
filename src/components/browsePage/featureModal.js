@@ -7,6 +7,8 @@ import Ratings from 'react-ratings-declarative';
 import { BsX, BsPlayCircle} from "react-icons/bs";
 import Directors from './directors';
 import Creators from './creators';
+import SimilarMovies from './similarMovies';
+import TvShowSeasons from './tvShowSeasons';
 
     /**
     FUTURE TODO's:
@@ -15,7 +17,6 @@ import Creators from './creators';
 
 export default function FeatureModal({show, closeFeatureModal, details, mediaType}) {
   const [ cast, setCast ] = useState([]);
-  // const [ crew, setCrew ] = useState([]);
   const [ directors , setDirectors] = useState([]);
   const [ creators, setCreators ] = useState([])
   const [ runtime, setRuntime] = useState('');
@@ -24,6 +25,7 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
   const [mediaTrailer, setMediaTrailer] = useState([]);
   const [srcVideo, setVideoSrc] = useState('')
   const [showVideo, setShowVideo] = useState(false)
+  const [similarMovies, setSimilarMovies] = useState([])
 
     const handleModelCloseButton = () => {
       setCast([]);
@@ -94,6 +96,13 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
         fetchMediaDetailsById()
     }, [API_KEY, details])
 
+    console.log(details.id)
+
+    let url = `/movie/550?api_key=${API_KEY}`;
+    let similarURL = `/movie/${details.id}`
+
+    ///${mediaType}/${details?.id}?language=en-US&api_key=${API_KEY}&append_to_response=videos
+
     const handlePlayButton = () => {
       // let src =''
       
@@ -111,7 +120,7 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
   return (
     <div className={`modalContainer + ${show ? 'detailOpen' : '' }`}>
       <div className='modal'>
-      <header>
+        <header>
           <img src={`${BASE_IMAGE_URL}${details?.backdrop_path}`} alt={details?.name}/>
           <div className='closeContainer'>
             <BsX onClick={() => handleModelCloseButton()} />
@@ -189,6 +198,13 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
               }
           </div>
         </div>
+        
+        {mediaType === "movie" ? (
+            <SimilarMovies id={details?.id}/>
+          ): (
+            <TvShowSeasons/>
+          )
+        }
       </div>
     </div>
   )
