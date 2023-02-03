@@ -48,6 +48,7 @@ function Row({rowID, category, isLargeRow, type, url, }) {
 		}
 	}
 
+	//not working now => 2/2/23
 	const slideRight = () => {
 		let slider = document.getElementById('slider' + rowID);
 		let viewportWidth =window.innerWidth;

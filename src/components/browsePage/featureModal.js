@@ -23,8 +23,6 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
   const [srcVideo, setVideoSrc] = useState('')
   const [showVideo, setShowVideo] = useState(false)
 
-  // console.log(details.id)
-
     const handleModelCloseButton = () => {
       setCast([]);
       setCrew([]);
@@ -78,66 +76,12 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
                 }
 
                 //Trailer
-                let officialTrailerString = 'official trailer';
                 let trailerString = 'trailer';
-                let youTubeString = 'youtube'
-                let trailerData = mediaDetailRes?.videos?.results
+                let trailerData = mediaDetailRes?.videos?.results.find(vid => vid.official
+                  === true && vid.type.toLowerCase() === trailerString.toLowerCase() )
+                
+                setMediaTrailer(trailerData ? trailerData : mediaDetailRes?.videos?.results[0])
 
-                let keyArr =[]
-                //may not need some of this if we are just going to take the movie/tv id and plug it into the video look up.
-                // trailerData.forEach(el => {
-                //   let trailerName = el?.name;
-                //   let trailerType = el?.type;
-                //   let trailerOfficial = el?.official;
-                //   let trailerVidSite = el?.site;
-                  
-
-                //   //NOTE:NEED TO FIX Needs tweaking and may be better as a function
-                //   if((trailerName.toLowerCase().includes("official trailer") && trailerType.toLowerCase().includes("trailer")) && (trailerName.length === officialTrailerString.length)){
-                //     console.log("First Conditional", mediaDetailRes.videos.results)
-
-                //     let trailerOfficialObj = {
-                //       id: el?.id,
-                //       key:el?.key,
-                //       site: trailerVidSite
-                //     }
-                //     return keyArr.push(trailerOfficialObj)
-
-                //   } 
-                //   // else if(trailerName.toLowerCase().includes(trailerString) && trailerType.toLowerCase().includes(trailerString) ){
-                //   //   console.log("Second Conditional", mediaDetailRes.videos.results)
-                //   //   let trailerObj = {
-                //   //     id: el?.id,
-                //   //     key:el?.key,
-                //   //     site: trailerVidSite
-                //   //   }
-                //   //   return keyArr.push(trailerObj)
-
-                //   // } 
-                //   // else if (trailerType.toLowerCase().includes(trailerString) && trailerVidSite.toLowerCase().includes(youTubeString) && trailerOfficial === false){
-                //   //   console.log("Third conditional", mediaDetailRes.videos.results)
-                //   //   let youtubeTrailerObj = {
-                //   //     id: el?.id,
-                //   //     key:el?.key,
-                //   //     site: trailerVidSite
-                //   //   }
-                //   //   return keyArr.push(youtubeTrailerObj)
-
-                //   // }
-                //   // else {
-                //   //   //need to find out how to target the ones that have a video but don't fall under the others
-                //   //   console.log("last", mediaDetailRes.videos.results)
-                //   //   // let obj= {
-                //   //   //   id: el?.id,
-                //   //   //   key:el?.key,
-                //   //   //   site: trailerVidSite
-                //   //   // }
-                //   //   // keyArr.push(obj)
-                //   // }
-                //   console.log("Key arr",keyArr.length, keyArr)
-
-                //   setMediaTrailer(keyArr)
-                // })
                 
               })
             ).catch((err) => {
@@ -150,16 +94,12 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
 
     const handlePlayButton = () => {
       let src =''
-      // console.log("handle function", )
-      console.log("handle", mediaTrailer[0].key)
+      
+      
       if(mediaTrailer.length >= 1){
-        // src=`https://youtube.com/embed/${mediaTrailer[0].key}?autoplay=1`
-        // trailer.map((m) => {
-        //   console.log("handle", m)
-        //   // src = `https://youtube.com/embed/${m.key}?autoplay=1`
-        // })
+        
       } else if(mediaTrailer.length === 0) {
-        // src ="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        
       }
 
       setVideoSrc(src)
@@ -249,7 +189,6 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
             </div> */}
           </div>
         </div>
-
       </div>
     </div>
   )
