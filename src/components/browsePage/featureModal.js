@@ -5,6 +5,8 @@ import { API_KEY, BASE_IMAGE_URL, YOUTUBE_URL } from "../../constants/urls"
 import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabMediaRatings, grabYear, roundNum } from '../../helpers/'
 import Ratings from 'react-ratings-declarative';
 import { BsX, BsPlayCircle} from "react-icons/bs";
+import Directors from './directors';
+import Creators from './creators';
 
     /**
     FUTURE TODO's:
@@ -13,7 +15,7 @@ import { BsX, BsPlayCircle} from "react-icons/bs";
 
 export default function FeatureModal({show, closeFeatureModal, details, mediaType}) {
   const [ cast, setCast ] = useState([]);
-  const [ crew, setCrew ] = useState([]);
+  // const [ crew, setCrew ] = useState([]);
   const [ directors , setDirectors] = useState([]);
   const [ creators, setCreators ] = useState([])
   const [ runtime, setRuntime] = useState('');
@@ -25,7 +27,7 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
 
     const handleModelCloseButton = () => {
       setCast([]);
-      setCrew([]);
+      // setCrew([]);
       setRuntime('');
       setMediaRating('');
       setMediaTrailer([]);
@@ -55,7 +57,7 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
                 let actors = grabCastInfo(mediaCrewRes?.cast);
                 setCast(actors)
 
-                //Directors
+                //Creators/Directors
                 let directors = grabCrewInfo(mediaCrewRes?.crew)
                 
                 if(directors.length === 0){
@@ -93,16 +95,11 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
     }, [API_KEY, details])
 
     const handlePlayButton = () => {
-      let src =''
+      // let src =''
       
       
-      if(mediaTrailer.length >= 1){
-        
-      } else if(mediaTrailer.length === 0) {
-        
-      }
 
-      setVideoSrc(src)
+      // setVideoSrc(src)
       setShowVideo(true)
     }
 
@@ -119,6 +116,7 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
           <div className='closeContainer'>
             <BsX onClick={() => handleModelCloseButton()} />
           </div>
+          {/* youtube goes here */}
           {showVideo ? (
             <div className="video-player-container">
               <div className='closeContainer'>
@@ -176,17 +174,19 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
           <div className='crewInfo'>
             <div className='cast'>
               <p>Cast:</p>
-              {cast?.map((c, index) => {
+              {cast?.map((c) => {
                 return <p className="name" key={c.id}>{c.name}</p>
               })}
             </div>
-            {/* <div className='director'>
-              <p>Director:</p>
-              {crew?.map((c) => {
-                return <p className="name" key={c.id}>{c.name}</p>
-              })
+              {directors.length >= 1 ? (
+                <Directors directors={directors} />
+              ): null
               }
-            </div> */}
+
+              {creators.length >= 1 ? (
+                <Creators creators={creators}/>
+              ): null
+              }
           </div>
         </div>
       </div>
