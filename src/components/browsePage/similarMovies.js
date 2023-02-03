@@ -7,14 +7,15 @@ const SimilarMovies = ({id}) => {
 
   useEffect(() => {
     async function fetchData() {
-      const request = (await HTTP.get(`/movie/${id}/similar?api_key=${API_KEY}&language=en-US`))?.data.results
+      const request = (await HTTP.get(`/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US`))?.data.results
       
-      setSimilarMoviesData(request)
+      setSimilarMoviesData(request.slice(0,8))
     }
 
     fetchData()
   }, [id]);
   
+  //limit to 8
   return(
     <div className='content similar-movies'>
       {/* <p>This is similar Media Page</p> */}
@@ -31,7 +32,7 @@ const SimilarMovies = ({id}) => {
               alt={simMovie?.title || simMovie?.original_title}
             />
             {/* <div className='cover'></div> */}
-            <p className='title'>{simMovie.title}</p>
+            {/* <p className='title'>{simMovie.title}</p> */}
           </div>
         )
       ))}
