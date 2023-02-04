@@ -31,7 +31,7 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
 
     useEffect(() => {
       const fetchMediaDetailsById = () => {
-        //(await HTTP.get(`/${movie.media_type || type}/${movie.id}/videos`)).data
+
           let fetchMediaDetails = `/${mediaType}/${details?.id}?language=en-US&api_key=${API_KEY}&append_to_response=videos`;
           let fetchMediaCrewDetails = `/${mediaType}/${details?.id}/credits?&language=en-US&api_key=${API_KEY}`;
 
