@@ -178,31 +178,30 @@
 	display: flex;
 	flex-direction: column;
 	position:relative;
-	height: 574px;
-	margin-bottom: 24px;
+	height: 35.875rem;
+	margin-bottom: 1.5rem;
 
-	@media (min-width: 1366px) {
-		height: 768px;
+	@media (min-width: 85.375rem) {
+		height: 48rem;
 	}
 
-	@media (min-width: 1980px) {
-		height: 945px;
+	@media (min-width: 123.75rem) {
+		height: 59.063rem;
 	}
 
-	@media(min-width: 2560px) {
+	@media(min-width: 160rem) {
 		height: 1168px;
 	}
 
 
 	.copyContainer {
-		height: 316px;
-		// height: 190px;
-		margin-left: 30px;
+		height: 19.75rem;
+		margin-left: 1.875rem;
 		margin-top: 12.5rem;
 		//below was for when the jumbotron did not have display flex
 		// padding-top: 140px;
 
-		@media (max-width: 1365px) {
+		@media (max-width: 85.313rem) {
 			margin-top: 8rem;
 		}
 	
@@ -214,7 +213,7 @@
 			0px -2px 13px rgba(0,0,0,0.4),
 			0px 18px 23px rgba(0,0,0,0.2);
 			padding-bottom: 0.3rem;
-			max-width:600px;
+			max-width:37.5rem;
 			width:100%;
 		}
 	
@@ -227,7 +226,7 @@
 			0px -2px 10px rgba(0,0,0,0.4),
 			0px 18px 23px rgba(0,0,0,0.2);
 			padding-top: 1rem;
-			height: 80px;
+			height: 5rem;
 			max-width: 26.25rem;
 			width: 100%;
 		}
@@ -253,7 +252,7 @@
 			background-color:rgba(61, 61, 61, 0.5);
 			color:white;
 			font-weight: bold;
-			font-size: 20px;
+			font-size: 1.25rem;
 			letter-spacing: 1px;
 
 			margin-top: 3.5rem;
@@ -464,8 +463,9 @@
 	.modal {
 		background-color: rgb(16, 16, 16);
 		height: 100%;
-		width:50%;
-		overflow-y: hidden;
+		max-width: 900px;
+		width:100%;
+		overflow-y: scroll;
 		margin: 20px auto 0;
 
 			header {
@@ -483,9 +483,16 @@
 
 				.closeContainer {
 					position: absolute;
-					top: 0;
-					right: 0;
-					font-size: 2rem;
+					top:0.25rem;
+					right: 0.5rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 50%;
+					background: rgba(0, 0, 0, 0.50);
+					font-size: 1.5rem;
+					height: 1.875rem;
+					width: 1.875rem;
 					z-index: 4;
 					svg {
 						opacity: .65;
@@ -604,6 +611,41 @@
 			}
 	}
 
+	.similar-movies {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-right: 1%;
+			margin-bottom: 1%;
+			width: 32%;
+
+			@media (max-width: 64rem) {
+				margin-right: 2%;
+				width: 48%;
+			}
+
+			@media (max-width: 24.375rem) {
+				margin-right: 0%;
+				width: 100%;
+			}
+
+		}
+
+		.detailsPoster{
+			max-width: 22.5rem;
+			width: 100%;
+			@media (max-width: 64rem) {
+				margin-bottom: 3%;
+				max-width: 25.25rem;
+			}
+		}
+	}
+
 	.video-player-container {
 		position: absolute;
 		top: 0;
@@ -615,12 +657,6 @@
 
 		#videoCloseButton {
 			z-index: 150;
-		}
-
-		iframe {
-			height: 100% !important;
-			width: 100% !important;
-			z-index: 120;
 		}
 	}
 }

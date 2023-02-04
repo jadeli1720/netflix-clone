@@ -1,37 +1,39 @@
 import React, { useEffect, useState } from "react";
-import axios from '../../services/axios'
+import HTTP from '../../services/axios';
+import { BASE_IMAGE_URL } from "../../constants/urls";
 import FeatureModal from "./featureModal";
 import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
-function Row({rowID, title, fetchUrl, isLargeRow=false }) {
+function Row({rowID, category, isLargeRow, type, url, }) {
 	const [movies, setMovies] = useState([]);
 	const [showFeatureModal, setShowFeatureModal] = useState(false);
 
 	//When the above state is true, this shows the SINGLE detail for a SINGLE card that is clicked and not all of them opening at once.
 	const [ featureDetails, setFeatureDetails ] = useState([])
-
-	const BASE_URL= 'https://image.tmdb.org/t/p/original'
+	const [ mediaType, setMediaType] = useState('')
 
 	const handleMovieModal = (m) =>{
 		if(!showFeatureModal) {
+			
 			setShowFeatureModal(true) ;
 			setFeatureDetails(m);
+			setMediaType(type)
 		} 
 		else {
 			setShowFeatureModal(false) ;
 			setFeatureDetails([]);
+			setMediaType('')
 		}
 	}
 	
 	useEffect(() => {
 		async function fetchData() {
-			const request = await axios.get(fetchUrl);
-			setMovies(request.data.results);
-			return request;
+			const request = (await HTTP.get(url)).data.results
+			setMovies(request)
 		}
 		
 		fetchData();
-	}, [fetchUrl]);
+	}, [url]);
 
 	const slideLeft = () => {
 		let slider = document.getElementById('slider' + rowID)
@@ -57,7 +59,7 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 
 	return (
 		<div className="row">
-			<h2 style={{ 'marginTop': '10px'}}>{title}</h2>
+			<h2 style={{ 'marginTop': '10px'}}>{category}</h2>
 			<div className="moviesContainer" id={'slider' + rowID}>
 				<div 
 					className={` arrow-container-left + ${isLargeRow ? 'isLarge' : ''} `}  
@@ -73,9 +75,10 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 							className={`posterContainer ${showFeatureModal}`} 
 							onClick={() => handleMovieModal(movie)} 
 							>
+							{/* contains 404 error message. How do we clear the console of these */}
 							<img
 								className={`poster ${isLargeRow && 'posterLarge'} `}
-								src={`${ BASE_URL}${ isLargeRow ? movie?.poster_path : movie?.backdrop_path }`}
+								src={`${ BASE_IMAGE_URL}${ isLargeRow ? movie?.poster_path : movie?.backdrop_path }`}
 								alt={movie?.title || movie?.name || movie?.original_title}
 								/>
 								<div className={`title-container ${!isLargeRow && 'posterSmall' }`}>
@@ -92,7 +95,7 @@ function Row({rowID, title, fetchUrl, isLargeRow=false }) {
 						<BsChevronRight />
 				</div>
 			</div>
-				{showFeatureModal && <FeatureModal show={showFeatureModal} closeFeatureModal={setShowFeatureModal} details={featureDetails} />}
+				{showFeatureModal && <FeatureModal show={showFeatureModal} closeFeatureModal={setShowFeatureModal} details={featureDetails} mediaType={mediaType} />}
 		</div>
 	);
 }

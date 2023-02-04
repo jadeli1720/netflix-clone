@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../services/axios";
-import requests from "../../services/requests";
+import HTTP from "../../services/axios";
+import { bannerMovieRequests } from '../../services/mediaRequests';
+import { BASE_IMAGE_URL } from "../../constants/urls";
 import { FaPlay } from "react-icons/fa";
 import { BsPlusLg } from "react-icons/bs";
 
 export default function Banner(){
 	const [movie, setMovie] = useState([]);
-	const BASE_URL= 'https://image.tmdb.org/t/p/original'
 
 	useEffect(() => {
 		async function fetchData() {
-			const request = await axios.get(requests.fetchBannerMovies);
-			setMovie(
-				request.data.results[
-					Math.floor(Math.random() * request.data.results.length - 1)
-				]
-			);
-			return request;
+			const fetchUrl = bannerMovieRequests.fetchBannerMovies.url;
+			const request = (await HTTP.get(fetchUrl)).data.results;
+
+			const bannerMovie = request[Math.floor(Math.random() * request.length - 1)];
+			setMovie(bannerMovie)
 		}
 
 		fetchData();
@@ -30,7 +28,7 @@ export default function Banner(){
 			className="banner"
 			style={{
 				backgroundSize: "cover",
-				backgroundImage: `url('${BASE_URL}${movie?.backdrop_path}')`,
+				backgroundImage: `url('${BASE_IMAGE_URL}${movie?.backdrop_path}')`,
 				backgroundPosition: "center center",
 				backgroundRepeat: "no-repeat",
 			}}
