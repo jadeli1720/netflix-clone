@@ -7,8 +7,8 @@ import Ratings from 'react-ratings-declarative';
 import { BsX, BsPlayCircle} from "react-icons/bs";
 import Directors from './directors';
 import Creators from './creators';
-import SimilarMovies from './similarMovies';
-import TvShowSeasons from './tvShowSeasons';
+import Recommendations from './recommendations';
+
 
     /**
     FUTURE TODO's:
@@ -175,30 +175,25 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
             <p>{details?.overview}</p>
           </div>
           <div className='crewInfo'>
-            <div className='cast'>
-              <p>Cast:</p>
-              {cast?.map((c) => {
-                return <p className="name" key={c.id}>{c.name}</p>
-              })}
-            </div>
-              {directors.length >= 1 ? (
+              {cast?.length >=1 ? (
+                <div className='cast'>
+                  <p>Cast:</p>
+                  {cast?.map((c) => {
+                    return <p className="name" key={c.id}>{c.name}</p>
+                  })}
+                </div>
+              ): null}
+              {directors?.length >= 1 ? (
                 <Directors directors={directors} />
               ): null
               }
-
-              {creators.length >= 1 ? (
+              {creators?.length >= 1 ? (
                 <Creators creators={creators}/>
               ): null
               }
           </div>
         </div>
-        
-        {mediaType === "movie" ? (
-            <SimilarMovies id={details?.id}/>
-          ): (
-            <TvShowSeasons/>
-          )
-        }
+        <Recommendations id={details?.id} mediaType={mediaType} />
       </div>
     </div>
   )
