@@ -1,13 +1,15 @@
 # :movie_camera: Netflix Clone
+
 ![React](https://img.shields.io/badge/react-v18.1.0-red.svg)
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-This application is a clone of the Netflix app, and will be an ongoing and iterative project. All of the movie data comes from the [TMDB](https://www.themoviedb.org/?language=en-US) api and uses the following [API](https://developers.themoviedb.org/3/getting-started/introduction) documentation
+This application is a clone of the Netflix app, and will be an ongoing and iterative project. All of the movie data comes from the [TMDB](https://www.themoviedb.org/?language=en-US) api
 
 ## :computer: Demo
 
 :construction: Coming Soon!!
+
 ## :clipboard: Features
 
 ### :package: Current
@@ -16,14 +18,14 @@ This application is a clone of the Netflix app, and will be an ongoing and itera
 - [x] Browse the rows of movies that are organized by various genres.
 - [x] Custom button sliders for each row.
 - [x] Hover over movies for movie title.
-- [x] Click on a particular movie to see that movies details, including a movie trailer provided by YouTube or the :rabbit: [Big Buck Bunny](https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4) video as a placeholder.
+- [x] Click on a particular movie to see that movies details, including a movie trailer provided by YouTube or the placeholder video.
+- [x] Show a list of suggested movies/tv shows that of the selected movie/tv show
 
 ### :crystal_ball: Future
 
 - [ ] Users can Register and use strip checkout.
 - [ ] Search Bar functionality.
 - [ ] Trouble shoot/find fix for broken film/tv ratings.
-- [ ] Try to fill in any movies that use the placeholder video with the selected movies actual trailer.
 - [ ] Fill in the empty space of the features movie modal with movie suggestions.
 - [ ] Use a different way to handle props like redux or context.
 - [ ] Use a different style library.
@@ -34,7 +36,8 @@ This application is a clone of the Netflix app, and will be an ongoing and itera
 - React
 - React Router
 - Axios
-- Firebase
-- React Ratings Declarative
-- React Icons
+- [Firebase](https://firebase.google.com)
+- [React Ratings Declarative](https://www.npmjs.com/package/react-ratings-declarative)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [React Player](https://www.npmjs.com/package/react-player)
 - Sass

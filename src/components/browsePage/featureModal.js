@@ -1,157 +1,96 @@
 import React, { useEffect, useState } from 'react';
-import axios from "axios";
+import axios from 'axios';
+import { BsX, BsPlayCircle} from "react-icons/bs";
+import ReactPlayer from 'react-player/youtube'
+import HTTP from "../../services/axios";
+import { API_KEY, BASE_IMAGE_URL, YOUTUBE_URL } from "../../constants/urls"
 import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabMediaRatings, grabYear, roundNum } from '../../helpers/'
 import Ratings from 'react-ratings-declarative';
-import { BsX, BsPlayCircle} from "react-icons/bs";
+import Directors from './directors';
+import Creators from './creators';
+import Recommendations from './recommendations';
 
-    /**
-    FUTURE TODO's:
-    1. Can we fill the bottom of the modal with suggestions to fill the rest of the modal. This may need to be done in the parent and passed down
-  **/ 
 
-export default function FeatureModal({show, closeFeatureModal, details}) {
+export default function FeatureModal({show, closeFeatureModal, details, mediaType}) {
   const [ cast, setCast ] = useState([]);
-  const [ crew, setCrew ] = useState([]);
+  const [ directors , setDirectors] = useState([]);
+  const [ creators, setCreators ] = useState([])
   const [ runtime, setRuntime] = useState('');
   //Not working as of 1/21/2023 from api
   const [ mediaRating, setMediaRating ] = useState('');
   const [mediaTrailer, setMediaTrailer] = useState([]);
-  const [srcVideo, setVideoSrc] = useState('')
   const [showVideo, setShowVideo] = useState(false)
-
-  const IMG_BASE_URL= 'https://image.tmdb.org/t/p/original';
-  const API_KEY = process.env.REACT_APP_TMDB_APIKEY;
-
 
     const handleModelCloseButton = () => {
       setCast([]);
-      setCrew([]);
       setRuntime('');
       setMediaRating('');
       setMediaTrailer([]);
-      setVideoSrc('')
       closeFeatureModal(false);
     }
 
     useEffect(() => {
       const fetchMediaDetailsById = () => {
-      
-        //MOVIE
-        let fetchMovieDetails = `https://api.themoviedb.org/3/movie/${details?.id}?language=en-US&api_key=${API_KEY}&append_to_response=videos`;
-      
-        let fetchMovieCrewDetails = `https://api.themoviedb.org/3/movie/${details?.id}/credits?&language=en-US&api_key=${API_KEY}`
 
-        const requestMovieDetails = axios.get(fetchMovieDetails);
-        const requestMovieCrewDetails = axios.get(fetchMovieCrewDetails);
+          let fetchMediaDetails = `/${mediaType}/${details?.id}?language=en-US&api_key=${API_KEY}&append_to_response=videos`;
+          let fetchMediaCrewDetails = `/${mediaType}/${details?.id}/credits?&language=en-US&api_key=${API_KEY}`;
 
-        axios
-          .all([requestMovieDetails, requestMovieCrewDetails])
-          .then(
-            axios.spread((...res) => {
-              const movieDetailRes = res[0]?.data;
-              const movieCrewRes = res[1]?.data;
+          const requestMediaDetails = HTTP.get(fetchMediaDetails);
+          const requestMediaCrewDetails = HTTP.get(fetchMediaCrewDetails)
 
-              if(res) {
-                let rating = grabMediaRatings(movieDetailRes?.adult, movieDetailRes?.genres);
-                //The below function does not work in another file! keep getting a type void
-                // let movieTrailer = grabMediaTrailer(movieDetailRes?.videos?.results);
-                let mediaRuntime = convertRuntime(movieDetailRes.runtime);
-                let actors = grabCastInfo(movieCrewRes?.cast);
-                let directors = grabCrewInfo(movieCrewRes?.crew);
-
-                //Below items don't work
-                let officialTrailerString = 'official trailer';
-                let trailerData = movieDetailRes?.videos?.results;
+          axios
+            .all([requestMediaDetails, requestMediaCrewDetails])
+            .then(
+              axios.spread((...res) => {
+                const mediaDetailRes = res[0]?.data;
+                const mediaCrewRes = res[1]?.data;
                 
-                let keyArr = []
+                //Actors
+                let actors = grabCastInfo(mediaCrewRes?.cast);
+                setCast(actors)
 
-                trailerData.forEach(el => {
-                  let trailerName = el?.name;
-                  let trailerType = el?.type;
-              
-                  if((trailerName.toLowerCase().includes("official trailer") && trailerType.toLowerCase().includes("trailer")) && (trailerName.length === officialTrailerString.length)){
-              
-                      let trailerObj = {
-                        id: el?.id,
-                        key: el?.key,
-                        site: el?.site
-                      }
+                //Creators/Directors
+                let directors = grabCrewInfo(mediaCrewRes?.crew)
+                
+                if(directors.length === 0){
+                  let creators = grabCreators(mediaDetailRes?.created_by)
+                  setCreators(creators.slice(0,2))
+                }  else {
+                  setDirectors(directors.slice(0,2))
+                }
 
-                      return keyArr.push(trailerObj)
-                  }
-                  setMediaTrailer(keyArr)
-                })
-  
-                //NOTE: Not using rating for right now. The database is now setting these all to false as of 1/21/23. This used to not be the case
-                setMediaRating(rating);
-                setRuntime(mediaRuntime);
-                setCrew(directors.slice(0,2));
-                setCast(actors);
-              } 
+                //Ratings (i.e. PG, PG:13, R) -->Does not work for now because all the adult objects are labeled as false
+                // let rating = grabMediaRatings(mediaDetailRes?.adult, mediaDetailRes?.genre)
+
+                //Runtimes
+                if(mediaType === 'movie'){
+                  setRuntime(convertRuntime(mediaDetailRes.runtime))
+                } else {
+                  setRuntime(`${mediaDetailRes.seasons.length} Seasons`)
+                }
+
+                //Trailer
+                let trailerString = 'trailer';
+                let trailerData = mediaDetailRes?.videos?.results.find(vid => vid.official
+                  === true && vid.type.toLowerCase() === trailerString.toLowerCase() )
+                
+                setMediaTrailer(trailerData ? trailerData : mediaDetailRes?.videos?.results[0])
+
+              })
+            ).catch((err) => {
+              console.log("No Information", err)
             })
-          ).catch((err) => {
-            if(err.response && err.response.status === 404){
-              // console.clear()
-              //TV
-              let fetchTvDetails = `https://api.themoviedb.org/3/tv/${details?.id}?&api_key=${API_KEY}&append_to_response=videos`;
 
-              let fetchTvCrewDetails = `https://api.themoviedb.org/3/tv/${details?.id}/credits?&language=en-US&api_key=${API_KEY}`;
-
-              const requestTvDetails = axios.get(fetchTvDetails);
-              const requestTvCrewDetails = axios.get(fetchTvCrewDetails);
-              
-              axios
-                .all([ requestTvDetails, requestTvCrewDetails])
-                .then(
-                  axios.spread((...res) => {
-                    const tvDetailRes = res[0]?.data;
-                    const tvCrewRes = res[1]?.data;
-
-                    if(res) {
-                      let rating = grabMediaRatings(tvDetailRes?.adult, tvDetailRes?.genres);
-                      let mediaRuntime = `${tvDetailRes.seasons.length} Seasons`
-                      let actors = grabCastInfo(tvCrewRes?.cast);
-                      let directors = grabCrewInfo(tvCrewRes?.crew);
-                      // let trailer = grabTrailer()
-                      if(directors === ''){
-                        let creators = grabCreators(tvDetailRes?.created_by)
-                        setCrew(creators.slice(0,2))
-                      } else {
-                        setCrew(directors.slice(0,2));
-                      }
-        
-                      setMediaRating(rating);
-                      setRuntime(mediaRuntime);
-                      setCast(actors);
-                      
-                      // console.clear()
-                    }
-                  })
-                )
-                .catch((err) =>{console.log("No Information",err)})
-              }
-          })
         };
         fetchMediaDetailsById()
-    }, [API_KEY, details])
+    }, [ details, mediaType])
+
 
     const handlePlayButton = () => {
-      let src =''
-
-      if(mediaTrailer.length === 1){
-        mediaTrailer.map(m => {
-          src = `https://youtube.com/embed/${m.key}?autoplay=1`
-        })
-      } else if(mediaTrailer.length === 0) {
-        src ="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-      }
-
-      setVideoSrc(src)
       setShowVideo(true)
     }
 
     const handleVideoCloseButton = () => {
-      setVideoSrc('')
       setShowVideo(false)
     }
 
@@ -159,29 +98,33 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
     <div className={`modalContainer + ${show ? 'detailOpen' : '' }`}>
       <div className='modal'>
         <header>
-          <img src={`${IMG_BASE_URL}${details?.backdrop_path}`} alt={details?.name}/>
+          <img src={`${BASE_IMAGE_URL}${details?.backdrop_path}`} alt={details?.name}/>
           <div className='closeContainer'>
             <BsX onClick={() => handleModelCloseButton()} />
           </div>
-          {console.log(srcVideo)}
+          {/* youtube goes here */}
           {showVideo ? (
             <div className="video-player-container">
               <div className='closeContainer'>
                 <BsX id="videoCloseButton" onClick={() => handleVideoCloseButton()} />
               </div>
-              <iframe 
-                className="video-player" 
-                src={srcVideo} 
-                title={`${details?.name} + Trailer`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture full"
-                loading='eager'
-                ></iframe>
+              <ReactPlayer
+                playing={true}
+                url={`${YOUTUBE_URL}${mediaTrailer?.key || 'IUN664s7N-c'}`}
+                config={{
+                  youtube:{
+                    color: `white`,
+                    modestbranding: 1,
+                  }
+                }}
+                width='100%'
+                height='100%'
+                style={{zIndex: '120'}}
+              />
             </div>
             ): null
           }
           <div className='playBtnContainer'>
-            {/* onClick={() => handlePlayButton()} */}
             <div onClick={() => handlePlayButton()} >
               <BsPlayCircle />
             </div>
@@ -220,21 +163,25 @@ export default function FeatureModal({show, closeFeatureModal, details}) {
             <p>{details?.overview}</p>
           </div>
           <div className='crewInfo'>
-            <div className='cast'>
-              <p>Cast:</p>
-              {cast?.map((c, index) => {
-                return <p className="name" key={c.id}>{c.name}</p>
-              })}
-            </div>
-            <div className='director'>
-              <p>Director:</p>
-              {crew?.map((c) => {
-                return <p className="name" key={c.id}>{c.name}</p>
-              })
+              {cast?.length >=1 ? (
+                <div className='cast'>
+                  <p>Cast:</p>
+                  {cast?.map((c) => {
+                    return <p className="name" key={c.id}>{c.name}</p>
+                  })}
+                </div>
+              ): null}
+              {directors?.length >= 1 ? (
+                <Directors directors={directors} />
+              ): null
               }
-            </div>
+              {creators?.length >= 1 ? (
+                <Creators creators={creators}/>
+              ): null
+              }
           </div>
         </div>
+        <Recommendations id={details?.id} mediaType={mediaType} />
       </div>
     </div>
   )
