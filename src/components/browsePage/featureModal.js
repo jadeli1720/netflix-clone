@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { BsX, BsPlayCircle} from "react-icons/bs";
+import ReactPlayer from 'react-player/youtube'
 import HTTP from "../../services/axios";
 import { API_KEY, BASE_IMAGE_URL, YOUTUBE_URL } from "../../constants/urls"
 import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabMediaRatings, grabYear, roundNum } from '../../helpers/'
 import Ratings from 'react-ratings-declarative';
-import { BsX, BsPlayCircle} from "react-icons/bs";
 import Directors from './directors';
 import Creators from './creators';
 import Recommendations from './recommendations';
@@ -23,17 +24,13 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
   //Not working as of 1/21/2023 from api
   const [ mediaRating, setMediaRating ] = useState('');
   const [mediaTrailer, setMediaTrailer] = useState([]);
-  const [srcVideo, setVideoSrc] = useState('')
   const [showVideo, setShowVideo] = useState(false)
-  const [similarMovies, setSimilarMovies] = useState([])
 
     const handleModelCloseButton = () => {
       setCast([]);
-      // setCrew([]);
       setRuntime('');
       setMediaRating('');
       setMediaTrailer([]);
-      setVideoSrc('')
       closeFeatureModal(false);
     }
 
@@ -52,8 +49,6 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
               axios.spread((...res) => {
                 const mediaDetailRes = res[0]?.data;
                 const mediaCrewRes = res[1]?.data;
-
-                // console.log(" movie details", mediaType, mediaDetailRes)
                 
                 //Actors
                 let actors = grabCastInfo(mediaCrewRes?.cast);
@@ -86,7 +81,6 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
                 
                 setMediaTrailer(trailerData ? trailerData : mediaDetailRes?.videos?.results[0])
 
-                
               })
             ).catch((err) => {
               console.log("No Information", err)
@@ -98,16 +92,10 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
 
 
     const handlePlayButton = () => {
-      // let src =''
-      
-      
-
-      // setVideoSrc(src)
       setShowVideo(true)
     }
 
     const handleVideoCloseButton = () => {
-      setVideoSrc('')
       setShowVideo(false)
     }
 
@@ -125,14 +113,19 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
               <div className='closeContainer'>
                 <BsX id="videoCloseButton" onClick={() => handleVideoCloseButton()} />
               </div>
-              <iframe 
-                className="video-player" 
-                src={srcVideo} 
-                title={`${details?.name} + Trailer`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture full"
-                loading='eager'
-                ></iframe>
+              <ReactPlayer
+                playing={true}
+                url={`${YOUTUBE_URL}${mediaTrailer?.key || 'IUN664s7N-c'}`}
+                config={{
+                  youtube:{
+                    color: `white`,
+                    modestbranding: 1,
+                  }
+                }}
+                width='100%'
+                height='100%'
+                style={{zIndex: '120'}}
+              />
             </div>
             ): null
           }
