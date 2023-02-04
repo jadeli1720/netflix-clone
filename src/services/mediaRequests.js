@@ -1,5 +1,5 @@
 import {API_KEY} from '../constants/urls'
-// const API_KEY= process.env.REACT_APP_TMDB_APIKEY;
+
 export const bannerMovieRequests = {
   fetchBannerMovies : {
     type: 'movie',
@@ -15,7 +15,6 @@ export const mediaRequests = [
     type: 'tv',
     url: `/discover/tv?api_key=${API_KEY}&with_networks=213`
   },
-//we'll have to figure out how to get the details and trailer for this when there isn't a type for these movies and tv series
   {
     rowId: 2,
     category: "Trending Movies",

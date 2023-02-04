@@ -93,41 +93,6 @@ export const grabMediaRatings = (adult, genres) => {
 	}
 };
 
-//NOTE:does not work from here - future get trailer data instead of using bunny video
-export const grabMediaTrailer = (trailerData) => {
-	let keyArr = [];
-
-	let officialTrailerString = "official trailer";
-	let trailerString = "trailer";
-
-	trailerData.forEach((el) => {
-		let trailerName = el?.name;
-		let trailerType = el?.type;
-
-		if (
-			trailerName.toLowerCase().includes("official trailer") &&
-			trailerType.toLowerCase().includes("trailer") &&
-			trailerName.length === officialTrailerString.length
-		) {
-			console.log("inside if 1", el);
-
-			let trailerObj = {
-				id: el?.id,
-				key: el?.key,
-				site: el?.site,
-			};
-			console.log("inside if 2", trailerObj);
-
-			return trailerObj;
-		}
-		//(trailerName.toLowerCase().includes("trailer") && trailerType.toLowerCase().includes("trailer"))
-
-		// console.log("Result 3", )
-
-		// return trailerObj
-	});
-};
-
 export const grabYear = (value) => {
 	return value.substring(0, 4);
 };

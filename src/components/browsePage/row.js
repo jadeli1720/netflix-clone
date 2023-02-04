@@ -7,14 +7,12 @@ import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 function Row({rowID, category, isLargeRow, type, url, }) {
 	const [movies, setMovies] = useState([]);
 	const [showFeatureModal, setShowFeatureModal] = useState(false);
-	// console.log(me)
 
 	//When the above state is true, this shows the SINGLE detail for a SINGLE card that is clicked and not all of them opening at once.
 	const [ featureDetails, setFeatureDetails ] = useState([])
 	const [ mediaType, setMediaType] = useState('')
 
 	const handleMovieModal = (m) =>{
-		// console.log((m, type))
 		if(!showFeatureModal) {
 			
 			setShowFeatureModal(true) ;
@@ -31,7 +29,6 @@ function Row({rowID, category, isLargeRow, type, url, }) {
 	useEffect(() => {
 		async function fetchData() {
 			const request = (await HTTP.get(url)).data.results
-			// console.log(request.map(m => m))
 			setMovies(request)
 		}
 		
@@ -49,7 +46,6 @@ function Row({rowID, category, isLargeRow, type, url, }) {
 		}
 	}
 
-	//not working now => 2/2/23
 	const slideRight = () => {
 		let slider = document.getElementById('slider' + rowID);
 		let viewportWidth =window.innerWidth;
@@ -60,8 +56,6 @@ function Row({rowID, category, isLargeRow, type, url, }) {
 			slider.scrollLeft = slider.scrollLeft - viewportWidth;
 		}
 	}
-
-	
 
 	return (
 		<div className="row">

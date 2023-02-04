@@ -26,8 +26,6 @@ function App() {
 						path={ROUTES.HOME}
 						element={
 								<HomePage />
-							// <UserSignedIn user = { user }>
-							// </UserSignedIn>
 						}
 					/>
 					<Route

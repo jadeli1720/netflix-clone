@@ -11,11 +11,6 @@ import Creators from './creators';
 import Recommendations from './recommendations';
 
 
-    /**
-    FUTURE TODO's:
-    1. Can we fill the bottom of the modal with suggestions to fill the rest of the modal. This may need to be done in the parent and passed down
-  **/ 
-
 export default function FeatureModal({show, closeFeatureModal, details, mediaType}) {
   const [ cast, setCast ] = useState([]);
   const [ directors , setDirectors] = useState([]);
