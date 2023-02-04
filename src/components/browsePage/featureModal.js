@@ -94,14 +94,8 @@ export default function FeatureModal({show, closeFeatureModal, details, mediaTyp
 
         };
         fetchMediaDetailsById()
-    }, [API_KEY, details])
+    }, [ details, mediaType])
 
-    console.log(details.id)
-
-    let url = `/movie/550?api_key=${API_KEY}`;
-    let similarURL = `/movie/${details.id}`
-
-    ///${mediaType}/${details?.id}?language=en-US&api_key=${API_KEY}&append_to_response=videos
 
     const handlePlayButton = () => {
       // let src =''

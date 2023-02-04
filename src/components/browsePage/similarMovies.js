@@ -9,30 +9,25 @@ const SimilarMovies = ({id}) => {
     async function fetchData() {
       const request = (await HTTP.get(`/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US`))?.data.results
       
-      setSimilarMoviesData(request.slice(0,8))
+      setSimilarMoviesData(request.slice(0,9))
     }
 
     fetchData()
   }, [id]);
   
-  //limit to 8
   return(
     <div className='content similar-movies'>
-      {/* <p>This is similar Media Page</p> */}
       {similarMoviesData.map((simMovie) => (
         simMovie?.backdrop_path && (
           <div 
             key={simMovie.id}
             className="container"
           >
-            {/* Need to get rid of console 404's */}
             <img
               className='detailsPoster'
               src={`${ BASE_IMAGE_URL}/${simMovie?.backdrop_path}`}
               alt={simMovie?.title || simMovie?.original_title}
             />
-            {/* <div className='cover'></div> */}
-            {/* <p className='title'>{simMovie.title}</p> */}
           </div>
         )
       ))}
