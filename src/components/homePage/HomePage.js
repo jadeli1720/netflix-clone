@@ -3,7 +3,7 @@ import Header from "./Header";
 import Jumbotron from "./JumboTron";
 import Faq from "./Faq";
 import faqData from "../../json/faqs.json";
-import OptForm from "./OptForm";
+import OptForm from "../Forms/OptForm";
 import Footer from "./Footer";
 import "./styles/index.scss";
 

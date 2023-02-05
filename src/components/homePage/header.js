@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderNav from "./HeaderNav";
-import OptForm from "./OptForm";
+import OptForm from "../Forms/OptForm";
 
 function Header() {
 	return (
