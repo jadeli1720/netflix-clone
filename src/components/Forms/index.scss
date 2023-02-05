@@ -1,103 +1,103 @@
-@import '../../styles/mixins.scss';
+@import "../../styles/mixins.scss";
 //C:\Users\Jade\OneDrive\Desktop\MyReactProjects\netflix-clone\src\styles\mixins.scss
 .signInUpContainer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.75);
-  border-radius: 5px;
-  margin-top: 48px !important;
-  margin: auto;
-  margin-bottom: 100px;
-  padding: 60px 68px 40px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(0, 0, 0, 0.75);
+	border-radius: 5px;
+	margin-top: 48px !important;
+	margin: auto;
+	margin-bottom: 100px;
+	padding: 60px 68px 40px;
 
-  min-height: 660px;
-  max-width: 450px;
-  width: 100%;
-  z-index: 2;
+	min-height: 660px;
+	max-width: 450px;
+	width: 100%;
+	z-index: 2;
 
-  .error {
-    background: #e87c03;
-    border-radius: 4px;
-    font-size: 14px;
-    margin: 0 0 16px;
-    color: white;
-    padding: 15px 20px;
-  }
+	.error {
+		background: #e87c03;
+		border-radius: 4px;
+		font-size: 14px;
+		margin: 0 0 16px;
+		color: white;
+		padding: 15px 20px;
+	}
 
-  form {
-    display: flex;
-    flex-direction: column;
-    max-width: 450px;
-    width: 100%;
-  }
+	form {
+		display: flex;
+		flex-direction: column;
+		max-width: 450px;
+		width: 100%;
+	}
 
-  h1 {
-    color: #fff;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 28px;
-  }
+	h1 {
+		color: #fff;
+		font-size: 32px;
+		font-weight: bold;
+		margin-bottom: 28px;
+	}
 
-  input {
-    background: #333;
-    border-radius: 4px;
-    border: 0;
-    color: #fff;
-    height: 50px;
-    line-height: 50px;
-    margin-bottom: 20px;
-    padding: 5px 20px;
-    max-width: 410px;
-    width: 100%;
+	input {
+		background: $medium-gray;
+		border-radius: 4px;
+		border: 0;
+		color: #fff;
+		height: 50px;
+		line-height: 50px;
+		margin-bottom: 20px;
+		padding: 5px 20px;
+		max-width: 410px;
+		width: 100%;
 
-    &:last-of-type {
-      margin-bottom: 30px;
-    }
-    @include inputPlaceholder() {
-      font-size: 1rem;
-    }
+		&:last-of-type {
+			margin-bottom: 30px;
+		}
+		@include inputPlaceholder() {
+			font-size: 1rem;
+		}
+	}
 
-  }
+	button {
+		background: $netflix-red;
+		border-radius: 4px;
+		border: 0;
+		color: white;
+		font-size: 16px;
+		font-weight: bold;
+		margin: 24px 0;
+		padding: 16px;
+		cursor: pointer;
+		max-width: 450px;
+		width: 100%;
 
-  button {
-    background: #e50914;
-    border-radius: 4px;
-    border: 0;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    margin: 24px 0 ;
-    padding: 16px;
-    cursor: pointer;
-    max-width: 450px;
-    width: 100%;
+		&:disabled {
+			cursor: auto;
+			opacity: 0.5;
+		}
+	}
 
-    &:disabled {
-      cursor: auto;
-      opacity: 0.5;
-    }
-  }
+	.signUpText,
+	.signInText {
+		color: #737373;
+		font-size: 16px;
+		font-weight: 500;
+		margin-bottom: 24px;
 
-  .signUpText, .signInText {
-    color: #737373;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 24px;
+		a {
+			color: #fff;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
 
-    a {
-      color: #fff;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .recaptchaText {
-    margin-top: 10px;
-    font-size: 13px;
-    line-height: normal;
-    color: #8c8c8c;
-  }
+	.recaptchaText {
+		margin-top: 10px;
+		font-size: 13px;
+		line-height: normal;
+		color: #8c8c8c;
+	}
 }

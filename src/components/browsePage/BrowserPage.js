@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Fuse from 'fuse.js';
-import NavBar from './navBar';
-import Banner from './banner.js';
-import Row from './row';
+// import Fuse from 'fuse.js';
+import NavBar from './NavBar';
+import Banner from './Banner.js';
+import Row from './Row';
 import Loading from '../spinner/loading';
 import { mediaRequests } from '../../services/mediaRequests';
 import { FirebaseContext } from '../../context/firebase';
 
 import "./styles/index.scss";
-import SelectedProfile from '../profilePage';
+import SelectedProfile from '../profilePage/SelectedProfile';
 
 export default function BrowsePage() {
 
@@ -18,7 +18,6 @@ export default function BrowsePage() {
 
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
-    // const mediaCategories = 
 
     useEffect(() => {
         setTimeout(() => {

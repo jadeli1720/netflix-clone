@@ -1,3 +1,4 @@
+@import '../../../styles/variables.scss';
 //NAVBAR
 .nav {
 	position: fixed;
@@ -443,7 +444,7 @@
 .modalContainer {
 	position: absolute;
 	display: none;
-	background-color: #000000db;
+	background-color: $modal-background;
 	z-index: 100;
 }
 

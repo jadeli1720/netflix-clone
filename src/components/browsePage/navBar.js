@@ -2,7 +2,7 @@ import React, { useContext,useEffect, useState } from 'react';
 import { Link , NavLink } from "react-router-dom";
 import { FirebaseContext } from '../../context/firebase';
 import * as ROUTES from '../../constants/routes';
-import SearchForm from '../Forms/searchForm';
+import SearchForm from '../Forms/SearchForm';
 import { FaCaretDown } from 'react-icons/fa';
 
 
