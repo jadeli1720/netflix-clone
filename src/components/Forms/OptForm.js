@@ -12,7 +12,7 @@ function OptForm() {
         <form>
           <input type="text" placeholder="Email address" name="email address"/>
           <Link to={ROUTES.SIGN_UP} >
-            <p>Get Started</p>
+            <p className='optFormPara'>Get Started</p>
             <BsChevronRight/>
           </Link>
         </form>
