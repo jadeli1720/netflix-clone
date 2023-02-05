@@ -1,3 +1,20 @@
+@import './fonts.scss';
+@import './variables.scss';
+
+
+//Homepage and browser page are where the media-queries are at
+/*
+Popular fonts:
+50px, 700 --> main titles
+48px, 800 --> header
+32px 700
+26px 400 --> subtitles/ "get started" buttons
+20px 400 --> accordion
+16 400 --> body --> sign in buttons
+13.3333px 400 --> form place holder (Arial)
+13px --> footer
+*/
+
 @mixin inputPlaceholder() {
 	$selector: "";
 	$prefixes: (
@@ -25,16 +42,3 @@
 		@content;
 	}
 }
-
-/*
-Popular media queries used so far:
-2560
-1980
-1366 -> onw max width 1365
-1000 --> 1024?
-778 --> change to 768?
-700
-600 --> change to 768? 
-*/
-
-//Homepage and browser page are where the media-queries are at
