@@ -4,7 +4,7 @@ import { BASE_IMAGE_URL } from "../../constants/urls";
 import FeatureModal from "./featureModal";
 import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
-function Row({rowID, category, isLargeRow, type, url, }) {
+function Row({rowId, category, isLargeRow, type, url, }) {
 	const [movies, setMovies] = useState([]);
 	const [showFeatureModal, setShowFeatureModal] = useState(false);
 
@@ -36,10 +36,10 @@ function Row({rowID, category, isLargeRow, type, url, }) {
 	}, [url]);
 
 	const slideLeft = () => {
-		let slider = document.getElementById('slider' + rowID)
+		let slider = document.getElementById('slider' + rowId)
 		let viewportWidth =window.innerWidth;
 
-		if(rowID === 1){
+		if(rowId === 1){
 			slider.scrollLeft = slider.scrollLeft + viewportWidth;
 		} else {
 			slider.scrollLeft = slider.scrollLeft + viewportWidth;
@@ -47,10 +47,10 @@ function Row({rowID, category, isLargeRow, type, url, }) {
 	}
 
 	const slideRight = () => {
-		let slider = document.getElementById('slider' + rowID);
+		let slider = document.getElementById('slider' + rowId);
 		let viewportWidth =window.innerWidth;
 
-		if(rowID === 1){
+		if(rowId === 1){
 			slider.scrollLeft = slider.scrollLeft - viewportWidth;
 		} else {
 			slider.scrollLeft = slider.scrollLeft - viewportWidth;
@@ -58,12 +58,12 @@ function Row({rowID, category, isLargeRow, type, url, }) {
 	}
 
 	return (
-		<div className="row">
+		<div className="row" >
 			<h2 style={{ 'marginTop': '10px'}}>{category}</h2>
-			<div className="moviesContainer" id={'slider' + rowID}>
+			<div className="moviesContainer" id={'slider' + rowId}>
 				<div 
 					className={` arrow-container-left + ${isLargeRow ? 'isLarge' : ''} `}  
-					onClick={slideLeft}
+					onClick={slideRight}
 					>
 						<BsChevronLeft  />
 				</div>
@@ -90,7 +90,7 @@ function Row({rowID, category, isLargeRow, type, url, }) {
 				))}
 				<div 
 					className={` arrow-container-right + ${isLargeRow ? 'isLarge' : ''} `} 
-					onClick={slideRight}
+					onClick={slideLeft}
 					>
 						<BsChevronRight />
 				</div>

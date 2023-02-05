@@ -40,7 +40,7 @@ export default function BrowsePage() {
                 <NavBar user={ user } searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 <Banner />
                 {mediaRequests.map(({rowId, category, isLargeRow, type, url}) => {
-                    return <Row key={rowId} rowId={rowId} category={category} isLargeRow={isLargeRow} type={type} url={url} />
+                    return <Row key={rowId}  rowId={rowId} category={category} isLargeRow={isLargeRow} type={type} url={url} />
                 })}
             </div>
         </>
