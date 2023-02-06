@@ -2,6 +2,7 @@
 
 .headerContainer,
 #headerContainer {
+	
 	background: url("../../../../public/images/misc/home-bg.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
@@ -45,7 +46,6 @@
 			height: auto;
 		}
 
-		// This may be changed to an a tag
 		.navbar-nav {
 			background-color: $netflix-red;
 			border: none;
@@ -98,6 +98,10 @@
 
 		.optFormSection {
 			margin-top: 1.25rem;
+			.row {
+				max-width: 41.5rem;
+				width: 100%;
+			}
 		}
 	}
 }

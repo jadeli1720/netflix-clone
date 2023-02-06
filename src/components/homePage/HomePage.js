@@ -3,9 +3,9 @@ import Header from "./header/Header";
 import Jumbotron from "./jumbotron/JumboTron";
 import faqData from "../../json/faqs.json";
 import FaqAccordion from "./faqAccordion/FaqAccordion";
-import OptForm from "../Forms/OptForm";
+import OptForm from "../Forms/optForm/OptForm";
 import Footer from "./footer/Footer";
-import "./styles/index.scss";
+import './homePage.scss'
 
 //TODO:overall need to make things big or small based on screen size.
 

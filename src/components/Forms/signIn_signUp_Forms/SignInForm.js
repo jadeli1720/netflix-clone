@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { FirebaseContext } from '../../context/firebase';
+import { FirebaseContext } from '../../../context/firebase';
 import { Link,  useNavigate} from "react-router-dom";
-import * as ROUTES from '../../constants/routes';
+import * as ROUTES from '../../../constants/routes';
 import './index.scss';
 
 export default function SignInForm() {

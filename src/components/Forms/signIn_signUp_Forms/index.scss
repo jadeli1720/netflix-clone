@@ -1,5 +1,5 @@
-@import "../../styles/mixins.scss";
-//C:\Users\Jade\OneDrive\Desktop\MyReactProjects\netflix-clone\src\styles\mixins.scss
+@import "../../../styles/mixins.scss";
+
 .signInUpContainer {
 	position: relative;
 	display: flex;
@@ -102,90 +102,4 @@
 	}
 }
 
-.optFormSection {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	height: 100%;
 
-	form {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		max-width: 782px;
-		width: 100%;
-		margin: 0 auto;
-
-		@media (max-width: 778px) {
-			flex-direction: column;
-			align-items: center;
-		}
-	}
-
-	input {
-		max-width: 450px;
-		width: 100%;
-		border: 0;
-		border-radius: 2px;
-		padding: 10px;
-		height: 60px;
-		box-sizing: border-box;
-
-		@include inputPlaceholder() {
-			font-size: 1rem;
-		}
-	}
-
-	a {
-		display: flex;
-		align-items: center;
-		background: $netflix-red;
-		border: 0;
-		border-radius: 2px;
-
-		text-align: center;
-		color: white;
-		height: 60px;
-		padding: 0 32px;
-		cursor: pointer;
-		text-decoration: none;
-
-		p {
-			font-size: 26px;
-			padding-bottom: 0;
-			margin-bottom: 0;
-
-			@media (max-width: 778px) {
-				font-size: 1rem;
-				margin-left: 4px;
-			}
-		}
-
-		svg {
-			margin-left: 11px;
-
-			@media (max-width: 778px) {
-				height: 1em !important;
-				width: 1em !important;
-			}
-		}
-
-		@media (max-width: 778px) {
-			justify-content: center;
-			font-size: 1rem;
-			margin: 16px 0 0;
-			padding: 0px 8px;
-			height: 40px;
-			width: 125px;
-		}
-	}
-
-	p {
-		font-size: 1.25rem;
-		color: white;
-		text-align: center;
-		max-width: none;
-	}
-}
