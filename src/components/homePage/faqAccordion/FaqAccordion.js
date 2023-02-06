@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { BsPlusLg, BsXLg} from "react-icons/bs";
+import './faqAccordion.scss'
 
-export default  function Faq({ id, header, body }) {
+export default  function FaqAccordion({ id, header, body }) {
   const [toggleShow, setToggleShow] = useState(false);
 
   // TODO: Will want to re-write this so when one acc opens, another one closes. 

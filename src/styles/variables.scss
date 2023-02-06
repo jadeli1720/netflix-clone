@@ -1,15 +1,26 @@
-//colors
+//colors:
 $netflix-red: #e50914;
 $modal-background: #000000db;
 $gray-border: #222;
 $medium-gray: #333;
-/*
-Popular media queries used so far:
-2560
-1980
-1366 -> onw max width 1365
-1000 --> 1024?
-778 --> change to 768?
-700
-600 --> change to 768? 
-*/
+
+//screen sizes:
+//390px
+$mobile-sm:24.375rem;
+//600px
+$mobile-lg:37.5rem;
+//768px
+$tables-sm:48rem;
+//1024px
+$table-md:64rem;
+//1280px
+$tablet-lg:80rem;
+//1366px
+$desktop-sm:85.375rem;
+//1440px
+$desktop-md:90rem;
+//1920px
+$desktop-lg:120rem;
+//2560px
+$desktop-xl:160rem;
+

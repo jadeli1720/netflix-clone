@@ -1,0 +1,103 @@
+@import "../../../styles/mixins.scss";
+
+.headerContainer,
+#headerContainer {
+	background: url("../../../../public/images/misc/home-bg.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-bottom: 0.5rem solid #222;
+
+	.headerGradient {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.4);
+		background-image: linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.8) 0,
+			rgba(0, 0, 0, 0) 60%,
+			rgba(0, 0, 0, 0.8) 100%
+		);
+		height: 100%;
+		width: 100vw;
+	}
+
+	.headerNav,
+	.feature {
+		position: relative;
+		z-index: 2;
+	}
+
+	.headerNav {
+		.container-fluid {
+			height: 5rem;
+			max-width: 120rem;
+			width: 98%;
+		}
+		.netflixLogo,
+		img {
+			cursor: pointer;
+			margin-right: auto;
+			width: 10.5rem;
+			height: auto;
+		}
+
+		// This may be changed to an a tag
+		.navbar-nav {
+			background-color: $netflix-red;
+			border: none;
+			border-radius: 0.188rem;
+			cursor: pointer;
+			text-decoration: none;
+
+			a {
+				color: white;
+			}
+		}
+	}
+
+	.feature {
+		text-align: center;
+		padding: 10.375rem 2.813rem;
+
+		@include media-query('mobile-lg') {
+			padding: 10.375rem 0rem;
+		}
+
+		h1 {
+			color: white;
+			max-width: 40rem;
+			@include jumbotronHeader();
+			margin: auto;
+
+			@include media-query('desktop-md') {
+				@include header();
+			}
+
+			@include media-query('tablet-sm'){
+				@include headerMobile();
+			}
+
+			@include media-query('mobile-lg') {
+				@include subHeader();
+				line-height: 2.125rem
+			}
+		}
+
+		h2 {
+			color: white;
+			@include subTitle(medium);
+
+			@include media-query('mobile-lg') {
+				font-size: 1.125rem;
+			}
+		}
+
+		.optFormSection {
+			margin-top: 1.25rem;
+		}
+	}
+}

@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./Header";
-import Jumbotron from "./JumboTron";
-import Faq from "./Faq";
+import Header from "./header/Header";
+import Jumbotron from "./jumbotron/JumboTron";
 import faqData from "../../json/faqs.json";
+import FaqAccordion from "./faqAccordion/FaqAccordion";
 import OptForm from "../Forms/OptForm";
-import Footer from "./Footer";
+import Footer from "./footer/Footer";
 import "./styles/index.scss";
 
 //TODO:overall need to make things big or small based on screen size.
@@ -18,7 +18,7 @@ const HomePage = () => {
 				<div className="inner">
 					<h1 className="title">Frequently Asked Questions</h1>
 					{faqData.map((item) => (
-						<Faq
+						<FaqAccordion
 							key={item.id}
 							header={item.header}
 							body={item.body}

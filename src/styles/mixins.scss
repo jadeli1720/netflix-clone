@@ -2,18 +2,110 @@
 @import './variables.scss';
 
 
-//Homepage and browser page are where the media-queries are at
-/*
-Popular fonts:
-50px, 700 --> main titles
-48px, 800 --> header
-32px 700
-26px 400 --> subtitles/ "get started" buttons
-20px 400 --> accordion
-16 400 --> body --> sign in buttons
-13.3333px 400 --> form place holder (Arial)
-13px --> footer
-*/
+//Font Weights
+@mixin extra-light(){font-weight: 100; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+@mixin light(){font-weight: 300; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+@mixin regular(){font-weight: 400; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+@mixin medium(){font-weight: 700;font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+@mixin bold(){font-weight:800; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+@mixin heavy(){font-weight: 900; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+
+//Font Styling
+//64px
+@mixin jumbotronHeader() {
+	@include medium();
+	font-size: 4rem;
+	line-height: 4.375rem;
+}
+
+//50px
+@mixin header(){
+	@include medium();
+	font-size: 3.125rem;
+	line-height: 3.438rem;
+}
+
+//40px
+@mixin headerMobile() {
+	@include medium();
+	font-size: 2.5rem;
+	line-height: 2.75rem;
+}
+
+//32px
+@mixin subHeader(){
+	@include medium();
+	font-size: 2rem;
+}
+
+//26px
+@mixin subTitle($weight){
+	font-size: 1.625rem;
+	
+	@if $weight == 'bold' {
+		@include bold()
+	}
+	@else if $weight == 'medium' {
+			@include medium()
+	}
+	@else if $weight == 'regular' {
+			@include regular()
+	}
+}
+
+//20px
+@mixin subTitleMobile($weight) {
+	font-size: 1.25rem;
+	line-height: 1.563rem;
+
+	@if $weight == 'bold' {
+		@include bold()
+	}
+	@else if $weight == 'medium' {
+			@include medium()
+	}
+	@else if $weight == 'regular' {
+			@include regular()
+	}
+}
+
+//16px
+@mixin body($weight) {
+	font-size: 1rem;
+	line-height: 1.563rem;
+
+	@if $weight == 'bold' {
+		@include bold()
+	}
+	@else if $weight == 'medium' {
+			@include medium()
+	}
+	@else if $weight == 'regular' {
+			@include regular()
+	}
+	@else if $weight == 'light' {
+		@include light()
+	}
+}
+
+//13px
+@mixin caption($weight) {
+	font-size: 0.813rem;
+	line-height: 1.25rem;
+
+	@if $weight == 'bold' {
+		@include bold()
+	}
+	@else if $weight == 'medium' {
+			@include medium()
+	}
+	@else if $weight == 'regular' {
+			@include regular()
+	}
+	@else if $weight == 'light' {
+		@include light()
+	}
+}
 
 @mixin inputPlaceholder() {
 	$selector: "";
@@ -40,5 +132,36 @@ Popular fonts:
 	}
 	&::placeholder {
 		@content;
+	}
+}
+
+//Media Queries
+@mixin media-query($size) {
+	@if ($size == 'mobile-sm') {
+		@media (max-width: $mobile-sm) {@content;}
+	}
+	@else if ($size == 'mobile-lg'){
+		@media (max-width: $mobile-lg) {@content;}
+	}
+	@else if ($size == 'tablet-sm'){
+		@media (max-width: $tablet-sm) {@content;}
+	}
+	@else if ($size == 'tablet-md'){
+		@media (max-width: $tablet-md) {@content;}
+	}
+	@else if ($size == 'tablet-lg'){
+		@media (max-width: $tablet-lg) {@content;}
+	}
+	@else if ($size == 'desktop-sm'){
+		@media (max-width: $desktop-sm) {@content;}
+	}
+	@else if ($size == 'desktop-md'){
+		@media (max-width: $desktop-md) {@content;}
+	}
+	@else if ($size == 'desktop-lg'){
+		@media (max-width: $desktop-lg) {@content;}
+	}
+	@else if ($size == 'desktop-xl'){
+		@media (max-width: $desktop-xl) {@content;}
 	}
 }
