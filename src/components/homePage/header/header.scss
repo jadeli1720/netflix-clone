@@ -2,7 +2,6 @@
 
 .headerContainer,
 #headerContainer {
-	
 	background: url("../../../../public/images/misc/home-bg.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
@@ -17,13 +16,15 @@
 		left: 0;
 		background-color: rgba(0, 0, 0, 0.4);
 		background-image: linear-gradient(
-			to top,
 			rgba(0, 0, 0, 0.8) 0,
 			rgba(0, 0, 0, 0) 60%,
 			rgba(0, 0, 0, 0.8) 100%
 		);
-		height: 100%;
-		width: 100vw;
+		height: 70%;
+
+		@include media-query('tablet-xs') {
+			height: 80%;
+		}
 	}
 
 	.headerNav,
@@ -34,7 +35,7 @@
 
 	.headerNav {
 		.container-fluid {
-			height: 5rem;
+			height: 4rem;
 			max-width: 120rem;
 			width: 98%;
 		}
@@ -61,7 +62,7 @@
 
 	.feature {
 		text-align: center;
-		padding: 10.375rem 2.813rem;
+		padding: 7.75rem 2.813rem 9.5rem;
 
 		@include media-query('mobile-lg') {
 			padding: 10.375rem 0rem;
@@ -77,7 +78,7 @@
 				@include header();
 			}
 
-			@include media-query('tablet-sm'){
+			@include media-query('tablet-xs'){
 				@include headerMobile();
 			}
 

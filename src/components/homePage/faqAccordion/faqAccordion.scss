@@ -1,92 +1,66 @@
-@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
 
-//accordion section
-.accordionContainer {
-	display: flex;
-	border-bottom: 8px solid #222;
-
-	.inner {
-		display: flex;
-		padding: 70px 45px;
-		flex-direction: column;
-		max-width: 815px;
+	.accordion{
 		margin: auto;
-	}
-
-	h1 {
-		font-size: 50px;
-		line-height: 1.1;
-		margin-top: 0;
-		margin-bottom: 48px;
-		color: white;
-		text-align: center;
-
-		@media (max-width: 600px) {
-			font-size: 35px;
-		}
-	}
-
-	.wrapper {
-		color: white;
-		margin: auto;
-		margin-bottom: 10px;
-		max-width: 728px;
+		margin-bottom: 0.625rem;
+		max-width: 45.5rem;
 		width: 100%;
+
+		@include media-query('tablet-sm'){
+			padding-right: 2.25rem;
+			padding-left: 2.25rem;
+			max-width: 51rem;
+			width: 100%;
+		}
+		@include media-query('mobile-lg'){
+			padding: 0;
+		}
+	}
+	
+	.card, .card-header, button, .card-body {
+		border: none;
+		border-radius: 0 !important;
+		background-color: $medium-gray !important;
+		color: white;
 	}
 
-	.header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+	.card {
+		margin-bottom: 0.5rem;
+	}
+
+	.card-header, .card-body {
+		@include subTitle(regular);
+
+		@include media-query('tablet-sm'){
+			@include subTitleMobile(regular)
+		}
+	}
+
+	.card-header {
+		border-bottom: black solid 0.25px;
 		cursor: pointer;
-		margin-bottom: 1px;
-		font-size: 20px;
-		font-weight: normal;
-		background: $medium-gray;
-		padding: 0.8em 1.2em 0.8em 1.2em;
-		user-select: none;
+		height: 4.75rem;
 
-    p{
-      margin-bottom: 0;
-    }
-
-		@media (max-width: 600px) {
-			font-size: 16px;
+		@include media-query('tablet-sm'){
+			height: 3.625rem;
 		}
 	}
 
-	#accBody {
-		font-size: 20px;
-		font-weight: normal;
-		line-height: normal;
-		background: $medium-gray;
-		white-space: pre-wrap;
-		user-select: none;
-		overflow: hidden;
+	button {
+		padding: 1.25rem 1.875rem;
+		height: 100%;
+		width: 100%;
 
-		p {
-			padding: 24px;
-		}
+		svg {
+			width: 2.25rem;
 
-		&.closed {
-			max-height: 0;
-			overflow: hidden;
-			transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
-		}
-
-		&.open {
-			max-height: 1200px;
-			transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
-		}
-
-		span {
-			display: block;
-			padding: 0.8em 2.2em 0.8em 1.2em;
-		}
-
-		@media (max-width: 600px) {
-			font-size: 16px;
-			line-height: 22px;
+			@include media-query('tablet-sm'){
+				width: 1.5rem;
+			}
 		}
 	}
-}
+
+	.card-body {
+		padding: 1.875rem;
+	}
+

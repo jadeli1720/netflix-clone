@@ -1,9 +1,57 @@
-.inner {
-  .optFormSection {
-    margin-top: 1.25rem;
-    .row {
-      max-width: 900px;
-      width: 100%;
-    }
-  }
+@import '../../styles/mixins.scss';
+
+.accordionContainer {
+	border-bottom: 0.5rem solid #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+	.inner {
+		padding: 4.375rem 0rem;
+		width: 100%;
+
+		.optFormSection {
+			display: flex;
+			flex-direction: column;
+      align-items: center;
+			width: 100%;
+			margin-top: 3.25rem;
+
+      @include media-query('tablet-sm') {
+				margin-top: 2rem;
+			}
+
+			form {
+				margin: 0 !important;
+        max-width: 41.5rem;
+				width: 100%;
+			}
+
+			.row {
+				margin: 0;
+				
+			}
+		}
+
+		p {
+			@include subTitleMobile(regular);
+			text-align: center;
+      @include media-query('tablet-sm') {
+				font-size: 1.375rem;
+        width: 49%;
+			}
+		}
+
+		.title {
+			@include header();
+			margin-top: 0;
+			margin-bottom: 3rem;
+			color: white;
+			text-align: center;
+	
+			@include media-query('tablet-sm') {
+				@include headerMobile()
+			}
+		}
+	}
 }

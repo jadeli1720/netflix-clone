@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
+import { Container } from "react-bootstrap"
 import HeaderNav from "./HeaderNav";
 import OptForm from "../../Forms/optForm/OptForm";
 import "./header.scss";

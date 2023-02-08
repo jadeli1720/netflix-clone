@@ -142,6 +142,9 @@
 	@else if ($size == 'mobile-lg'){
 		@media (max-width: $mobile-lg) {@content;}
 	}
+	@else if ($size == 'tablet-xs'){
+		@media (max-width: $tablet-xs) {@content;}
+	}
 	@else if ($size == 'tablet-sm'){
 		@media (max-width: $tablet-sm) {@content;}
 	}

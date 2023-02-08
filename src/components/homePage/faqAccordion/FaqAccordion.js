@@ -1,28 +1,26 @@
-import React, {useState} from 'react';
-import { BsPlusLg, BsXLg} from "react-icons/bs";
+import React from 'react';
+import { Accordion, Card } from 'react-bootstrap/';
+import ContextAwareToggle from './ContextAwareToggle';
+import faqData from "../../../json/faqs.json";
 import './faqAccordion.scss'
 
-export default  function FaqAccordion({ id, header, body }) {
-  const [toggleShow, setToggleShow] = useState(false);
-
-  // TODO: Will want to re-write this so when one acc opens, another one closes. 
+export default  function FaqAccordion() {
 
   return (
-      <div className="frame" >
-        <div className="wrapper" key={id}>
-          <div className={`header ${toggleShow}`}  onClick={() => setToggleShow(!toggleShow)} >
-              <p>{header}</p>
-              {toggleShow ? (
-                <BsXLg/>
-              ) : (
-                <BsPlusLg/>
-              )}
-          </div>
-          <div id="accBody" className={ toggleShow ? 'open' : 'closed'}  >
-            <p>{body}</p> 
-          </div>
-        </div>
-      </div>
+    <>
+      <Accordion defaultActiveKey="0">
+        {faqData.map((data) => (
+          <Card>
+            <Card.Header className='d-flex p-0'>
+              <ContextAwareToggle  eventKey={data.id}>{data.header}</ContextAwareToggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey={data.id}>
+              <Card.Body>{data.body}</Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        ))}
+      </Accordion>
+    </>
   )
 };
 

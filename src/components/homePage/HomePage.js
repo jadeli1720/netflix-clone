@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./header/Header";
 import Jumbotron from "./jumbotron/JumboTron";
-import faqData from "../../json/faqs.json";
+// import faqData from "../../json/faqs.json";
 import FaqAccordion from "./faqAccordion/FaqAccordion";
 import OptForm from "../Forms/optForm/OptForm";
 import Footer from "./footer/Footer";
@@ -17,13 +17,7 @@ const HomePage = () => {
 			<div className="accordionContainer">
 				<div className="inner">
 					<h1 className="title">Frequently Asked Questions</h1>
-					{faqData.map((item) => (
-						<FaqAccordion
-							key={item.id}
-							header={item.header}
-							body={item.body}
-						/>
-					))}
+						<FaqAccordion/>
 					<OptForm />
 				</div>
 			</div>
