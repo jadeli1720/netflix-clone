@@ -1,58 +1,67 @@
 @import "../../../styles/mixins.scss";
 
+#signInGradient, #signUpGradient {
+	height: 100% ;
+}
+
 .signInUpContainer {
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	background-color: rgba(0, 0, 0, 0.75);
 	border-radius: 5px;
-	margin-top: 48px !important;
+	margin-top: 3rem !important;
 	margin: auto;
-	margin-bottom: 100px;
-	padding: 60px 68px 40px;
+	margin-bottom: 6.25rem;
+	padding: 3.75rem 4.25rem 2.5rem;
 
-	min-height: 660px;
-	max-width: 450px;
+	min-height: 41.25rem;
+	max-width: 28.125rem;
 	width: 100%;
 	z-index: 2;
 
 	.error {
 		background: #e87c03;
-		border-radius: 4px;
-		font-size: 14px;
-		margin: 0 0 16px;
+		border-radius: 0.25rem;
+		font-size: 0.875rem;
+		margin: 0 0 1rem;
 		color: white;
-		padding: 15px 20px;
+		padding: 0.938rem 1.25rem;
 	}
 
 	form {
 		display: flex;
 		flex-direction: column;
-		max-width: 450px;
+		max-width: 28.125rem;
 		width: 100%;
 	}
 
 	h1 {
 		color: #fff;
-		font-size: 32px;
+		font-size: 2rem;
 		font-weight: bold;
-		margin-bottom: 28px;
+		margin-bottom: 1.75rem;
 	}
 
 	input {
-		background: $medium-gray;
-		border-radius: 4px;
+		background-color: $medium-gray !important;
+		border-radius: 0.25rem;
 		border: 0;
 		color: #fff;
-		height: 50px;
-		line-height: 50px;
-		margin-bottom: 20px;
-		padding: 5px 20px;
-		max-width: 410px;
+		height: 3.125rem;
+		line-height: 3.125rem;
+		margin-bottom: 1.25rem;
+		padding: 0.313rem 1.25rem;
+		max-width: 25.625rem;
 		width: 100%;
 
+		&:focus {
+			background-color: $medium-gray;
+			color: white;
+		}
+
 		&:last-of-type {
-			margin-bottom: 30px;
+			margin-bottom: 1.875rem;
 		}
 		@include inputPlaceholder() {
 			font-size: 1rem;
@@ -60,16 +69,16 @@
 	}
 
 	button {
-		background: $netflix-red;
-		border-radius: 4px;
+		background-color: $netflix-red !important;
+		border-radius: 0.25rem;
 		border: 0;
 		color: white;
-		font-size: 16px;
+		font-size: 1rem;
 		font-weight: bold;
-		margin: 24px 0;
-		padding: 16px;
+		margin: 1.5rem 0;
+		padding: 1rem;
 		cursor: pointer;
-		max-width: 450px;
+		max-width: 28.125rem;
 		width: 100%;
 
 		&:disabled {
@@ -81,9 +90,9 @@
 	.signUpText,
 	.signInText {
 		color: #737373;
-		font-size: 16px;
+		font-size: 1rem;
 		font-weight: 500;
-		margin-bottom: 24px;
+		margin-bottom: 1.5rem;
 
 		a {
 			color: #fff;
@@ -95,8 +104,8 @@
 	}
 
 	.recaptchaText {
-		margin-top: 10px;
-		font-size: 13px;
+		margin-top: 0.625rem;
+		font-size: 0.813rem;
 		line-height: normal;
 		color: #8c8c8c;
 	}

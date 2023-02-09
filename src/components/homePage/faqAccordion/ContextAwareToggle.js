@@ -12,7 +12,6 @@ eventKey,
   );
 
   const isCurrentEventKey = activeEventKey === eventKey;
-  console.log("Context", isCurrentEventKey)
 
   return (
     <button
