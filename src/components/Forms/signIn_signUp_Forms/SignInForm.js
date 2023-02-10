@@ -13,6 +13,7 @@ export default function SignInForm() {
   const [ emailAddress, setEmailAddress ] = useState('');
   const [ password, setPassword] = useState('');
   const [ error, setError ] = useState('');
+  const [ visible, setVisible ] = useState(false);
 
   const isInvalid = password === '' || emailAddress === '';
 
@@ -36,8 +37,8 @@ export default function SignInForm() {
 
 
   return (
-    <div className="signInUpContainer">
-      <h1>Sign In</h1>
+    <div className="signInUpContainer pb-2">
+      <h1 className='mt-5'>Sign In</h1>
         <Form noValidate onSubmit={handleSignIn} method='POST'>
           <FloatingLabel
             controlId='floatingEmailInput'
@@ -70,9 +71,21 @@ export default function SignInForm() {
         </Form>
 
         {error && <div className="error" data-testid="error">{error}</div>}
-      <div>
-        <p className='signUpText'>New to Netflix? <Link to={ROUTES.SIGN_UP}>Sign up now.</Link></p>
-        <p className='recaptchaText'>This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</p>
+        <div className="bottom-container">
+          <p className='signInText' >
+            Already a user?  <Link to={ROUTES.SIGN_UP}>
+              Sign up now.</Link>
+          </p>
+          <p className='recaptchaText'>This page is protected by Google reCAPTCHA to ensure you're not a bot.
+          <Button
+          onClick={() => setVisible(!visible)}
+          >Learn more.</Button>
+          </p>
+          {visible && (
+            <div className='terms'>
+              <p>The information collected by Google reCAPTCHA is subject to the Google<a href='https://policies.google.com/privacy' target="_blank" rel="noreferrer"> Privacy Policy</a> and <a href='https://policies.google.com/terms' target="_blank" rel="noreferrer">Terms of Service</a>, and is used for providing, maintaining, and improving the reCAPTCHA service and for general security purposes (it is not used for personalized advertising by Google). </p>
+            </div>
+          )}
       </div>
     </div>
   )

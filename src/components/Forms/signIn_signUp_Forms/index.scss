@@ -13,20 +13,30 @@
 	margin-top: 3rem !important;
 	margin: auto;
 	margin-bottom: 6.25rem;
-	padding: 3.75rem 4.25rem 2.5rem;
+	padding: 0rem 4.25rem 0rem;
 
-	min-height: 41.25rem;
+	min-height: 42.75rem;
+	height: 100%;
 	max-width: 28.125rem;
 	width: 100%;
 	z-index: 2;
 
+	@include media-query('mobile-lg') {
+		max-width: 36.125rem;
+		padding: 3.75rem 2.25rem 2.5rem;
+	}
+
+	@include media-query('mobile-sm') {
+		padding: 3.75rem 1rem 2.5rem;
+	}
+
 	.error {
 		background: #e87c03;
 		border-radius: 0.25rem;
-		font-size: 0.875rem;
+		@include caption(regular);
 		margin: 0 0 1rem;
 		color: white;
-		padding: 0.938rem 1.25rem;
+		padding: 0.5rem 1.25rem;
 	}
 
 	form {
@@ -34,6 +44,10 @@
 		flex-direction: column;
 		max-width: 28.125rem;
 		width: 100%;
+
+		@include media-query('mobile-lg'){
+			max-width: unset;
+		}
 	}
 
 	h1 {
@@ -66,6 +80,10 @@
 		@include inputPlaceholder() {
 			font-size: 1rem;
 		}
+
+		@include media-query('mobile-lg') {
+			max-width: unset
+		}
 	}
 
 	button {
@@ -84,6 +102,10 @@
 		&:disabled {
 			cursor: auto;
 			opacity: 0.5;
+		}
+
+		@include media-query('mobile-lg'){
+			max-width: unset;
 		}
 	}
 
@@ -105,9 +127,31 @@
 
 	.recaptchaText {
 		margin-top: 0.625rem;
-		font-size: 0.813rem;
-		line-height: normal;
-		color: #8c8c8c;
+		@include caption(regular);
+		color: $lt-medium-gray;
+	}
+
+	.bottom-container {
+		height: 240px;
+		button {
+			background-color: unset !important;
+			@include caption(regular);
+			color: $links;
+			cursor: pointer;
+			margin: -7px 0 0 4px;
+			padding: 0;
+			max-width: unset;
+			width: unset;
+		}
+
+		.terms {
+			@include caption(regular);
+			color: $lt-medium-gray;
+
+			a {
+				color: $links
+			}
+		}
 	}
 }
 

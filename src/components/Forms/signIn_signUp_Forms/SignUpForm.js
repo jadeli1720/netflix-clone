@@ -14,6 +14,7 @@ export default function SignUpForm(){
   const [ emailAddress, setEmailAddress ] = useState('');
   const [ password, setPassword] = useState('');
   const [ error, setError ] = useState('');
+  const [ visible, setVisible ] = useState(false);
 
   const isInvalid = password === '' || emailAddress === '';
 
@@ -42,38 +43,10 @@ export default function SignUpForm(){
   }
 
   return (
-    <div className='signInUpContainer'>
-      <h1>Sign Up</h1>
-      {/* <form onSubmit={handleSignup} method='POST'>
-        <input
-          type='text'
-          placeholder='First name'
-          value={firstName}
-          onChange={({ target }) => setFirstName(target.value)}
-        />
-        <input
-          type='text'
-          placeholder='Email Address'
-          value={emailAddress}
-          onChange={({target}) => setEmailAddress(target.value)}
-        />
-        <input
-          type="password"
-          placeholder='Password'
-          value={password}
-          autoComplete='off'
-          onChange={({target}) => setPassword(target.value)}
-        />
-        <button 
-          disabled={isInvalid} 
-          type="submit" 
-          data-testid="sign-up"
-          >
-            Sign Up
-          </button>
-      </form> */}
+    <div className='signInUpContainer pb-2'>
+      <h1 className='mt-5'>Sign Up</h1>
         <Form noValidate onSubmit={handleSignUp} method='POST'>
-        <FloatingLabel
+          <FloatingLabel
             controlId='floatingNameInput'
             label="First name"
             aria-label='First name'
@@ -113,15 +86,24 @@ export default function SignUpForm(){
               onChange={({target}) => setPassword(target.value)}
             />
           </FloatingLabel>
-          <Button disabled={isInvalid}  type="submit" data-testid="sign-up">Sign In</Button>
+          <Button disabled={isInvalid}  type="submit" data-testid="sign-up">Sign Up</Button>
         </Form>
         {error && <div className="error" >{error}</div>}
-      <div>
+      <div className="bottom-container">
         <p className='signInText' >
           Already a user?  <Link to={ROUTES.SIGN_IN}>
             Sign in now.</Link>
         </p>
-        <p className='recaptchaText'>This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</p>
+        <p className='recaptchaText'>This page is protected by Google reCAPTCHA to ensure you're not a bot.
+        <Button
+        onClick={() => setVisible(!visible)}
+        >Learn more.</Button>
+        </p>
+        {visible && (
+          <div className='terms'>
+            <p>The information collected by Google reCAPTCHA is subject to the Google<a href='https://policies.google.com/privacy' target="_blank" rel="noreferrer"> Privacy Policy</a> and <a href='https://policies.google.com/terms' target="_blank" rel="noreferrer">Terms of Service</a>, and is used for providing, maintaining, and improving the reCAPTCHA service and for general security purposes (it is not used for personalized advertising by Google).</p>
+          </div>
+        )}
       </div>
     </div>
   )
