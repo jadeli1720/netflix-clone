@@ -45,7 +45,8 @@ export default function BrowsePage() {
 					setSearchTerm={setSearchTerm}
 				/>
 				<Banner />
-				{/* {mediaRequests.map(
+				<div className="row-container">
+				{mediaRequests.map(
 					({ rowId, category, isLargeRow, type, url }) => {
 						return (
 							<Row
@@ -58,7 +59,10 @@ export default function BrowsePage() {
 							/>
 						);
 					}
-				)} */}
+				)}
+
+				</div>
+
 			</div>
 		</>
 	) : (

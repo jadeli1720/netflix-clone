@@ -29,54 +29,42 @@ export default function Banner() {
 
 	return (
 		<>
-		<Container fluid className="banner-container p-0">
-			{movie ? (
-				<div className="banner"
-				style={{
-					backgroundSize: "cover",
-					backgroundImage: `url('${BASE_IMAGE_URL}${movie?.backdrop_path}')`,
-					backgroundPosition: "center center",
-					backgroundRepeat: "no-repeat",
-				}}
-				></div>
-			):null}
-			
-			<Container className="copyContainer">
-				<h1 className="title">{movie?.title || movie?.name || movie?.original_title}</h1>
-				<Row className="d-flex flex-wrap">
-					<Col>
-						<Button className="d-flex justify-content-center align-items-center playButton p-0">
-							<FaPlay />
-							<p className="m-0" >Play</p>
-						</Button>
-					</Col>
-					<Col>
-						<Button className="d-flex justify-content-center align-items-center listButton p-0">
-							<BsPlusLg />
-							<p className="m-0">My List</p>							
-						</Button>
-					</Col>
-				</Row>
-				<p className="description pt-4">
-					{truncate(movie?.overview, 150)}
-				</p>
+			<Container fluid className="banner-container p-0">
+				{movie ? (
+					<div className="banner"
+					style={{
+						backgroundSize: "cover",
+						backgroundImage: `url('${BASE_IMAGE_URL}${movie?.backdrop_path}')`,
+						backgroundPosition: "center center",
+						backgroundRepeat: "no-repeat",
+					}}
+					>
+						<div className="fadeBottom"></div>
+					</div>
+					
+				):null}
+				
+				<Container className="copyContainer">
+					<h1 className="title">{movie?.title || movie?.name || movie?.original_title}</h1>
+					<Row className="d-flex flex-wrap">
+						<Col sm>
+							<Button className="d-flex justify-content-center align-items-center playButton p-0">
+								<FaPlay />
+								<p className="m-0" >Play</p>
+							</Button>
+						</Col>
+						<Col sm>
+							<Button className="d-flex justify-content-center align-items-center listButton p-0">
+								<BsPlusLg />
+								<p className="m-0">My List</p>							
+							</Button>
+						</Col>
+					</Row>
+					<p className="description pt-4">
+						{truncate(movie?.overview, 150)}
+					</p>
+				</Container>
 			</Container>
-		</Container>
-			{/* 
-
-				<div className="buttons">
-					<button className="playButton">
-						<FaPlay />
-						<p>Play</p>
-					</button>
-					<button className="listButton">
-						<BsPlusLg />
-						<p>My List</p>
-					</button>
-				</div>
-			</div>
-			<div className="fadeBottom"></div>
-			</header> */}
 		</>
 	);
 }

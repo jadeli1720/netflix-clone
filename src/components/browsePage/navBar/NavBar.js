@@ -8,17 +8,12 @@ import './navBar.scss';
 
 function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 	const [show, handleShow] = useState(false);
-	const [toggleMenu, setToggleMenu] = useState(false);
-
 	const { firebase } = useContext(FirebaseContext);
 
 	const transitionNavBar = () =>
 		window.scrollY > 100 ? handleShow(true) : handleShow(false);
 
-	const handleMenuClick = () =>
-		!toggleMenu ? setToggleMenu(true) : setToggleMenu(false);
 
-	//NOTE: header activity work --> Karl Hadwen 6:50
 	useEffect(() => {
 		window.addEventListener("scroll", transitionNavBar);
 		//clean-up code, not always needed
@@ -43,7 +38,7 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 						placement='start'
 					>
 						<Offcanvas.Header closeButton>
-							<Offcanvas.Title offcanvasNavbarLabel-expand-lg className="d-flex align-items-center">
+							<Offcanvas.Title id='offcanvasNavbarLabel-expand-lg' className="d-flex align-items-center">
 								<img
 									className="avatar me-3"
 									src={`/images/users/${user?.photoURL}.png`}
