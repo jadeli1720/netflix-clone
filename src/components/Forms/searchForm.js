@@ -9,22 +9,7 @@ export default function SearchForm({ searchTerm, setSearchTerm }) {
 
   return (
     <div className='search'>
-      {/* <button className='searchIcon' onClick={activateSearch}>
-        <FaSearch />
-      </button>
-      <div className={`inputContainer + ${searchActive ? 'toggleSearch' : ''}`}>
-        <input
-        className={`${searchActive ? 'toggleSearch' : ''}`}
-          value={searchTerm}
-          onChange={({ target }) => setSearchTerm(target.value)}
-          type='text'
-          placeholder="Search movies & TV Shows"
-        />
-      </div> */}
       <Form className='d-flex align-items-center'>
-        <Button className='me-2 searchButton' onClick={activateSearch}>
-          <FaSearch />
-        </Button>
         <div className={` inputContainer + ${searchActive ? 'toggleSearch' : ''}`}>
           <Form.Control
             className={`${searchActive ? 'toggleSearch' : ''} `}
@@ -34,7 +19,9 @@ export default function SearchForm({ searchTerm, setSearchTerm }) {
             placeholder="Search movies & TV Shows"
         />
         </div>
-
+        <Button className='ms-2 searchButton' onClick={activateSearch}>
+          <FaSearch />
+        </Button>
       </Form>
     </div>
   )

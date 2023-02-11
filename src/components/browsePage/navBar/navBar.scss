@@ -4,9 +4,9 @@
 	transition: all 0.5s ease-in;
 
 	.navbar-toggler{
-		background: transparent !important;
+		background: #404040a6 !important;
 		border-radius: 0.25rem !important;
-		border: white 1px solid;
+		border: $lt-medium-gray 1px solid;
 		width: unset;
 	}
 
@@ -15,17 +15,10 @@
 		
 	}
 
-	.navLogo {
+	.navLogo{
 		cursor: pointer;
 		width: 10.5rem;
 		height: auto;
-	}
-}
-
-.fixed-top {
-	@media (max-width: 61.875rem) {
-		position:unset !important;
-
 	}
 }
 
@@ -65,7 +58,7 @@
 			position: relative;
 
 			input {
-				background-color: rgba(64, 64, 64, 0.65);
+				background-color: #404040a6;
 				border: 1px solid rgba(26, 26, 26, 0.632);
 				border-radius: 0.25rem;
 				color: white;
@@ -92,13 +85,20 @@
 		}
 
 		form {
+			height: 2.25rem;
 			@media (max-width: 61.875rem) {
-				height: 36px;
-			}
-		}
+				margin-top: 0.5rem;
 
-		@media (max-width: 43.75rem) {
-			display: none;
+				.inputContainer {
+					order: 2;
+				}
+
+				.searchButton {
+					order: 1;
+					margin-right: 1rem;
+					margin-left: 0px !important;
+				}
+			}
 		}
 	}
 
@@ -111,61 +111,70 @@
 		height: 2.5rem;
 	}
 
-	.dropAvatar {
-		cursor: default;
+	.offcanvas{
+		background-color: #161616 !important;
+
+		.offcanvas-header .btn-close {
+			background: transparent url('../../../../public/images/misc/x-lg.svg')center/2rem auto no-repeat !important;
+			color: white !important;
+		}
 	}
 
 	.dropdown {
+		margin-left: 1rem;
+
+		@media (max-width: 61.875rem) {
+			
+			margin-top: 1rem;
+			margin-left: 0rem;
+		}
+
 		button {
-			background-color: transparent !important;
+			background-color: #404040a6 !important;
 			border: none;
-			max-width: 3rem;
-			margin-left: 0.5rem;
+			width: 3.75rem;
+
+			svg {
+				height: 2.25rem;
+				width: 2.25rem;
+			}
 
 			&::after {
 				display: none;
 			}
 
-			
-			@media (max-width: 61.875rem) {
-				margin-top: 1rem;
-				margin-left: 0;
-				padding: 0;
+			&:hover {
+				background-color: #161616 !important;
 			}
+
+			@media (max-width: 61.875rem) {
+				background-color: transparent !important;
+			}
+		}
+
+		.dropdown-item {
+			color: white !important;
 		}
 
 		.dropdown-menu[data-bs-popper] {
-			top: 100%;
-			left: -6.5rem !important;
+			background-color: #404040a6 !important;
+			left: -6.125rem;
 
-			@media (max-width: 61.875rem){
-				left: -1.125rem !important;
-				margin-top: 0.313rem;
+			@media (max-width: 61.875rem) {
+				left: 0rem;
+				background-color: transparent !important;
+				border: none;
+				width: 100%;
 			}
 		}
 
-		.dropdown-menu {
-			background-color: black;
-
-			a {
-				align-items: center;
-				cursor: pointer;
-				color: white;
-
-				.avatar {
-					margin-right: 1rem
-				}
-
-				&:hover {
-					background-color: black !important;
-					font-weight: 800;
-				}
-			}
-
-			hr {
-				border-top: 1px solid $medium-gray;
-			}
+		hr {
+			border-top: 1px solid $lt-medium-gray;
 		}
 	}
+
+
+
+
 
 

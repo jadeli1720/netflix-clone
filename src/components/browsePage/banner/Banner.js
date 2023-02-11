@@ -5,6 +5,7 @@ import { BASE_IMAGE_URL } from "../../../constants/urls";
 import { FaPlay } from "react-icons/fa";
 import { BsPlusLg } from "react-icons/bs";
 import './banner.scss';
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 export default function Banner() {
 	const [movie, setMovie] = useState([]);
@@ -16,6 +17,7 @@ export default function Banner() {
 
 			const bannerMovie =
 				request[Math.floor(Math.random() * request.length - 1)];
+
 			setMovie(bannerMovie);
 		}
 
@@ -26,24 +28,41 @@ export default function Banner() {
 		string?.length > n ? string.substr(0, n - 1) + "..." : string;
 
 	return (
-		<header
-			className="banner"
-			style={{
-				backgroundSize: "cover",
-				backgroundImage: `url('${BASE_IMAGE_URL}${movie?.backdrop_path}')`,
-				backgroundPosition: "center center",
-				backgroundRepeat: "no-repeat",
-			}}
-		>
-			<div className="copyContainer">
-				<h1 className="title">
-					{movie?.title || movie?.name || movie?.original_title}
-				</h1>
-
-				{/* TODO: add funtionality to click more button and see more of the description */}
-				<h1 className="description">
+		<>
+		<Container fluid className="banner-container p-0">
+			{movie ? (
+				<div className="banner"
+				style={{
+					backgroundSize: "cover",
+					backgroundImage: `url('${BASE_IMAGE_URL}${movie?.backdrop_path}')`,
+					backgroundPosition: "center center",
+					backgroundRepeat: "no-repeat",
+				}}
+				></div>
+			):null}
+			
+			<Container className="copyContainer">
+				<h1 className="title">{movie?.title || movie?.name || movie?.original_title}</h1>
+				<Row className="d-flex flex-wrap">
+					<Col>
+						<Button className="d-flex justify-content-center align-items-center playButton p-0">
+							<FaPlay />
+							<p className="m-0" >Play</p>
+						</Button>
+					</Col>
+					<Col>
+						<Button className="d-flex justify-content-center align-items-center listButton p-0">
+							<BsPlusLg />
+							<p className="m-0">My List</p>							
+						</Button>
+					</Col>
+				</Row>
+				<p className="description pt-4">
 					{truncate(movie?.overview, 150)}
-				</h1>
+				</p>
+			</Container>
+		</Container>
+			{/* 
 
 				<div className="buttons">
 					<button className="playButton">
@@ -57,6 +76,7 @@ export default function Banner() {
 				</div>
 			</div>
 			<div className="fadeBottom"></div>
-		</header>
+			</header> */}
+		</>
 	);
 }

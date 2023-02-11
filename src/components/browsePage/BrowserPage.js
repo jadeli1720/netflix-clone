@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import {  Button, Container } from 'react-bootstrap';
 // import Fuse from 'fuse.js';
 import NavBar from "./navBar/NavBar";
 import Banner from "./banner/Banner.js";
@@ -44,7 +45,7 @@ export default function BrowsePage() {
 					setSearchTerm={setSearchTerm}
 				/>
 				<Banner />
-				{mediaRequests.map(
+				{/* {mediaRequests.map(
 					({ rowId, category, isLargeRow, type, url }) => {
 						return (
 							<Row
@@ -57,7 +58,7 @@ export default function BrowsePage() {
 							/>
 						);
 					}
-				)}
+				)} */}
 			</div>
 		</>
 	) : (
