@@ -18,4 +18,4 @@ const Creators = ({creators}) => {
     </>
   )
 }
-export default Creators
+export default Creators;

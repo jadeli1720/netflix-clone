@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import HTTP from "../../services/axios";
-import { bannerMovieRequests } from '../../services/mediaRequests';
-import { BASE_IMAGE_URL } from "../../constants/urls";
+import HTTP from "../../../services/axios";
+import { bannerMovieRequests } from "../../../services/mediaRequests";
+import { BASE_IMAGE_URL } from "../../../constants/urls";
 import { FaPlay } from "react-icons/fa";
 import { BsPlusLg } from "react-icons/bs";
+import './banner.scss';
 
-export default function Banner(){
+export default function Banner() {
 	const [movie, setMovie] = useState([]);
 
 	useEffect(() => {
@@ -13,8 +14,9 @@ export default function Banner(){
 			const fetchUrl = bannerMovieRequests.fetchBannerMovies.url;
 			const request = (await HTTP.get(fetchUrl)).data.results;
 
-			const bannerMovie = request[Math.floor(Math.random() * request.length - 1)];
-			setMovie(bannerMovie)
+			const bannerMovie =
+				request[Math.floor(Math.random() * request.length - 1)];
+			setMovie(bannerMovie);
 		}
 
 		fetchData();
@@ -37,7 +39,7 @@ export default function Banner(){
 				<h1 className="title">
 					{movie?.title || movie?.name || movie?.original_title}
 				</h1>
-				
+
 				{/* TODO: add funtionality to click more button and see more of the description */}
 				<h1 className="description">
 					{truncate(movie?.overview, 150)}
@@ -49,7 +51,7 @@ export default function Banner(){
 						<p>Play</p>
 					</button>
 					<button className="listButton">
-						<BsPlusLg/>
+						<BsPlusLg />
 						<p>My List</p>
 					</button>
 				</div>
@@ -58,5 +60,3 @@ export default function Banner(){
 		</header>
 	);
 }
-
-

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import HTTP from '../../services/axios';
-import { API_KEY, BASE_IMAGE_URL } from "../../constants/urls"
+import HTTP from '../../../services/axios';
+import { API_KEY, BASE_IMAGE_URL } from "../../../constants/urls"
 
 const Recommendations = ({id, mediaType}) => {
   const [recommendationsData, setRecommendationsData] = useState([])

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import HTTP from "../../services/axios";
-import { BASE_IMAGE_URL } from "../../constants/urls";
-import FeatureModal from "./FeatureModal";
+import HTTP from "../../../services/axios";
+import { BASE_IMAGE_URL } from "../../../constants/urls";
+import FeatureModal from "../featureModal/FeatureModal";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import './row.scss';
 
 function Row({ rowId, category, isLargeRow, type, url }) {
 	const [movies, setMovies] = useState([]);
@@ -13,6 +14,7 @@ function Row({ rowId, category, isLargeRow, type, url }) {
 	const [mediaType, setMediaType] = useState("");
 
 	const handleMovieModal = (m) => {
+		console.log(m)
 		if (!showFeatureModal) {
 			setShowFeatureModal(true);
 			setFeatureDetails(m);

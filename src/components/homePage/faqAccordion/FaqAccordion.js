@@ -10,7 +10,7 @@ export default  function FaqAccordion() {
     <>
       <Accordion defaultActiveKey="0">
         {faqData.map((data) => (
-          <Card>
+          <Card key={data.id}>
             <Card.Header className='d-flex p-0'>
               <ContextAwareToggle  eventKey={data.id}>{data.header}</ContextAwareToggle>
             </Card.Header>

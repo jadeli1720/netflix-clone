@@ -2,17 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BsX, BsPlayCircle } from "react-icons/bs";
 import ReactPlayer from "react-player/youtube";
-import HTTP from "../../services/axios";
-import { API_KEY, BASE_IMAGE_URL, YOUTUBE_URL } from "../../constants/urls";
-import {
-	convertRuntime,
-	grabCastInfo,
-	grabCreators,
-	grabCrewInfo,
-	grabMediaRatings,
-	grabYear,
-	roundNum,
-} from "../../helpers";
+import HTTP from "../../../services/axios";
+import { API_KEY, BASE_IMAGE_URL, YOUTUBE_URL } from "../../../constants/urls";
+import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabMediaRatings, grabYear, roundNum } from "../../../helpers";
 import Ratings from "react-ratings-declarative";
 import Directors from "./Directors";
 import Creators from "./Creators";
@@ -24,6 +16,7 @@ export default function FeatureModal({
 	details,
 	mediaType,
 }) {
+
 	const [cast, setCast] = useState([]);
 	const [directors, setDirectors] = useState([]);
 	const [creators, setCreators] = useState([]);

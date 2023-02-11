@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap'
 import { FaSearch } from 'react-icons/fa';
 
 export default function SearchForm({ searchTerm, setSearchTerm }) {
@@ -8,7 +9,7 @@ export default function SearchForm({ searchTerm, setSearchTerm }) {
 
   return (
     <div className='search'>
-      <button className='searchIcon' onClick={activateSearch}>
+      {/* <button className='searchIcon' onClick={activateSearch}>
         <FaSearch />
       </button>
       <div className={`inputContainer + ${searchActive ? 'toggleSearch' : ''}`}>
@@ -19,7 +20,22 @@ export default function SearchForm({ searchTerm, setSearchTerm }) {
           type='text'
           placeholder="Search movies & TV Shows"
         />
-      </div>
+      </div> */}
+      <Form className='d-flex align-items-center'>
+        <Button className='me-2 searchButton' onClick={activateSearch}>
+          <FaSearch />
+        </Button>
+        <div className={` inputContainer + ${searchActive ? 'toggleSearch' : ''}`}>
+          <Form.Control
+            className={`${searchActive ? 'toggleSearch' : ''} `}
+            value={searchTerm}
+            onChange={({ target }) => setSearchTerm(target.value)}
+            type='search'
+            placeholder="Search movies & TV Shows"
+        />
+        </div>
+
+      </Form>
     </div>
   )
 }
