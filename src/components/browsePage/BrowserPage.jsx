@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import {  Button, Container } from 'react-bootstrap';
 // import Fuse from 'fuse.js';
 import NavBar from "./navBar/NavBar";
-import Banner from "./banner/Banner.js";
+import Banner from "./banner/Banner";
 import Row from "./row/Row";
 import Loading from "../spinner/loading";
 import { mediaRequests } from "../../services/mediaRequests";
