@@ -15,7 +15,6 @@ function Jumbotron() {
 						</h2>
 					</div>
 					<div className="content" id="tv" >
-						{/* may need the full tag to get it to play */}
 						<img src="/images/misc/tv.png" alt="Tv on tv table" />
 						<div className="tvContainer">
 							<video
