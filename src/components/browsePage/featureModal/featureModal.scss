@@ -1,188 +1,215 @@
-@import '../../../styles/mixins.scss';
+@import "../../../styles/mixins.scss";
 
-.modalContainer {
-	position: absolute;
-	display: none;
-	background-color: $modal-background;
-	z-index: 1000;
+.modal-container {
+	overflow: hidden;
 }
+.modal-lg {
+	border-radius: 0.5rem !important;
+	height: 100% !important;
+	max-width: 56.25rem !important;
+	width: 100% !important;
 
-.detailOpen {
-	display: block;
-	position: fixed;
-  top: 0;
-  left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
+	@include media-query('tablet-xs') {
+		margin: 0px auto !important;
+	}
+}
+.modal-content {
+	background-color: $modal-background !important;
+	border-radius: 0.5rem !important;
 
 	p {
-		color: #dadada;
+		color: #afafaf;
+		margin: 0;
 	}
-	
-	.modal {
-		background-color: rgb(16, 16, 16);
-		height: 100%;
-		max-width: 900px;
-		width:100%;
-		overflow-y: scroll;
-		margin: 20px auto 0;
 
-			header {
-				position: relative;
-		
-				img {
-					width: 100%;
-				}
+	header {
+		position: relative;
+		overflow: hidden;
+		.header-image-container{
+			min-height: 31.625rem;
+			height: 100%;
+			//Below used to cover line that shows underneath the fade bottom
+			padding-bottom: 0.25rem;
 
-				.closeContainer, .playBtnContainer {
-					svg {
-						cursor: pointer;
-					}
-				}
-
-				.closeContainer {
-					position: absolute;
-					top:0.25rem;
-					right: 0.5rem;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					border-radius: 50%;
-					background: rgba(0, 0, 0, 0.50);
-					font-size: 1.5rem;
-					height: 1.875rem;
-					width: 1.875rem;
-					z-index: 4;
-					svg {
-						opacity: .65;
-						transition: all 0.2s ease-in-out;
-						&:hover {
-							transition: all 0.2s ease-in-out;
-							opacity: 1;
-						}
-					}
-				}
-
-				.playBtnContainer {
-					position:absolute;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					top:0;
-					font-size: 4rem;
-					width: 100%;
-					height: 100%;
-					z-index: 3;
-					
-					svg {
-						opacity: .65;
-						transition: all 0.2s ease-in-out;
-						&:hover {
-							transition: all 0.2s ease-in-out;
-							opacity: 1;
-						}
-					}
-				}
-
-				.titleMetaContainer, .bottomFade {
-					position: absolute;
-					bottom: 0;
-					z-index: 2;
-				}
-				
-				.titleMetaContainer {
-					padding-left: 32px;
-				}
-
-				.metaDataRow {
-					display: flex;
-					align-items: center;
-					margin-top: 0.5rem;
-	
-					p {
-						color: #afafaf;
-					}
-	
-					p, .widget-ratings {
-						margin-right: 1rem;
-					}
-	
-					.mediaRatingContainer{
-						border: #afafaf 1px solid;
-						margin-right: 1rem;
-	
-						p {
-							text-align: center;
-							margin-right: 0;
-							padding: 2px 4px;
-						}
-	
-					}
-	
-					.hdContainer {
-						background: #535353;
-						border-radius: 2px;
-						p {
-							color:#101010;
-							font-weight: 900;
-							text-align: center;
-							padding-left:1px;
-							margin: 0.5px 4px 1px;
-						}
-					}
-				}
-
-				.bottomFade {
-					background-image: linear-gradient(180deg, transparent 81%, rgba(16, 16, 16, 0.50) 84%, rgb(16, 16, 16) 95%);
-					height: 100%;
-					width:100%;
-					z-index: 1;
-				}
+			@include media-query('tablet-xs') {
+				min-height: 26rem;
 			}
 
-			.content {
-				padding:0.2rem 2rem 2rem;
+			@include media-query('mobile-lg') {
+				min-height: 18rem;
 			}
 
-			.cast, .description {
-				margin-top: 1rem;
+			@include media-query('mobile-sm') {
+				min-height: 13.75rem;
+			}
+		}
+		.header-img {
+			height: auto;
+			width: 100%;
+		}
+		.closeContainer,
+		.playBtnContainer {
+			svg {
+				cursor: pointer;
+			}
+		}
+
+		.closeContainer {
+			position: absolute;
+			top: 0.5rem;
+			right: 0.5rem;
+			font-size: 2.25rem;
+			height: 2.25rem;
+			width: 2.25rem;
+			z-index: 4;
+
+			svg {
+				filter: drop-shadow(
+					0px 2px 3px rgba(0, 0, 0, 0.75)
+				);
+				opacity: 1;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					transition: all 0.2s ease-in-out;
+					opacity: 1;
+				}
+			}
+		}
+
+		.playBtnContainer {
+			position: absolute;
+			top: -1.75rem;
+			font-size: 4rem;
+			width: 100%;
+			height: 100%;
+			z-index: 3;
+
+			svg {
+				filter: drop-shadow(
+					0px 3px 4px rgba(0, 0, 0, 0.80)
+				);
+				opacity: 0.85;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					transition: all 0.2s ease-in-out;
+					opacity: 1;
+				}
+			}
+		}
+
+		.video-player-container {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			height: 100%;
+			width: 100%;
+			z-index: 100;
+	
+			#videoCloseButton {
+				z-index: 150;
+			}
+		}
+
+		.titleMetaContainer,
+		.bottomFade {
+			position: absolute;
+			bottom: 0;
+			z-index: 2;
+		}
+
+		.titleMetaContainer {
+			padding-left: 2rem;
+			width: 100%;
+		}
+
+		.metaDataRow {
+			margin-top: 0.5rem;
+
+			p,
+			.widget-ratings {
+				margin-right: 1rem;
 			}
 
-			.cast, .director {
-				display:flex;
-				flex-wrap: wrap;
-				
+			.mediaRatingContainer {
+				border: #afafaf 1px solid;
+				margin-right: 1rem;
+
 				p {
-					color: #afafaf;
-					display: flex;
-					margin-right: .25rem;
-				}
-
-				.name + .name::before{
-					display: inline-block;
-					white-space: pre;
-					content: ", ";
+					text-align: center;
+					margin-right: 0;
+					padding: 2px 4px;
 				}
 			}
 
-			.director {
-				margin-top:.25rem;
+			.hdContainer {
+				background: #535353;
+				border-radius: 2px;
+				p {
+					color: #101010;
+					font-weight: 900;
+					text-align: center;
+					padding-left: 1px;
+					margin: 0.5px 4px 1px;
+				}
 			}
+		}
+
+		.bottomFade {
+			background-image: linear-gradient( 180deg, transparent 68%, #1e1e1eb7 85%, $modal-background 98% );
+			left: 0;
+			top: 0;
+			width: 100%;
+		}
+	}
+
+	.content {
+		padding: 0.2rem 2rem 2rem;
+	}
+
+	.cast,
+	.description {
+		margin-top: 1rem;
+	}
+
+	.cast,
+	.director {
+		display: flex;
+		flex-wrap: wrap;
+
+		p {
+			display: flex;
+			margin-right: 0.25rem;
+		}
+
+		.name + .name::before {
+			display: inline-block;
+			white-space: pre;
+			content: ", ";
+		}
+	}
+
+	.director {
+		margin-top: 0.25rem;
 	}
 
 	.similar-movies {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: flex-start;
+		min-height: 30rem;
+		height: 100%;
 
-		.container {
+
+		.rec-container {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			margin-right: 1%;
-			margin-bottom: 1%;
+			margin-right: 1.25%;
+			margin-bottom: 1.25%;
 			width: 32%;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
 
 			@media (max-width: 64rem) {
 				margin-right: 2%;
@@ -193,10 +220,9 @@
 				margin-right: 0%;
 				width: 100%;
 			}
-
 		}
 
-		.detailsPoster{
+		.detailsPoster {
 			max-width: 22.5rem;
 			width: 100%;
 			@media (max-width: 64rem) {
@@ -205,18 +231,5 @@
 			}
 		}
 	}
-
-	.video-player-container {
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		height: 100%;
-		width: 100%;
-		z-index: 100;
-
-		#videoCloseButton {
-			z-index: 150;
-		}
-	}
 }
+

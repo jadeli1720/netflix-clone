@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { Modal } from 'react-bootstrap';
 import axios from "axios";
 import { BsX, BsPlayCircle } from "react-icons/bs";
 import ReactPlayer from "react-player/youtube";
 import HTTP from "../../../services/axios";
 import { API_KEY, BASE_IMAGE_URL, YOUTUBE_URL } from "../../../constants/urls";
-import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabMediaRatings, grabYear, roundNum } from "../../../helpers";
+import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabYear, roundNum } from "../../../helpers";
 import Ratings from "react-ratings-declarative";
 import Directors from "./Directors";
 import Creators from "./Creators";
 import Recommendations from "./Recommendations";
+import './featureModal.scss'
 
 export default function FeatureModal({
 	show,
-	closeFeatureModal,
+	setShow,
 	details,
 	mediaType,
 }) {
@@ -22,16 +24,17 @@ export default function FeatureModal({
 	const [creators, setCreators] = useState([]);
 	const [runtime, setRuntime] = useState("");
 	//Not working as of 1/21/2023 from api
-	const [mediaRating, setMediaRating] = useState("");
+	// const [mediaRating, setMediaRating] = useState("");
 	const [mediaTrailer, setMediaTrailer] = useState([]);
 	const [showVideo, setShowVideo] = useState(false);
 
 	const handleModelCloseButton = () => {
 		setCast([]);
 		setRuntime("");
-		setMediaRating("");
+		// setMediaRating("");
 		setMediaTrailer([]);
-		closeFeatureModal(false);
+		// closeFeatureModal(false);
+		setShow(false)
 	};
 
 	useEffect(() => {
@@ -109,107 +112,110 @@ export default function FeatureModal({
 	};
 
 	return (
-		<div className={`modalContainer + ${show ? "detailOpen" : ""}`}>
-			<div className="modal">
-				<header>
-					<img
-						src={`${BASE_IMAGE_URL}${details?.backdrop_path}`}
-						alt={details?.name}
-					/>
-					<div className="closeContainer">
-						<BsX onClick={() => handleModelCloseButton()} />
-					</div>
-					{/* youtube goes here */}
-					{showVideo ? (
-						<div className="video-player-container">
-							<div className="closeContainer">
-								<BsX
-									id="videoCloseButton"
-									onClick={() => handleVideoCloseButton()}
-								/>
-							</div>
-							<ReactPlayer
-								playing={true}
-								url={`${YOUTUBE_URL}${
-									mediaTrailer?.key || "IUN664s7N-c"
-								}`}
-								config={{
-									youtube: {
-										color: `white`,
-										modestbranding: 1,
-									},
-								}}
-								width="100%"
-								height="100%"
-								style={{ zIndex: "120" }}
+		<>
+			<Modal size="lg"  show={show} onHide={handleModelCloseButton} className="m-0 modal-container">
+				<Modal.Body className="p-0" id="modal-content">
+					<header>
+						<div className="header-image-container">
+							<img 
+							className="header-img"
+								src={`${BASE_IMAGE_URL}${details?.backdrop_path}`}
+								alt={details?.name} 
 							/>
+							<div className="closeContainer d-flex align-items-center justify-content-center">
+								<BsX onClick={() => handleModelCloseButton()} />
+							</div>
+							{showVideo ? (
+								<div className="video-player-container">
+									<div className="closeContainer d-flex align-items-center justify-content-center">
+										<BsX
+											id="videoCloseButton"
+											onClick={() => handleVideoCloseButton()}
+										/>
+									</div>
+									<ReactPlayer
+										playing={true}
+										url={`${YOUTUBE_URL}${
+											mediaTrailer?.key || "IUN664s7N-c"
+										}`}
+										config={{
+											youtube: {
+												color: `white`,
+												modestbranding: 1,
+											},
+										}}
+										width="100%"
+										height="100%"
+										style={{ zIndex: "120" }}
+									/>
+								</div>
+							) : null}
+							<div className="bottomFade"></div>
 						</div>
-					) : null}
-					<div className="playBtnContainer">
-						<div onClick={() => handlePlayButton()}>
-							<BsPlayCircle />
-						</div>
-					</div>
-					<div className="titleMetaContainer">
-						<h1>{details?.name || details?.title}</h1>
-						<div className="metaDataRow">
-							<Ratings
-								rating={roundNum(details?.vote_average) / 2}
-								widgetRatedColors="#FFDB58"
-								widgetEmptyColors="grey"
-								widgetDimensions="16px"
-								widgetSpacings="1px"
-							>
-								<Ratings.Widget />
-								<Ratings.Widget />
-								<Ratings.Widget />
-								<Ratings.Widget />
-								<Ratings.Widget />
-							</Ratings>
-							<p>
-								{!details?.release_date
-									? grabYear(details?.first_air_date)
-									: grabYear(details?.release_date)}
-							</p>
-							{/* This data is now coming back incorrect, all coming back as false */}
-							{/* <div className="mediaRatingContainer">
-                <p>{mediaRating}</p>
-              </div> */}
-							<p>{runtime}</p>
-							<div className="hdContainer">
-								<p>HD</p>
+						<div className="playBtnContainer d-flex align-items-center justify-content-center">
+							<div onClick={() => handlePlayButton()}>
+								<BsPlayCircle />
 							</div>
 						</div>
-					</div>
-					<div className="bottomFade"></div>
-				</header>
-				<div className="content">
-					<div className="description">
-						<p>{details?.overview}</p>
-					</div>
-					<div className="crewInfo">
-						{cast?.length >= 1 ? (
-							<div className="cast">
-								<p>Cast:</p>
-								{cast?.map((c) => {
-									return (
-										<p className="name" key={c.id}>
-											{c.name}
-										</p>
-									);
-								})}
+						<div className="titleMetaContainer">
+							<h1>{details?.name || details?.title}</h1>
+							<div className="metaDataRow d-flex align-items-center">
+								<Ratings
+										rating={roundNum(details?.vote_average) / 2}
+										widgetRatedColors="#FFDB58"
+										widgetEmptyColors="grey"
+										widgetDimensions="16px"
+										widgetSpacings="1px"
+									>
+									<Ratings.Widget />
+									<Ratings.Widget />
+									<Ratings.Widget />
+									<Ratings.Widget />
+									<Ratings.Widget />
+								</Ratings>
+								<p>
+									{!details?.release_date
+										? grabYear(details?.first_air_date)
+										: grabYear(details?.release_date)}
+								</p>
+								{/* <div className="mediaRatingContainer">
+									<p>{mediaRating}</p>
+								</div> */}
+								<p>{runtime}</p>
+								<div className="hdContainer">
+									<p>HD</p>
+								</div>
 							</div>
-						) : null}
-						{directors?.length >= 1 ? (
-							<Directors directors={directors} />
-						) : null}
-						{creators?.length >= 1 ? (
-							<Creators creators={creators} />
-						) : null}
+						</div>
+					</header>
+					<div className="content">
+						<div className="description">
+							<p>{details?.overview}</p>
+						</div>
+						<div className="crewInfo">
+							{cast?.length >= 1 ? (
+								<div className="cast">
+									<p>Cast:</p>
+									{cast?.map((c) => {
+										return (
+											<p className="name" key={c.id}>
+												{c.name}
+											</p>
+										);
+									})}
+								</div>
+							) : null}
+							{directors?.length >= 1 ? (
+								<Directors directors={directors} />
+							) : null}
+							{creators?.length >= 1 ? (
+								<Creators creators={creators} />
+							) : null}
+						</div>
 					</div>
-				</div>
-				<Recommendations id={details?.id} mediaType={mediaType} />
-			</div>
-		</div>
+					<Recommendations id={details?.id} mediaType={mediaType} />
+				</Modal.Body>
+			</Modal>
+		</>
 	);
 }

@@ -52,8 +52,7 @@
 
 	h1 {
 		color: #fff;
-		font-size: 2rem;
-		font-weight: bold;
+		@include subHeader();
 		margin-bottom: 1.75rem;
 	}
 
@@ -78,7 +77,7 @@
 			margin-bottom: 1.875rem;
 		}
 		@include inputPlaceholder() {
-			font-size: 1rem;
+			@include body('regular');	
 		}
 
 		@include media-query('mobile-lg') {
@@ -91,8 +90,7 @@
 		border-radius: 0.25rem;
 		border: 0;
 		color: white;
-		font-size: 1rem;
-		font-weight: bold;
+		@include body('medium');	
 		margin: 1.5rem 0;
 		padding: 1rem;
 		cursor: pointer;
@@ -112,8 +110,7 @@
 	.signUpText,
 	.signInText {
 		color: #737373;
-		font-size: 1rem;
-		font-weight: 500;
+		@include body('regular');	
 		margin-bottom: 1.5rem;
 
 		a {
@@ -127,7 +124,7 @@
 
 	.recaptchaText {
 		margin-top: 0.625rem;
-		@include caption(regular);
+		@include caption('regular');
 		color: $lt-medium-gray;
 	}
 

@@ -16,12 +16,13 @@ const Recommendations = ({id, mediaType}) => {
   }, [id, mediaType]);
   
   return(
-    <div className='content similar-movies'>
+    <div className='content similar-movies d-flex flex-wrap justify-content-start'>
       {recommendationsData.map((rec) => (
         rec?.backdrop_path && (
           <div 
             key={rec?.id}
-            className="container"
+            className="rec-container"
+            
           >
             <img
               className='detailsPoster'

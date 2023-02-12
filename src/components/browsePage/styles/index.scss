@@ -1,8 +1,7 @@
 @import '../../../styles/mixins.scss';
 
-
 .row-container {
-  padding: 0rem 1.25rem;
+  padding: 0rem 0.5rem 0rem  !important;
   position: relative;
   z-index: 2;
 }

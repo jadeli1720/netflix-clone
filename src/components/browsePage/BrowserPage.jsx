@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import {  Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 // import Fuse from 'fuse.js';
 import NavBar from "./navBar/NavBar";
 import Banner from "./banner/Banner";
@@ -38,32 +38,30 @@ export default function BrowsePage() {
 			) : (
 				<div className="releaseBody"></div>
 			)}
-			<div className="homeScreen">
+			<Container fluid className="homeScreen">
 				<NavBar
 					user={user}
 					searchTerm={searchTerm}
 					setSearchTerm={setSearchTerm}
 				/>
 				<Banner />
-				<div className="row-container">
-				{mediaRequests.map(
-					({ rowId, category, isLargeRow, type, url }) => {
-						return (
-							<Row
-								key={rowId}
-								rowId={rowId}
-								category={category}
-								isLargeRow={isLargeRow}
-								type={type}
-								url={url}
-							/>
-						);
-					}
-				)}
-
-				</div>
-
-			</div>
+				<Container fluid className="row-container ">
+					{mediaRequests.map(
+						({ rowId, category, isLargeRow, type, url }) => {
+							return (
+								<Row
+									key={rowId}
+									rowId={rowId}
+									category={category}
+									isLargeRow={isLargeRow}
+									type={type}
+									url={url}
+								/>
+							);
+						}
+					)}
+				</Container>
+			</Container>
 		</>
 	) : (
 		<SelectedProfile user={user} setProfile={setProfile} />

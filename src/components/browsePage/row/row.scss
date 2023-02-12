@@ -1,14 +1,16 @@
 @import '../../../styles/mixins.scss';
-//MOVIE ROWS
-.row {
-	margin-left: 20px;
+
+.rowContainer {
+	h3 {
+		@include subTitle('medium') ;
+	}
 }
 
 .moviesContainer {
 	display: flex;
 	overflow-y: hidden !important;
 	overflow-x: scroll;
-	padding: 20px 20px 20px 0;
+	padding: 0.25rem 0px 1.75rem ;
 	scroll-behavior: smooth;
 	cursor: pointer;
 
@@ -17,7 +19,7 @@
 	}
 
 	.isLarge {
-		height: 290px;
+		height: 18.125rem;
 	}
 
 	.arrow-container-left, .arrow-container-right {
@@ -26,8 +28,8 @@
 		align-items: center;
 		justify-content: center;
 		background-color: rgba(0, 0, 0, 0.70);
-		height: 140px;
-		width: 50px;
+		height: 8.75rem;
+		width: 3.75rem;
 		z-index: 10;
 		cursor: pointer;
 		opacity: 0;
@@ -38,35 +40,36 @@
 		}
 		
 		svg {
-			font-size: 20px;
-			padding-right: 4px;
+			font-size: 1.25rem;
+			padding-right: 0.25rem;
 		}
 	}
 
 	.arrow-container-left {
-		left: 20px;
+		left: 0;
 	}
 
 	.arrow-container-right {
-		right: 0px ;
+		right: 0;
 	}
 
 	.isLarge{
-		height: 290px;
+		height: 18.125rem;
 	}
 
 	.posterContainer {
 		position: relative;
-		border-radius: 5px;
+		border-radius: 0.313rem;
 		object-fit: contain;
-		margin-right: 10px;
-		max-height: 100%;
+		margin-right: 0.625rem;
+		height: 100%;
 		width:100%;
 	}
 
 	.poster {
-		max-height: 140px;
-		margin-right: 10px;
+		height: 8.75rem;
+		width: auto;
+		margin-right: 0.625rem;
 		transition: transform 450ms;
 
 		&:hover {
@@ -76,7 +79,8 @@
 	}
 
 	.posterLarge {
-		max-height: 290px;
+		height: 18.125rem;
+		width: auto;
 
 		&:hover{
 			transform: scale(1.09);
@@ -87,9 +91,9 @@
 	.title-container {
 		position: absolute;
 		left: 0;
-		bottom: 2px;
-		height: 142.5px;
-		width: 249px;
+		bottom: 0.125rem;
+		height: 8.906rem;
+		width: 15.563rem;
 		display: none;
 	}
 
@@ -119,22 +123,23 @@
 		user-select: none;
 	}
 
-	.subtitle {color: #fff;
-		font-size: 12px;
+	.subtitle {
+		color: #fff;
+		font-size: 0.75rem;
 		font-weight: 700;
-		margin-top: 5px;
+		margin-top: 0.313rem;
 		margin-bottom: 0;
-		margin-left: 10px;
-		margin-right: 10px;
+		margin-left: 0.625rem;
+		margin-right: 0.625rem;
 	}
 
 	.description {
 		color: #fff;
-		font-size: 10px;
+		font-size: 0.625rem;
 		line-height: normal;
-		margin-top: 5px;
+		margin-top: 0.313rem;
 		margin-bottom: 0;
-		margin-left: 10px;
-		margin-right: 10px;
+		margin-left: 0.625rem;
+		margin-right: 0.625rem;
 	}
 }

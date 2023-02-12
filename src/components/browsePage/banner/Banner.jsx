@@ -39,7 +39,7 @@ export default function Banner() {
 						backgroundRepeat: "no-repeat",
 					}}
 					>
-						<div className="fadeBottom"></div>
+					<div className="fadeBottom"></div>
 					</div>
 					
 				):null}

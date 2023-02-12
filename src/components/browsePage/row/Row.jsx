@@ -7,20 +7,19 @@ import './row.scss';
 
 function Row({ rowId, category, isLargeRow, type, url }) {
 	const [movies, setMovies] = useState([]);
-	const [showFeatureModal, setShowFeatureModal] = useState(false);
+	const [show, setShow] = useState(false);
 
 	//When the above state is true, this shows the SINGLE detail for a SINGLE card that is clicked and not all of them opening at once.
 	const [featureDetails, setFeatureDetails] = useState([]);
 	const [mediaType, setMediaType] = useState("");
 
 	const handleMovieModal = (m) => {
-		console.log(m)
-		if (!showFeatureModal) {
-			setShowFeatureModal(true);
+		if (!show) {
+			setShow(true);
 			setFeatureDetails(m);
 			setMediaType(type);
 		} else {
-			setShowFeatureModal(false);
+			setShow(false);
 			setFeatureDetails([]);
 			setMediaType("");
 		}
@@ -58,9 +57,9 @@ function Row({ rowId, category, isLargeRow, type, url }) {
 	};
 
 	return (
-		<div className="row">
-			<h2 style={{ marginTop: "10px" }}>{category}</h2>
-			<div className="moviesContainer" id={"slider" + rowId}>
+		<>
+			<h3 style={{ marginTop: "10px" }}>{category}</h3>
+			<div className="moviesContainer d-flex" id={"slider" + rowId}>
 				<div
 					className={` arrow-container-left + ${
 						isLargeRow ? "isLarge" : ""
@@ -70,44 +69,41 @@ function Row({ rowId, category, isLargeRow, type, url }) {
 					<BsChevronLeft />
 				</div>
 				{movies.map(
-					(movie) =>
-						((isLargeRow && movie?.poster_path) ||
-							(!isLargeRow && movie?.backdrop_path)) && (
+					(movie) => ((isLargeRow && movie?.poster_path) || (!isLargeRow && movie?.backdrop_path)) && (
+						<div
+							key={movie.id}
+							className={`posterContainer ${show}`}
+							onClick={() => handleMovieModal(movie)}
+						>
+							<img
+								className={`poster ${
+									isLargeRow && "posterLarge"
+								} `}
+								src={`${BASE_IMAGE_URL}${
+									isLargeRow
+										? movie?.poster_path
+										: movie?.backdrop_path
+								}`}
+								alt={
+									movie?.title ||
+									movie?.name ||
+									movie?.original_title
+								}
+							/>
 							<div
-								key={movie.id}
-								className={`posterContainer ${showFeatureModal}`}
-								onClick={() => handleMovieModal(movie)}
+								className={`title-container ${
+									!isLargeRow && "posterSmall"
+								}`}
 							>
-								{/* contains 404 error message. How do we clear the console of these */}
-								<img
-									className={`poster ${
-										isLargeRow && "posterLarge"
-									} `}
-									src={`${BASE_IMAGE_URL}${
-										isLargeRow
-											? movie?.poster_path
-											: movie?.backdrop_path
-									}`}
-									alt={
-										movie?.title ||
+								<p className="title">
+									{movie?.title ||
 										movie?.name ||
-										movie?.original_title
-									}
-								/>
-								<div
-									className={`title-container ${
-										!isLargeRow && "posterSmall"
-									}`}
-								>
-									<p className="title">
-										{movie?.title ||
-											movie?.name ||
-											movie?.original_title}
-									</p>
-									<div className="bottom-fade"></div>
-								</div>
+										movie?.original_title}
+								</p>
+								<div className="bottom-fade"></div>
 							</div>
-						)
+						</div>
+					)
 				)}
 				<div
 					className={` arrow-container-right + ${
@@ -118,15 +114,16 @@ function Row({ rowId, category, isLargeRow, type, url }) {
 					<BsChevronRight />
 				</div>
 			</div>
-			{showFeatureModal && (
+			{show && (
 				<FeatureModal
-					show={showFeatureModal}
-					closeFeatureModal={setShowFeatureModal}
+					show={show}
+					setShow={setShow}
+					closeFeatureModal={setShow}
 					details={featureDetails}
 					mediaType={mediaType}
 				/>
 			)}
-		</div>
+		</>
 	);
 }
 
