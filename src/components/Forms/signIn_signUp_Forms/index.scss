@@ -1,0 +1,155 @@
+@import "../../../styles/mixins.scss";
+
+#signInGradient, #signUpGradient {
+	height: 100% ;
+}
+
+.signInUpContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(0, 0, 0, 0.75);
+	border-radius: 5px;
+	margin-top: 3rem !important;
+	margin: auto;
+	margin-bottom: 6.25rem;
+	padding: 0rem 4.25rem 0rem;
+
+	min-height: 42.75rem;
+	height: 100%;
+	max-width: 28.125rem;
+	width: 100%;
+	z-index: 2;
+
+	@include media-query('mobile-lg') {
+		max-width: 36.125rem;
+		padding: 3.75rem 2.25rem 2.5rem;
+	}
+
+	@include media-query('mobile-sm') {
+		padding: 3.75rem 1rem 2.5rem;
+	}
+
+	.error {
+		background: #e87c03;
+		border-radius: 0.25rem;
+		@include caption(regular);
+		margin: 0 0 1rem;
+		color: white;
+		padding: 0.5rem 1.25rem;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		max-width: 28.125rem;
+		width: 100%;
+
+		@include media-query('mobile-lg'){
+			max-width: unset;
+		}
+	}
+
+	h1 {
+		color: #fff;
+		@include subHeader();
+		margin-bottom: 1.75rem;
+	}
+
+	input {
+		background-color: $medium-gray !important;
+		border-radius: 0.25rem;
+		border: 0;
+		color: #fff;
+		height: 3.125rem;
+		line-height: 3.125rem;
+		margin-bottom: 1.25rem;
+		padding: 0.313rem 1.25rem;
+		max-width: 25.625rem;
+		width: 100%;
+
+		&:focus {
+			background-color: $medium-gray;
+			color: white;
+		}
+
+		&:last-of-type {
+			margin-bottom: 1.875rem;
+		}
+		@include inputPlaceholder() {
+			@include body('regular');	
+		}
+
+		@include media-query('mobile-lg') {
+			max-width: unset
+		}
+	}
+
+	button {
+		background-color: $netflix-red !important;
+		border-radius: 0.25rem;
+		border: 0;
+		color: white;
+		@include body('medium');	
+		margin: 1.5rem 0;
+		padding: 1rem;
+		cursor: pointer;
+		max-width: 28.125rem;
+		width: 100%;
+
+		&:disabled {
+			cursor: auto;
+			opacity: 0.5;
+		}
+
+		@include media-query('mobile-lg'){
+			max-width: unset;
+		}
+	}
+
+	.signUpText,
+	.signInText {
+		color: #737373;
+		@include body('regular');	
+		margin-bottom: 1.5rem;
+
+		a {
+			color: #fff;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.recaptchaText {
+		margin-top: 0.625rem;
+		@include caption('regular');
+		color: $lt-medium-gray;
+	}
+
+	.bottom-container {
+		height: 240px;
+		button {
+			background-color: unset !important;
+			@include caption(regular);
+			color: $links;
+			cursor: pointer;
+			margin: -7px 0 0 4px;
+			padding: 0;
+			max-width: unset;
+			width: unset;
+		}
+
+		.terms {
+			@include caption(regular);
+			color: $lt-medium-gray;
+
+			a {
+				color: $links
+			}
+		}
+	}
+}
+
+

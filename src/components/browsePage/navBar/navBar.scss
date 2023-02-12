@@ -1,0 +1,182 @@
+@import '../../../styles/mixins.scss';
+
+.nav {
+	transition: all 0.5s ease-in;
+
+	.navbar-toggler{
+		background: #404040a6 !important;
+		border-radius: 0.25rem !important;
+		border: $lt-medium-gray 1px solid;
+		width: unset;
+	}
+
+	.navbar-toggler-icon {
+		background-image: url('../../../../public/images/misc/list.svg') !important;
+		
+	}
+
+	.navLogo{
+		cursor: pointer;
+		width: 10.5rem;
+		height: auto;
+	}
+}
+
+.navBlack {
+	background-color: black;
+}
+
+.navbar-nav {
+	a {
+		color: white;
+		@include subTitleMobile(regular);
+		text-shadow: 
+			0px 2px 3px rgba(0,0,0,0.5),
+			0px -2px 13px rgba(0,0,0,0.4),
+			0px 18px 23px rgba(0,0,0,0.2);
+			cursor: pointer;
+	}
+}
+
+	.displayName {
+		cursor: default;
+	}
+
+	.search {
+		.searchButton {
+			background-color: transparent !important;
+			border: none;
+			@include subTitleMobile(regular);
+			filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+			cursor: pointer;
+			outline: 0;
+			padding: 0;
+			max-width: 2.25rem;
+		}
+
+		.inputContainer {
+			position: relative;
+
+			input {
+				background-color: #404040a6;
+				border: 1px solid rgba(26, 26, 26, 0.632);
+				border-radius: 0.25rem;
+				color: white;
+				opacity: 0;
+				padding: 0;
+				width: 0rem;
+				transition: width  ease-in-out  0.5s;
+
+				&::placeholder {
+					color: white;
+				}
+
+				&:focus {
+					background-color: rgba(0, 0, 0, 0.8);
+				}
+			}
+
+			.toggleSearch {
+				padding: 0 0.625rem;
+				opacity: 1;
+				height: 2.2rem;
+				width: 17.5rem;
+			}
+		}
+
+		form {
+			height: 2.25rem;
+			@media (max-width: 61.875rem) {
+				margin-top: 0.5rem;
+
+				.inputContainer {
+					order: 2;
+				}
+
+				.searchButton {
+					order: 1;
+					margin-right: 1rem;
+					margin-left: 0px !important;
+				}
+			}
+		}
+	}
+
+	.navAvatar, img {
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		margin-right:.5rem;
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+
+	.offcanvas{
+		background-color: #161616 !important;
+
+		.offcanvas-header .btn-close {
+			background: transparent url('../../../../public/images/misc/x-lg.svg')center/2rem auto no-repeat !important;
+			color: white !important;
+		}
+	}
+
+	.dropdown {
+		margin-left: 1rem;
+
+		@media (max-width: 61.875rem) {
+			
+			margin-top: 1rem;
+			margin-left: 0rem;
+		}
+
+		button {
+			background-color: #404040a6 !important;
+			border: none;
+			width: 3.75rem;
+
+			svg {
+				height: 2.25rem;
+				width: 2.25rem;
+			}
+
+			&::after {
+				display: none;
+			}
+
+			&:hover {
+				background-color: #161616 !important;
+			}
+
+			@media (max-width: 61.875rem) {
+				background-color: transparent !important;
+				padding-left: 0;
+				width: 2.25rem;
+			}
+		}
+
+		.dropdown-item {
+			color: white !important;
+		}
+
+		.dropdown-menu[data-bs-popper] {
+			background-color: #404040a6 !important;
+			left: -6.125rem;
+
+			@media (max-width: 61.875rem) {
+				left: 0rem;
+				background-color: transparent !important;
+				border: none;
+				width: 100%;
+			}
+		}
+
+		hr {
+			border-top: 1px solid $lt-medium-gray;
+		}
+	}
+
+
+
+
+
+

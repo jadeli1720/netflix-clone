@@ -1,0 +1,235 @@
+@import "../../../styles/mixins.scss";
+
+.modal-container {
+	overflow: hidden;
+}
+.modal-lg {
+	border-radius: 0.5rem !important;
+	height: 100% !important;
+	max-width: 56.25rem !important;
+	width: 100% !important;
+
+	@include media-query('tablet-xs') {
+		margin: 0px auto !important;
+	}
+}
+.modal-content {
+	background-color: $modal-background !important;
+	border-radius: 0.5rem !important;
+
+	p {
+		color: #afafaf;
+		margin: 0;
+	}
+
+	header {
+		position: relative;
+		overflow: hidden;
+		.header-image-container{
+			min-height: 31.625rem;
+			height: 100%;
+			//Below used to cover line that shows underneath the fade bottom
+			padding-bottom: 0.25rem;
+
+			@include media-query('tablet-xs') {
+				min-height: 26rem;
+			}
+
+			@include media-query('mobile-lg') {
+				min-height: 18rem;
+			}
+
+			@include media-query('mobile-sm') {
+				min-height: 13.75rem;
+			}
+		}
+		.header-img {
+			height: auto;
+			width: 100%;
+		}
+		.closeContainer,
+		.playBtnContainer {
+			svg {
+				cursor: pointer;
+			}
+		}
+
+		.closeContainer {
+			position: absolute;
+			top: 0.5rem;
+			right: 0.5rem;
+			font-size: 2.25rem;
+			height: 2.25rem;
+			width: 2.25rem;
+			z-index: 4;
+
+			svg {
+				filter: drop-shadow(
+					0px 2px 3px rgba(0, 0, 0, 0.75)
+				);
+				opacity: 1;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					transition: all 0.2s ease-in-out;
+					opacity: 1;
+				}
+			}
+		}
+
+		.playBtnContainer {
+			position: absolute;
+			top: -1.75rem;
+			font-size: 4rem;
+			width: 100%;
+			height: 100%;
+			z-index: 3;
+
+			svg {
+				filter: drop-shadow(
+					0px 3px 4px rgba(0, 0, 0, 0.80)
+				);
+				opacity: 0.85;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					transition: all 0.2s ease-in-out;
+					opacity: 1;
+				}
+			}
+		}
+
+		.video-player-container {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			height: 100%;
+			width: 100%;
+			z-index: 100;
+	
+			#videoCloseButton {
+				z-index: 150;
+			}
+		}
+
+		.titleMetaContainer,
+		.bottomFade {
+			position: absolute;
+			bottom: 0;
+			z-index: 2;
+		}
+
+		.titleMetaContainer {
+			padding-left: 2rem;
+			width: 100%;
+		}
+
+		.metaDataRow {
+			margin-top: 0.5rem;
+
+			p,
+			.widget-ratings {
+				margin-right: 1rem;
+			}
+
+			.mediaRatingContainer {
+				border: #afafaf 1px solid;
+				margin-right: 1rem;
+
+				p {
+					text-align: center;
+					margin-right: 0;
+					padding: 2px 4px;
+				}
+			}
+
+			.hdContainer {
+				background: #535353;
+				border-radius: 2px;
+				p {
+					color: #101010;
+					font-weight: 900;
+					text-align: center;
+					padding-left: 1px;
+					margin: 0.5px 4px 1px;
+				}
+			}
+		}
+
+		.bottomFade {
+			background-image: linear-gradient( 180deg, transparent 68%, #1e1e1eb7 85%, $modal-background 98% );
+			left: 0;
+			top: 0;
+			width: 100%;
+		}
+	}
+
+	.content {
+		padding: 0.2rem 2rem 2rem;
+	}
+
+	.cast,
+	.description {
+		margin-top: 1rem;
+	}
+
+	.cast,
+	.director {
+		display: flex;
+		flex-wrap: wrap;
+
+		p {
+			display: flex;
+			margin-right: 0.25rem;
+		}
+
+		.name + .name::before {
+			display: inline-block;
+			white-space: pre;
+			content: ", ";
+		}
+	}
+
+	.director {
+		margin-top: 0.25rem;
+	}
+
+	.similar-movies {
+		min-height: 30rem;
+		height: 100%;
+
+
+		.rec-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-right: 1.25%;
+			margin-bottom: 1.25%;
+			width: 32%;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+
+			@media (max-width: 64rem) {
+				margin-right: 2%;
+				width: 48%;
+			}
+
+			@media (max-width: 24.375rem) {
+				margin-right: 0%;
+				width: 100%;
+			}
+		}
+
+		.detailsPoster {
+			max-width: 22.5rem;
+			width: 100%;
+			@media (max-width: 64rem) {
+				margin-bottom: 3%;
+				max-width: 25.25rem;
+			}
+		}
+	}
+}
+

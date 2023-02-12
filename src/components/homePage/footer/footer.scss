@@ -1,0 +1,76 @@
+@import '../../../styles/mixins.scss';
+
+.footerContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	color: $lt-medium-gray;
+	@include body(regular);
+	padding: 4.375rem 0;
+	margin: auto;
+	max-width: 62.5rem;
+	
+
+	@include media-query('tablet-md') {
+		padding: 4.375rem 1.875rem;
+	}
+
+	@include media-query('mobile-sm') {
+		padding: 3rem 1.25rem;
+	}
+
+	.row {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		@include caption(regular);
+		margin: 0 auto;
+		width: 100%;
+		@include media-query('mobile-sm') {
+			align-items: center;
+		}
+	}
+
+	.column {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+		padding: 0;
+		width: 25%;
+
+		a {
+			cursor: pointer;
+			margin-bottom: 1.25rem;
+			cursor: pointer;
+			text-decoration: underline;
+			transition: all ease-in-out 250ms;
+			&:hover {
+				color: $links;
+			}
+		}
+
+		&:nth-of-type(n+3){
+			@include media-query('tablet-sm'){
+				margin-top: 1.5rem;
+			}
+		}
+
+		&:nth-of-type(n + 2) {
+			@include media-query('mobile-sm'){
+				margin-top: 1.5rem;
+			}
+		}
+
+		@include media-query('tablet-sm') {
+			width:50%
+		}
+
+		@include media-query('mobile-sm') {
+			width: 100%
+		}
+	}
+
+	.footerTitle {
+		margin-bottom: 2.5rem;
+	}
+}

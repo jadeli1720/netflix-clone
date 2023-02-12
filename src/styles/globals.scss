@@ -1,0 +1,36 @@
+@import '../styles/mixins.scss';
+
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+html, body {
+  background: black;
+  font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @include body('regular');
+  color: white;
+}
+
+.app {
+  overflow-x: hidden;
+}
+
+a {
+    text-decoration:none; 
+    color:inherit; 
+    cursor:pointer;
+  }
+
+svg {
+  height: 1.2em;
+  width: 1.2em;
+
+  @media (max-width: 600px) {
+    height: 1em;
+    width: 1em;
+  }
+}

@@ -1,92 +1,86 @@
-    .headerNav{
-      display: flex;
-      flex: row nowrap;
-      justify-content: flex-start;
-      align-items: flex-start;
+@import "../../../styles/mixins.scss";
+
+.headerNav{
+  margin: 0 3.5rem;
+  padding-top: 1.75rem;
+
+  .netflixLogo, img {
+    cursor: pointer;
+    width: 10.5rem;
+    height: auto;
+  }
+}
+
+.profileContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  max-width: 80%;
+
+  h1 {
+    color: #fff;
+    @include headerMobile();
+    text-align: center;
+    margin-top: 12.5rem;
+    width: 100%;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10rem;
+    margin-bottom: 1.5rem;
+
+    li, p, img {
+      transition: all ease-in-out 0.5s;
+    }
+
+    li {
+      max-height: 12.5rem;
+      max-width: 12.5rem;
+      list-style-type: none;
+      text-align: center;
+      margin-right: 1.875rem;
       
-      margin: 0 3.5rem;
-      padding-top: 28px;
-  
-      .netflixLogo, img {
-        cursor: pointer;
-        margin-right: auto;
-        width: 8.375rem;
-        height: 2.25rem;
+
+      &:hover > img {
+        border: 3px solid white;
+      }
+
+      &:hover> p {
+        font-weight: bold;
+        color: white;
+        padding-top: 1rem;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
       }
     }
+  }
 
-    .profileContainer {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      margin: auto;
-      max-width: 80%;
-
-      h1 {
-        color: #fff;
-        font-size: 36px;
-        font-weight: 500;
-        text-align: center;
-        margin-top: 200px;
-        width: 100%;
-      }
-
-      ul {
-        display: flex;
-        flex-direction: row;
-        margin-top: 160px;
-        margin-bottom: 1.5rem;
-
-        li, p, img {
-          transition: all ease-in-out 0.5s;
-        }
-
-        li {
-          max-height: 200px;
-          max-width: 200px;
-          list-style-type: none;
-          text-align: center;
-          margin-right: 30px;
-          
-
-          &:hover > img {
-            border: 3px solid white;
-          }
-
-          &:hover> p {
-            font-weight: bold;
-            color: white;
-            padding-top:16px;
-          }
-
-          &:last-of-type {
-            margin-right: 0;
-          }
-        }
-      }
-
-      p {
-        color: #808080;
-        font-size: 16px;
-        text-overflow: ellipsis;
-        margin: 1rem;
+  p {
+    color: #afafaf;
+    @include body(regular);
+    text-overflow: ellipsis;
+    margin: 1rem;
 
 
-        &:hover {
-          font-weight: bold;
-          color: #e5e5e5;
-          
-        }
-      }
-
-      img {
-        width: 100%;
-        max-width: 150px;
-        height: auto;
-        // border: 3px solid black;
-        cursor: pointer;
-      }
+    &:hover {
+      font-weight: bold;
+      color: #e5e5e5;
+      
     }
+  }
+
+  img {
+    width: 100%;
+    max-width: 9.375rem;
+    height: auto;
+    cursor: pointer;
+  }
+}
     

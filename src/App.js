@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.scss";
 import * as ROUTES from './constants/routes'
-import SignIn from "./components/signInPage";
-import SignUp from "./components/signUpPage";
-import HomePage from "./components/homePage";
-import BrowsePage from "./components/browsePage";
+import SignIn from "./components/signInPage/SignInPage";
+import SignUp from "./components/signUpPage/SignUpPage";
+import HomePage from "./components/homePage/HomePage";
+import BrowsePage from "./components/browsePage/BrowserPage";
 import { ProtectedRoute, UserSignedIn } from "./helpers";
 
 import useAuthListener from "./hooks";
