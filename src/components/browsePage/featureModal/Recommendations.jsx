@@ -3,22 +3,34 @@ import HTTP from '../../../services/axios';
 import { API_KEY, BASE_IMAGE_URL } from "../../../constants/urls"
 
 const Recommendations = ({id, mediaType}) => {
-  const [recommendationsData, setRecommendationsData] = useState([])
+  const [recommendedData, setRecommendedData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const request = (await HTTP.get(`/${mediaType}/${id}/recommendations?api_key=${API_KEY}&language=en-US`))?.data.results
+
+      const recommendedMediaRequest = (await HTTP.get(`/${mediaType}/${id}/recommendations?api_key=${API_KEY}&language=en-US`))?.data.results
       
-      setRecommendationsData(request.slice(0,9))
+      if(recommendedMediaRequest.length === 0 || recommendedMediaRequest.length < 9) {
+        
+        const similarMediaRequest = (await HTTP.get(`/${mediaType}/${id}/similar?api_key=${API_KEY}&language=en-US`))?.data.results
+
+        setRecommendedData(similarMediaRequest.slice(0,9))
+      } else {
+        setRecommendedData(recommendedMediaRequest.slice(0,9))
+      }
+      
     }
 
     fetchData()
   }, [id, mediaType]);
+
+
+  // console.log(recommendedData, mediaType)
   
   return(
     <div className='content similar-movies d-flex flex-wrap justify-content-start'>
-      {recommendationsData.map((rec) => (
-        rec?.backdrop_path && (
+      {recommendedData.map((rec) => (
+        rec?.poster_path && (
           <div 
             key={rec?.id}
             className="rec-container"
@@ -26,7 +38,7 @@ const Recommendations = ({id, mediaType}) => {
           >
             <img
               className='detailsPoster'
-              src={`${ BASE_IMAGE_URL}/${rec?.backdrop_path}`}
+              src={`${ BASE_IMAGE_URL}/${rec?.poster_path}`}
               alt={rec?.title || rec?.original_title}
             />
           </div>

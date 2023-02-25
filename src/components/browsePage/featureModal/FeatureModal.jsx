@@ -33,7 +33,6 @@ export default function FeatureModal({
 		setRuntime("");
 		// setMediaRating("");
 		setMediaTrailer([]);
-		// closeFeatureModal(false);
 		setShow(false)
 	};
 
@@ -51,7 +50,7 @@ export default function FeatureModal({
 					axios.spread((...res) => {
 						const mediaDetailRes = res[0]?.data;
 						const mediaCrewRes = res[1]?.data;
-
+						
 						//Actors
 						let actors = grabCastInfo(mediaCrewRes?.cast);
 						setCast(actors);
