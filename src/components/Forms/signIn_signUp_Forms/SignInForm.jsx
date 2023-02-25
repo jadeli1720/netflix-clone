@@ -18,20 +18,20 @@ export default function SignInForm() {
   const isInvalid = password === '' || emailAddress === '';
 
   const handleSignIn = (e) => {
-      e.preventDefault();
-    
-      return firebase
-        .auth()
-        .signInWithEmailAndPassword(emailAddress, password)
-        .then(() => {
-          //push to the browse page
-          navigate(ROUTES.BROWSE)
-        })
-        .catch((error) => {
-          setEmailAddress('');
-          setPassword('');
-          setError(error.message)
-        });
+    e.preventDefault();
+  
+    return firebase
+      .auth()
+      .signInWithEmailAndPassword(emailAddress, password)
+      .then(() => {
+        //push to the browse page
+        navigate(ROUTES.BROWSE)
+      })
+      .catch((error) => {
+        setEmailAddress('');
+        setPassword('');
+        setError(error.message)
+      });
     
   }
 

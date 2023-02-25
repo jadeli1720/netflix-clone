@@ -18,18 +18,17 @@ This application is a clone of the Netflix app, and will be an ongoing and itera
 - [x] Browse the rows of movies that are organized by various genres.
 - [x] Custom button sliders for each row.
 - [x] Hover over movies for movie title.
-- [x] Click on a particular movie to see that movies details, including a movie trailer provided by YouTube or the placeholder video.
-- [x] Show a list of suggested movies/tv shows that of the selected movie/tv show
+- [x] Click on a particular movie to see that movies details, including a movie trailer in a feature modal.
+- [x] Feature modal shows a list of recommended movies/tv shows that are similar to the selection
 
 ### :crystal_ball: Future
 
 - [ ] Users can Register and use strip checkout.
 - [ ] Search Bar functionality.
 - [ ] Trouble shoot/find fix for broken film/tv ratings.
-- [ ] Fill in the empty space of the features movie modal with movie suggestions.
 - [ ] Use a different way to handle props like redux or context.
-- [ ] Use a different style library.
 - [ ] Create sass variables and mixins for Sass styling repeats.
+- [ ] For details in the modal, very newly released or unreleased movies will not have movies that are similar to them. May want to substitute with 9 standard images
 
 ## Tech Stack
 
@@ -38,6 +37,7 @@ This application is a clone of the Netflix app, and will be an ongoing and itera
 - Axios
 - [Firebase](https://firebase.google.com)
 - [React Ratings Declarative](https://www.npmjs.com/package/react-ratings-declarative)
+- [React Bootstrap](https://react-bootstrap.github.io/)
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [React Player](https://www.npmjs.com/package/react-player)
 - Sass
