@@ -1,8 +1,5 @@
 @import "../../../styles/mixins.scss";
 
-.modal-container {
-	overflow: hidden;
-}
 .modal-lg {
 	border-radius: 0.5rem !important;
 	height: 100% !important;
@@ -107,7 +104,7 @@
 			z-index: 100;
 	
 			#videoCloseButton {
-				z-index: 150;
+				z-index: 1000;
 			}
 		}
 
@@ -121,6 +118,9 @@
 		.titleMetaContainer {
 			padding-left: 2rem;
 			width: 100%;
+			@media (max-width: 25.625rem) {
+				padding-left:  0.5rem ;
+			}
 		}
 
 		.metaDataRow {
@@ -165,6 +165,9 @@
 
 	.content {
 		padding: 0.2rem 2rem 2rem;
+		@media (max-width: 25.625rem) {
+			padding: 0.2rem 0.5rem 2rem;
+		}
 	}
 
 	.cast,
