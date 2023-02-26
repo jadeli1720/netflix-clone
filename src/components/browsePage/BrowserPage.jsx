@@ -47,13 +47,12 @@ export default function BrowsePage() {
 				<Banner />
 				<Container fluid className="row-container ">
 					{mediaRequests.map(
-						({ rowId, category, isLargeRow, type, url }) => {
+						({ rowId, category, type, url }) => {
 							return (
 								<Row
 									key={rowId}
 									rowId={rowId}
 									category={category}
-									isLargeRow={isLargeRow}
 									type={type}
 									url={url}
 								/>

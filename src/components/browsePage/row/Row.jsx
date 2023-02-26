@@ -5,7 +5,7 @@ import FeatureModal from "../featureModal/FeatureModal";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import './row.scss';
 
-function Row({ rowId, category, isLargeRow, type, url }) {
+function Row({ rowId, category, type, url }) {
 	const [movies, setMovies] = useState([]);
 	const [show, setShow] = useState(false);
 
@@ -14,7 +14,6 @@ function Row({ rowId, category, isLargeRow, type, url }) {
 	const [mediaType, setMediaType] = useState("");
 
 	const handleMovieModal = (m) => {
-		// console.log(m)
 		if (!show) {
 			setShow(true);
 			setFeatureDetails(m);
@@ -29,6 +28,7 @@ function Row({ rowId, category, isLargeRow, type, url }) {
 	useEffect(() => {
 		async function fetchData() {
 			const request = (await HTTP.get(url)).data.results;
+
 			setMovies(request);
 		}
 
@@ -62,54 +62,32 @@ function Row({ rowId, category, isLargeRow, type, url }) {
 			<h3 style={{ marginTop: "10px" }}>{category}</h3>
 			<div className="moviesContainer d-flex" id={"slider" + rowId}>
 				<div
-					className={` arrow-container-left + ${
-						isLargeRow ? "isLarge" : ""
-					} `}
+					className='arrow-container-left'
 					onClick={slideRight}
 				>
 					<BsChevronLeft />
 				</div>
 				{movies.map(
-					(movie) => ((isLargeRow && movie?.poster_path) || (!isLargeRow && movie?.backdrop_path)) && (
+					(movie) => ( movie?.poster_path) && (
 						<div
 							key={movie.id}
 							className={`posterContainer ${show}`}
 							onClick={() => handleMovieModal(movie)}
 						>
 							<img
-								className={`poster ${
-									isLargeRow && "posterLarge"
-								} `}
-								src={`${BASE_IMAGE_URL}${
-									isLargeRow
-										? movie?.poster_path
-										: movie?.backdrop_path
-								}`}
+								className= "posterLarge"
+								src={`${BASE_IMAGE_URL}${movie?.poster_path}`}
 								alt={
 									movie?.title ||
 									movie?.name ||
 									movie?.original_title
 								}
 							/>
-							<div
-								className={`title-container ${
-									!isLargeRow && "posterSmall"
-								}`}
-							>
-								<p className="title">
-									{movie?.title ||
-										movie?.name ||
-										movie?.original_title}
-								</p>
-								<div className="bottom-fade"></div>
-							</div>
 						</div>
 					)
 				)}
 				<div
-					className={` arrow-container-right + ${
-						isLargeRow ? "isLarge" : ""
-					} `}
+					className= 'arrow-container-right'
 					onClick={slideLeft}
 				>
 					<BsChevronRight />
