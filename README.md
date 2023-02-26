@@ -25,10 +25,7 @@ This application is a clone of the Netflix app, and will be an ongoing and itera
 
 - [ ] Users can Register and use strip checkout.
 - [ ] Search Bar functionality.
-- [ ] Trouble shoot/find fix for broken film/tv ratings.
 - [ ] Use a different way to handle props like redux or context.
-- [ ] Create sass variables and mixins for Sass styling repeats.
-- [ ] For details in the modal, very newly released or unreleased movies will not have movies that are similar to them. May want to substitute with 9 standard images
 
 ## Tech Stack
 
