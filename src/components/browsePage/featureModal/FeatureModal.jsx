@@ -5,7 +5,7 @@ import { BsX, BsPlayCircle } from "react-icons/bs";
 import ReactPlayer from "react-player/youtube";
 import HTTP from "../../../services/axios";
 import { API_KEY, BASE_IMAGE_URL, YOUTUBE_URL } from "../../../constants/urls";
-import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabYear, roundNum } from "../../../helpers";
+import { convertRuntime, grabCastInfo, grabCreators, grabCrewInfo, grabMovieRatings, grabTvRatings, grabYear, roundNum } from "../../../helpers";
 import Ratings from "react-ratings-declarative";
 import Directors from "./Directors";
 import Creators from "./Creators";
@@ -23,8 +23,7 @@ export default function FeatureModal({
 	const [directors, setDirectors] = useState([]);
 	const [creators, setCreators] = useState([]);
 	const [runtime, setRuntime] = useState("");
-	//Not working as of 1/21/2023 from api
-	// const [mediaRating, setMediaRating] = useState("");
+	const [mediaRating, setMediaRating] = useState("");
 	const [mediaTrailer, setMediaTrailer] = useState([]);
 	const [showVideo, setShowVideo] = useState(false);
 
@@ -38,10 +37,19 @@ export default function FeatureModal({
 
 	useEffect(() => {
 		const fetchMediaDetailsById = () => {
-			let fetchMediaDetails = `/${mediaType}/${details?.id}?language=en-US&api_key=${API_KEY}&append_to_response=videos`;
+			//TV and Movie ratings are found in two separate databases between the two. This is why we have two separate calls instead of a single dynamic call
+			let fetchTvMediaDetails = `/tv/${details?.id}?language=en-US&api_key=${API_KEY}&append_to_response=videos,content_ratings`;
+			let fetchMovieMediaDetails = `/movie/${details?.id}?language=en-US&api_key=${API_KEY}&append_to_response=videos,release_dates`;
 			let fetchMediaCrewDetails = `/${mediaType}/${details?.id}/credits?&language=en-US&api_key=${API_KEY}`;
 
-			const requestMediaDetails = HTTP.get(fetchMediaDetails);
+			let requestMediaDetails 
+
+			if(mediaType === 'movie'){
+				requestMediaDetails = HTTP.get(fetchMovieMediaDetails)
+			} else {
+				requestMediaDetails = HTTP.get(fetchTvMediaDetails)
+			}
+
 			const requestMediaCrewDetails = HTTP.get(fetchMediaCrewDetails);
 
 			axios
@@ -67,8 +75,15 @@ export default function FeatureModal({
 							setDirectors(directors.slice(0, 2));
 						}
 
-						//Ratings (i.e. PG, PG:13, R) -->Does not work for now because all the adult objects are labeled as false
-						// let rating = grabMediaRatings(mediaDetailRes?.adult, mediaDetailRes?.genre)
+						//Ratings 
+						let rating 
+						if (mediaType === "movie") {
+							rating = grabMovieRatings(mediaDetailRes?.release_dates?.results)
+						}else{
+							rating= grabTvRatings(mediaDetailRes?.content_ratings?.results)
+						}
+
+						setMediaRating(rating)
 
 						//Runtimes
 						if (mediaType === "movie") {
@@ -177,9 +192,11 @@ export default function FeatureModal({
 										? grabYear(details?.first_air_date)
 										: grabYear(details?.release_date)}
 								</p>
-								{/* <div className="mediaRatingContainer">
-									<p>{mediaRating}</p>
-								</div> */}
+								{mediaRating ? (
+									<div className="mediaRatingContainer">
+										<p>{mediaRating}</p>
+									</div>
+								): null}
 								<p>{runtime}</p>
 								<div className="hdContainer">
 									<p>HD</p>

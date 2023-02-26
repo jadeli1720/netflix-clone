@@ -14,6 +14,7 @@ function Row({ rowId, category, isLargeRow, type, url }) {
 	const [mediaType, setMediaType] = useState("");
 
 	const handleMovieModal = (m) => {
+		// console.log(m)
 		if (!show) {
 			setShow(true);
 			setFeatureDetails(m);

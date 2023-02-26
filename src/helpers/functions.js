@@ -10,7 +10,6 @@ export const grabCastInfo = (data) => {
 	let actorsData = data.slice(0, 3);
 
 	actorsData.forEach((el) => {
-		// console.log(el)
 		let actor = {
 			id: el?.id,
 			name: el?.name,
@@ -31,8 +30,6 @@ export const grabCreators = (data) => {
     };
     return creatorsArr.push(creator)
   })
-
-
   return creatorsArr
 };
 
@@ -76,22 +73,21 @@ export const grabCrewInfo = (data) => {
 	}
 };
 
-//Not working for now. All the movies say false
-export const grabMediaRatings = (adult, genres) => {
-	let genreIdArr = [];
-	genres.forEach((g) => genreIdArr.push(g.id));
-
-	if (adult === true) {
-		return "R";
-	} else if (
-		(adult === false && genreIdArr.includes(10751)) ||
-		(adult === false && genreIdArr.includes(10762))
-	) {
-		return "PG";
-	} else {
-		return "PG-13";
-	}
+export const grabMovieRatings = (data) => {
+  for(let i = 0; i < data.length; i++){
+    if(data[i].iso_3166_1 === 'US'){
+      return data[i].release_dates[0].certification
+    }
+  }
 };
+
+export const grabTvRatings = (data) => {
+	for(let i = 0; i < data.length; i++){
+    if(data[i].iso_3166_1 === 'US'){
+      return data[i].rating
+    }
+  }
+}
 
 export const grabYear = (value) => {
 	return value.substring(0, 4);
