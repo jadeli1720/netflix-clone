@@ -38,7 +38,7 @@ export default function BrowsePage() {
 			) : (
 				<div className="releaseBody"></div>
 			)}
-			<Container fluid className="homeScreen">
+			<Container fluid className="homeScreen p-0">
 				<NavBar
 					user={user}
 					searchTerm={searchTerm}

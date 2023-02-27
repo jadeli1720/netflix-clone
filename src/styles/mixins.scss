@@ -136,34 +136,7 @@
 
 //Media Queries
 @mixin media-query($size) {
-	@if ($size == 'mobile-sm') {
-		@media (max-width: $mobile-sm) {@content;}
-	}
-	@else if ($size == 'mobile-lg'){
-		@media (max-width: $mobile-lg) {@content;}
-	}
-	@else if ($size == 'tablet-xs'){
-		@media (max-width: $tablet-xs) {@content;}
-	}
-	@else if ($size == 'tablet-sm'){
-		@media (max-width: $tablet-sm) {@content;}
-	}
-	@else if ($size == 'tablet-md'){
-		@media (max-width: $tablet-md) {@content;}
-	}
-	@else if ($size == 'tablet-lg'){
-		@media (max-width: $tablet-lg) {@content;}
-	}
-	@else if ($size == 'desktop-sm'){
-		@media (max-width: $desktop-sm) {@content;}
-	}
-	@else if ($size == 'desktop-md'){
-		@media (max-width: $desktop-md) {@content;}
-	}
-	@else if ($size == 'desktop-lg'){
-		@media (max-width: $desktop-lg) {@content;}
-	}
-	@else if ($size == 'desktop-xl'){
-		@media (max-width: $desktop-xl) {@content;}
+	@if ($size) {
+		@media (max-width: $size) {@content}
 	}
 }

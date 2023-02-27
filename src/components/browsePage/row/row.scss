@@ -1,8 +1,9 @@
-@import '../../../styles/mixins.scss';
+@import "../../../styles/mixins.scss";
 
 .rowContainer {
+	margin-top: 4rem;
 	h3 {
-		@include subTitle('medium') ;
+		@include subTitle("medium");
 	}
 }
 
@@ -10,7 +11,7 @@
 	display: flex;
 	overflow-y: hidden !important;
 	overflow-x: scroll;
-	padding: 0.25rem 0px 1.75rem ;
+	padding: 0.25rem 0px 1.75rem;
 	scroll-behavior: smooth;
 	cursor: pointer;
 
@@ -18,23 +19,24 @@
 		display: none !important;
 	}
 
-	.arrow-container-left, .arrow-container-right {
+	.arrow-container-left,
+	.arrow-container-right {
 		position: absolute;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: rgba(0, 0, 0, 0.70);
+		background-color: rgba(0, 0, 0, 0.7);
 		height: 21rem;
 		width: 3.75rem;
 		z-index: 10;
 		cursor: pointer;
 		opacity: 0;
 		transition: all 450ms;
-		
+
 		&:hover {
 			opacity: 1;
 		}
-		
+
 		svg {
 			font-size: 1.25rem;
 			padding-right: 0.25rem;
@@ -55,7 +57,7 @@
 		object-fit: contain;
 		margin-right: 0.625rem;
 		height: 100%;
-		width:100%;
+		width: 100%;
 	}
 
 	.posterLarge {
@@ -63,7 +65,7 @@
 		width: auto;
 		transition: transform 450ms;
 
-		&:hover{
+		&:hover {
 			transform: scale(1.09);
 			opacity: 1;
 		}

@@ -155,6 +155,7 @@ export default function FeatureModal({
 										config={{
 											youtube: {
 												color: `white`,
+												rel: 0,
 												modestbranding: 1,
 											},
 										}}
