@@ -1,10 +1,10 @@
-@import '../../styles/mixins.scss';
+@import "../../styles/mixins.scss";
 
 .accordionContainer {
 	border-bottom: 0.5rem solid #222;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
 	.inner {
 		padding: 4.375rem 0rem;
@@ -13,32 +13,35 @@
 		.optFormSection {
 			display: flex;
 			flex-direction: column;
-      align-items: center;
+			align-items: center;
 			width: 100%;
 			margin-top: 3.25rem;
 
-      @include media-query('tablet-sm') {
+			@include max-media-query($tablet-sm) {
 				margin-top: 2rem;
 			}
 
 			form {
 				margin: 0 !important;
-        max-width: 41.5rem;
+				max-width: 41.5rem;
 				width: 100%;
 			}
 
 			.row {
 				margin: 0;
-				
+			}
+
+			p {
+				margin-bottom: 1.625rem
 			}
 		}
 
 		p {
 			@include subTitleMobile(regular);
 			text-align: center;
-      @include media-query('tablet-sm') {
+			@include max-media-query($tablet-sm) {
 				font-size: 1.375rem;
-        width: 49%;
+				width: 80%;
 			}
 		}
 
@@ -48,9 +51,9 @@
 			margin-bottom: 3rem;
 			color: white;
 			text-align: center;
-	
-			@include media-query('tablet-sm') {
-				@include headerMobile()
+
+			@include max-media-query($tablet-sm) {
+				@include headerMobile();
 			}
 		}
 	}

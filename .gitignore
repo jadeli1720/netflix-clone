@@ -28,9 +28,10 @@ yarn-error.log*
 .sass-cache
 .sass-cache/
 .sass-cache/
+*.css
 *.css.map
 *.sass.map
-*.scss.map
+*.scss.map 
 
 
 # VS Code files for those working on multiple tools

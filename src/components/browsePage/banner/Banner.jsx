@@ -53,7 +53,7 @@ export default function Banner() {
 						trailerString.toLowerCase()
 			);
 
-			console.log(videoTrailerData)
+			// console.log(videoTrailerData)
 
 			setVideoTrailer(
 				videoTrailerData 
@@ -83,7 +83,8 @@ export default function Banner() {
 							volume={0}
 							muted={mute}
 							loop={true}
-							url={`${YOUTUBE_URL}${videoTrailer?.key || "IUN664s7N-c"}`}
+							// || "IUN664s7N-c"
+							url={`${YOUTUBE_URL}${videoTrailer?.key }`}
 							config={{
 								youtube : {
 									autoplay: 1,

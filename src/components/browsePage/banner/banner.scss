@@ -1,12 +1,12 @@
 @import "../../../styles/mixins.scss";
 //JUMBOTRON
 .banner-container {
-	border: 1px solid deeppink;
+	border: 0.25px solid rgba(255, 20, 145, 0.466);
 	height: 30rem;
 	width: 100%;
 
 	@media (min-width: $tablet-lg) {
-		height: 35rem;
+		height: 37.5rem;
 	}
 
 	@media (min-width: $desktop-sm) {
@@ -21,11 +21,11 @@
 	}
 
 	@media (min-width: $desktop-xl) {
-		height: 45rem;
+		height: 46rem;
 	}
 
 	@media (min-width: $desktop-xxl) {
-		height: 60rem;
+		height: 63rem;
 	}
 
 	.video-wrapper {
@@ -37,57 +37,56 @@
 		width: 100%;
 		z-index: 1;
 	}
-	
+
 	#react-player {
 		position: absolute;
-		top: -324px;
+		top: -180px;
 		left: 0;
 		width: 100vw !important;
 		height: 100% !important;
-	
+
 		.video-stream .html5-main-video[style] {
 			width: 100vw;
 		}
 
+		// @media (min-width: $tablet-lg) {
+		// 	top: -14.5rem;
+		// }
 
-		@media (min-width: $tablet-lg) {
-			top: -13.35rem;
-		}
+		// @media (min-width: $desktop-sm) {
+		// 	top: -15rem;
+		// }
 
-		@media (min-width: $desktop-sm) {
-			top: -15rem;
-		}
+		// @media (min-width: $desktop-md) {
+		// 	top: -8.125rem;
+		// }
 
-		@media (min-width: $desktop-md) {
-			top: -8.125rem;
-		}
-	
-		@media (min-width: $desktop-lg) {
-			top: -11.385rem;
-		}
-	
-		@media (min-width: $desktop-xl) {
-			top: -10.125rem;
-		}
-	
-		@media (min-width: $desktop-xxl) {
-			top: -14.125rem;
-		}
+		// @media (min-width: $desktop-lg) {
+		// 	top: -11.385rem;
+		// }
+
+		// @media (min-width: $desktop-xl) {
+		// 	top: -17.125rem;
+		// }
+
+		// @media (min-width: $desktop-xxl) {
+		// 	top: -26.125rem;
+		// }
 	}
 
 	.fadeBottom {
-		border: deeppink 1px solid;
+		// border: deeppink 1px solid;
 		position: relative;
 		left: 0;
 		top: 44rem;
 		background-image: linear-gradient(180deg, transparent 0%, black 68%);
-		height: 10%;
+		height: 15%;
 		width: 100%;
 		overflow: hidden;
 		z-index: 0;
 
-		@media (min-width: $tablet-lg)	{
-			top: 34.5rem;
+		@media (min-width: $tablet-lg) {
+			top: 37.5rem;
 		}
 
 		@media (min-width: $desktop-sm) {
@@ -104,40 +103,28 @@
 			top: 45rem;
 		}
 		@media (min-width: $desktop-xxl) {
-			top: 60rem;
+			top: 62rem;
 		}
-	}
-}
-
-.banner {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 45.75rem;
-	width: 100%;
-
-	@media (min-width: $desktop-md) {
-		height: 48rem;
-	}
-
-	@media (min-width: $desktop-xl) {
-		height: 58.75rem;
-	}
-
-	@media (min-width: $desktop-xxl) {
-		height: 73rem;
 	}
 }
 
 .copyContainer {
 	position: relative;
 	margin-left: 1.875rem !important;
-	margin-top: 12.5rem;
+	margin-top: 21.5rem;
 	z-index: 3;
 
-	@include media-query("tablet-sm") {
+	@include min-media-query($tablet-md) {
+		margin-top: 8.5rem;
+	}
+
+	@include min-media-query($tablet-sm) {
 		margin-left: 0 !important;
 		padding-left: 1rem !important;
+	}
+
+	@include min-media-query($desktop-lg){
+		margin-top: 19rem
 	}
 
 	.title {
@@ -148,15 +135,15 @@
 		max-width: 37.5rem;
 		width: 100%;
 
-		@include media-query("desktop-md") {
+		@include max-media-query($desktop-md) {
 			@include header();
 		}
 
-		@include media-query("tablet-xs") {
+		@include max-media-query($tablet-md) {
 			@include headerMobile();
 		}
 
-		@include media-query("mobile-lg") {
+		@include max-media-query($mobile-lg) {
 			@include subHeader();
 			line-height: 2.125rem;
 		}
@@ -171,14 +158,14 @@
 		max-width: 36rem;
 		width: 100%;
 
-		@include media-query("tablet-sm") {
+		@include max-media-query($tablet-sm) {
 			@include subTitleMobile(regular);
 		}
 	}
 
 	.row {
 		width: 25rem;
-		@include media-query("tablet-sm") {
+		@include max-media-query($tablet-sm) {
 			width: 20rem;
 		}
 	}
@@ -204,7 +191,7 @@
 			transition: all 0.2s ease-in-out;
 		}
 
-		@include media-query("tablet-sm") {
+		@include max-media-query($tablet-sm) {
 			@include body(regular);
 			margin-top: 1rem !important;
 			height: 2.55rem;
@@ -216,7 +203,7 @@
 			height: 1.25rem;
 			width: 1.25rem;
 
-			@include media-query("tablet-sm") {
+			@include max-media-query($tablet-sm) {
 				height: 1rem;
 				width: 1rem;
 			}

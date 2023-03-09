@@ -6,7 +6,7 @@
 	max-width: 56.25rem !important;
 	width: 100% !important;
 
-	@include media-query('tablet-xs') {
+	@include max-media-query($tablet-xs) {
 		margin: 0px auto !important;
 	}
 }
@@ -22,21 +22,21 @@
 	header {
 		position: relative;
 		overflow: hidden;
-		.header-image-container{
+		.header-image-container {
 			min-height: 31.625rem;
 			height: 100%;
 			//Below used to cover line that shows underneath the fade bottom
 			padding-bottom: 0.25rem;
 
-			@include media-query('tablet-xs') {
+			@include max-media-query($tablet-xs) {
 				min-height: 26rem;
 			}
 
-			@include media-query('mobile-lg') {
+			@include max-media-query($mobile-lg) {
 				min-height: 18rem;
 			}
 
-			@include media-query('mobile-sm') {
+			@include max-media-query($mobile-sm) {
 				min-height: 13.75rem;
 			}
 		}
@@ -61,9 +61,7 @@
 			z-index: 4;
 
 			svg {
-				filter: drop-shadow(
-					0px 2px 3px rgba(0, 0, 0, 0.75)
-				);
+				filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.75));
 				opacity: 1;
 				transition: all 0.2s ease-in-out;
 				&:hover {
@@ -82,9 +80,7 @@
 			z-index: 3;
 
 			svg {
-				filter: drop-shadow(
-					0px 3px 4px rgba(0, 0, 0, 0.80)
-				);
+				filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.8));
 				opacity: 0.85;
 				transition: all 0.2s ease-in-out;
 				&:hover {
@@ -102,7 +98,7 @@
 			height: 100%;
 			width: 100%;
 			z-index: 100;
-	
+
 			#videoCloseButton {
 				z-index: 1000;
 			}
@@ -119,7 +115,7 @@
 			padding-left: 2rem;
 			width: 100%;
 			@media (max-width: 25.625rem) {
-				padding-left:  0.5rem ;
+				padding-left: 0.5rem;
 			}
 		}
 
@@ -156,7 +152,12 @@
 		}
 
 		.bottomFade {
-			background-image: linear-gradient( 180deg, transparent 68%, #1e1e1eb7 85%, $modal-background 98% );
+			background-image: linear-gradient(
+				180deg,
+				transparent 68%,
+				#1e1e1eb7 85%,
+				$modal-background 98%
+			);
 			left: 0;
 			top: 0;
 			width: 100%;
@@ -199,16 +200,24 @@
 	.similar-movies {
 		min-height: 30rem;
 		height: 100%;
-		padding-top: 1rem;
+		margin: 1rem 12px 32px;
+		padding: 0;
 
+		//     display: flex;
+		// flex-direction: column;
+		// align-items: center;
+		// margin-right: 0.5%;
+		// margin-left: 0.5%;
+		// margin-bottom: 1.25%;
+		// width: 32.25%;
 
 		.rec-container {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			margin-right: 1.25%;
-			margin-bottom: 1.25%;
-			width: 32%;
+			margin-right: 1%;
+			margin-bottom: 1%;
+			width: 32.3%;
 
 			img {
 				width: 100%;
@@ -236,4 +245,3 @@
 		}
 	}
 }
-
