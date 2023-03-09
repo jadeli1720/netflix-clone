@@ -70,13 +70,12 @@ export default function Banner() {
 
 	const truncate = (string, n) =>
 		string?.length > n ? string.substr(0, n - 1) + "..." : string;
-
+//TODO: Style this differently at 390 or 400. Make banner a still image and change button placement and look. Look at netflix on mobile for look.
 	return (
 		<>
 			<Container fluid className="banner-container p-0">
 				{movie && videoTrailer  ? (
 					<div className="video-wrapper">
-						{/* Can't get videos to resize to 100% */}
 						<ReactPlayer
 							id="react-player"
 							playing={true}
@@ -84,7 +83,7 @@ export default function Banner() {
 							muted={mute}
 							loop={true}
 							// || "IUN664s7N-c"
-							url={`${YOUTUBE_URL}${videoTrailer?.key }`}
+							url={`${YOUTUBE_URL}${videoTrailer?.key || "IUN664s7N-c"}`}
 							config={{
 								youtube : {
 									autoplay: 1,
@@ -98,7 +97,7 @@ export default function Banner() {
 								}
 							}}
 							width={'100%'}
-							// height ={'auto'}
+							height ={'100%'}
 						/>
 						<div className="fadeBottom"></div>	
 					</div>

@@ -30,6 +30,7 @@ export default function BrowsePage() {
 	//     const fuse =  Fuse()
 	// }, [searchTerm]);
 	// console.log(typeof(mediaRequests))
+	//TODO: Need to change row poster sizing for tablets and mobile, make Netflix logo go to single,change modal sizing and display different and get rid of mobile maybe
 
 	return profile?.displayName ? (
 		<>
