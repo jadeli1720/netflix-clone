@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { BsVolumeMute, BsVolumeUp } from "react-icons/bs";
+import { MdVolumeOff, MdVolumeUp } from "react-icons/md";
+import { FaPlay } from "react-icons/fa";
+import { BsInfoCircle, BsPlusLg } from "react-icons/bs";
 import HTTP from "../../../services/axios";
 import { grabMovieRatings } from "../../../helpers";
 import { useMatchMedia } from "../../../helpers/useMatchMedia";
 import { bannerMovieRequests } from "../../../services/mediaRequests";
 import { API_KEY, BASE_IMAGE_URL, YOUTUBE_URL } from "../../../constants/urls";
-//FiInfo
-import { FaPlay } from "react-icons/fa";
-import { BsInfoCircle, BsPlusLg } from "react-icons/bs";
 import './banner.scss';
 
 export default function Banner() {
 	const [movie, setMovie] = useState([]);
-	const [mute, setMute] = useState(true);
+	const [isMuted, setIsMuted] = useState(true);
+	const [volume, setVolume] = useState(0)
 	const [mediaRating, setMediaRating] = useState("");
 	const [videoTrailer, setVideoTrailer] = useState([])
 
@@ -40,7 +40,7 @@ export default function Banner() {
 			const fetchVideoById = `/movie/${movie?.id}?language=en-US&api_key=${API_KEY}&append_to_response=videos,release_dates`;
 
 			const request =(await HTTP.get(fetchVideoById))?.data;
-			// console.log(request)
+
 			//Rating
 			let rating = grabMovieRatings(request?.release_dates?.results)
 			
@@ -63,25 +63,45 @@ export default function Banner() {
 				videoTrailerData ? videoTrailerData : request?.videos?.results[0]
 			)
 		}
-
 		fetchVideoData()
 	}, [movie]);
 
-
+	const toggleMute = () => {
+		console.log("clicked", isMuted)
+		if(isMuted) {
+			setIsMuted(false)
+			setVolume(0.5)
+		} else {
+			setIsMuted(true)
+			setVolume(0)
+		}
+	}
 
 	const truncate = (string, n) =>
 		string?.length > n ? string.substr(0, n - 1) + "..." : string;
-//TODO: Style this differently at 390 or 400. Make banner a still image and change button placement and look. Look at netflix on mobile for look.
+	
 	return (
 		<>
 			<Container fluid className="banner-container p-0">
 				{movie && videoTrailer && isTabletDesktopResolution ? (
+					
 					<div className="video-wrapper">
+						<div className="volumeRatingContainer">
+							<div
+								id="muteBtn"
+								onClick={() => toggleMute()}
+								>
+								{!isMuted ? <MdVolumeUp/> : <MdVolumeOff/> }
+							</div>
+							<div className="maturityRate">
+								<p>{mediaRating ? mediaRating : 'PG-13'}</p>
+							</div>
+						</div>
 						<ReactPlayer
 							id="react-player"
 							playing={true}
-							volume={0}
-							muted={mute}
+							volume={volume}
+							muted={isMuted}
 							loop={true}
 							// || "IUN664s7N-c"
 							url={`${YOUTUBE_URL}${videoTrailer?.key}`}
@@ -99,10 +119,24 @@ export default function Banner() {
 							}}
 							width={'100%'}
 							height ={'100%'}
+							// prevents player from being paused by mouseClick event
+							style={{ pointerEvents: 'none' }}
 						/>
+
 						<div className="fadeBottom"></div>	
 					</div>
-					
+					// TODO: style below
+				):(movie && !videoTrailer && isTabletDesktopResolution) ? (
+					<div className="posterBanner"
+						style={{
+							backgroundSize: "cover",
+							backgroundImage: `url('${BASE_IMAGE_URL}${movie?.backdrop_path}')`,
+							backgroundPosition: "center center",
+							backgroundRepeat: "no-repeat",
+						}}
+					>
+					<div className="posterFadeBottom"></div>
+					</div>
 				):(
 					<div className="mobileBanner "
 					style={{

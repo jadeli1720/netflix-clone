@@ -161,7 +161,7 @@ export default function FeatureModal({
 										}}
 										width="100%"
 										height="100%"
-										style={{ zIndex: "120" }}
+										style={{ zIndex: "120"}}
 									/>
 								</div>
 							) : null}
