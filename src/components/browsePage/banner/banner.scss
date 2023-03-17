@@ -17,7 +17,10 @@
 
 		@include max-media-query($desktop-sm) {
 			top: 0rem;
-			
+		}
+
+		@include max-media-query($desktop-sm) {
+			top: 0rem;
 		}
 
 		.video-stream .html5-main-video[style] {
@@ -27,14 +30,46 @@
 	}
 
 	.fadeBottom {
-		position: relative;
+		position: absolute;
 		left: 0;
-		// top: 44rem;
+		top: 76rem;
 		background-image: linear-gradient(180deg, transparent 0%, black 68%);
-		height: 15%;
+		height: 200px;
 		width: 100%;
 		overflow: hidden;
-		z-index: 0;
+		z-index: 1;
+
+		@include max-media-query($desktop-xl){
+			top: 54rem;
+		}
+
+		@include max-media-query($desktop-lg){
+			top: 48rem;
+		}
+
+		@include max-media-query($desktop-md){
+			top: 39rem;
+		}
+
+		@include max-media-query($tablet-lg){
+			top: 33rem;
+		}
+
+		@include max-media-query($tablet-md){
+			height: 15%;
+			top: 28rem;
+		}
+
+		@include max-media-query($tablet-sm){
+			top: 25.5rem;
+		}
+		@include max-media-query($tablet-sm){
+			top: 21.5rem;
+		}
+
+		@include max-media-query($mobile-lg) {
+			display: none
+		}
 	}
 }
 
@@ -53,24 +88,25 @@
 		top: 24rem
 	}
 
-	@include max-media-query($desktop-sm) {
-		top: 20rem;
-	}
-
-	@include max-media-query($tablet-lg) {
+	@include max-media-query($desktop-md){
 		top: 18rem
 	}
 
 	@include max-media-query($tablet-md) {
+		top: 11rem;
 		margin-left: 1rem !important
 	}
 
 	@include max-media-query($tablet-sm) {
-		top: 14rem
+		top: 12rem
 	}
 
 	@include max-media-query($tablet-xs) {
 		top: 10rem
+	}
+
+	@include max-media-query($mobile-lg) {
+		display: none
 	}
 
 	.title {
@@ -92,10 +128,10 @@
 		@include max-media-query($tablet-xs) {
 			@include subTitle(medium);
 			line-height: 2.125rem;
+			width: 50%
 		}
 	}
 
-	
 	.description {
 		@include subTitleMobile(medium);
 		line-height: 1.3;
@@ -105,11 +141,11 @@
 		max-width: 36rem;
 		width: 100%;
 
-		@include max-media-query($tablet-sm) {
-			@include subTitleMobile(regular);
+		@include max-media-query($tablet-md){
+			width: 43%
 		}
 
-		@include max-media-query($tablet-xs) {
+		@include max-media-query($tablet-sm) {
 			display: none;
 		}
 
@@ -162,3 +198,74 @@
 		}
 	}
 }
+
+//Mobile Styling
+
+.mobileBanner {
+	position: relative;
+	width: 100%;
+	height: 56rem;
+
+	@include max-media-query($mobile-md){
+    height: 40rem;
+	}
+	@include max-media-query($mobile-sm){
+    height: 36.55rem;
+	}
+
+	.mobileFadeBottom {
+		position: relative;
+		left: 0;
+		top: 46rem;
+		background-image: linear-gradient(180deg, transparent 0%, #00000096 35%, #000000c6 55%, black 85%);
+		height: 15%;
+		width: 100%;
+		overflow: hidden;
+		z-index: 0;
+
+		@include max-media-query($mobile-md){
+			top: 32rem;
+		}
+	}
+	
+	.row {
+		position: relative;
+		top: 96% !important;
+		z-index: 2;
+	}
+
+	.button {
+		&:nth-of-type(2){
+			border: 1px solid deeppink;
+			background-color: white !important;
+			border: none;
+			border-radius: 0.313rem !important;
+			color: black;
+			@include subTitleMobile(medium);
+			margin-top: 0rem;
+			height: 3.125rem;
+			max-width: 8rem;
+			width: 100%;
+			p {
+				margin: 0 0 0 0.65rem;
+			}
+
+			.svg {
+				height: 1.25rem;
+				width: 1.25rem;
+			}
+		}
+
+		&:first-of-type, &:last-of-type {
+			p {
+				@include caption(regular);
+				margin: 0.5rem 0 0 0;
+			}
+
+			.icons {
+				font-size: 1.25rem;
+			}
+		}
+	}
+}
+

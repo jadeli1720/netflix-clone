@@ -89,9 +89,7 @@ export const grabTvRatings = (data) => {
   }
 }
 
-export const grabYear = (value) => {
-	return value.substring(0, 4);
-};
+export const grabYear = value => value.substring(0, 4);
 
 export const roundNum = (value) => {
 	const step = 0.5 || 1.0;

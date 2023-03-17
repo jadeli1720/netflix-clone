@@ -3,11 +3,13 @@ import ReactPlayer from "react-player";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { BsVolumeMute, BsVolumeUp } from "react-icons/bs";
 import HTTP from "../../../services/axios";
-import { grabMovieRatings, grabTvRatings } from "../../../helpers";
+import { grabMovieRatings } from "../../../helpers";
+import { useMatchMedia } from "../../../helpers/useMatchMedia";
 import { bannerMovieRequests } from "../../../services/mediaRequests";
 import { API_KEY, BASE_IMAGE_URL, YOUTUBE_URL } from "../../../constants/urls";
+//FiInfo
 import { FaPlay } from "react-icons/fa";
-import { BsPlusLg } from "react-icons/bs";
+import { BsInfoCircle, BsPlusLg } from "react-icons/bs";
 import './banner.scss';
 
 export default function Banner() {
@@ -15,6 +17,8 @@ export default function Banner() {
 	const [mute, setMute] = useState(true);
 	const [mediaRating, setMediaRating] = useState("");
 	const [videoTrailer, setVideoTrailer] = useState([])
+
+	const isTabletDesktopResolution = useMatchMedia("(min-width:601px), true")
 
 	useEffect(() => {
 		async function fetchData() {
@@ -42,7 +46,7 @@ export default function Banner() {
 			
 			setMediaRating(rating)
 
-			console.log(request?.videos?.results)
+			// console.log(request?.videos?.results)
 
 			//Trailer
 			let trailerString = 'trailer';
@@ -56,16 +60,13 @@ export default function Banner() {
 			// console.log(videoTrailerData)
 
 			setVideoTrailer(
-				videoTrailerData 
-					? videoTrailerData 
-					: request?.videos?.results[0]
+				videoTrailerData ? videoTrailerData : request?.videos?.results[0]
 			)
 		}
 
 		fetchVideoData()
 	}, [movie]);
 
-	console.log(videoTrailer)
 
 
 	const truncate = (string, n) =>
@@ -74,7 +75,7 @@ export default function Banner() {
 	return (
 		<>
 			<Container fluid className="banner-container p-0">
-				{movie && videoTrailer  ? (
+				{movie && videoTrailer && isTabletDesktopResolution ? (
 					<div className="video-wrapper">
 						<ReactPlayer
 							id="react-player"
@@ -83,7 +84,7 @@ export default function Banner() {
 							muted={mute}
 							loop={true}
 							// || "IUN664s7N-c"
-							url={`${YOUTUBE_URL}${videoTrailer?.key || "IUN664s7N-c"}`}
+							url={`${YOUTUBE_URL}${videoTrailer?.key}`}
 							config={{
 								youtube : {
 									autoplay: 1,
@@ -103,17 +104,32 @@ export default function Banner() {
 					</div>
 					
 				):(
-					<div className="banner"
+					<div className="mobileBanner "
 					style={{
-						backgroundSize: "cover",
-						backgroundImage: `url('${BASE_IMAGE_URL}${movie?.backdrop_path}')`,
+						backgroundSize: "Contain",
+						backgroundImage: `url('${BASE_IMAGE_URL}${movie?.poster_path}')`,
 						backgroundPosition: "center center",
-						backgroundRepeat: "no-repeat",
+						backgroundRepeat: "no-repeat"
 					}}
 					>
-						<div className="fadeBottom"></div>	
+						<Row className="mobileBtnContainer">
+								<Col className="button d-flex flex-column align-items-center justify-content-center">
+									<BsPlusLg className="icons"/>
+									<p>My List</p>
+								</Col>
+								<Col className="button d-flex justify-content-center align-items-center">
+									<FaPlay />
+									<p>Play</p>
+								</Col>
+								<Col className="button d-flex flex-column justify-content-center align-items-center">
+									<BsInfoCircle className="icons"/>
+									<p>info</p>
+								</Col>
+						</Row>
+						<div className="mobileFadeBottom"></div>	
 					</div>
 				)}
+
 				<Container className="copyContainer">
 					<h1 className="title">{movie?.title || movie?.name || movie?.original_title}</h1>
 					<Row className="d-flex flex-wrap">
