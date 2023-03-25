@@ -46,8 +46,6 @@ export default function Banner() {
 			
 			setMediaRating(rating)
 
-			// console.log(request?.videos?.results)
-
 			//Trailer
 			let trailerString = 'trailer';
 			let videoTrailerData = request?.videos?.results.find(
@@ -57,8 +55,6 @@ export default function Banner() {
 						trailerString.toLowerCase()
 			);
 
-			// console.log(videoTrailerData)
-
 			setVideoTrailer(
 				videoTrailerData ? videoTrailerData : request?.videos?.results[0]
 			)
@@ -67,7 +63,6 @@ export default function Banner() {
 	}, [movie]);
 
 	const toggleMute = () => {
-		console.log("clicked", isMuted)
 		if(isMuted) {
 			setIsMuted(false)
 			setVolume(0.5)
@@ -84,7 +79,6 @@ export default function Banner() {
 		<>
 			<Container fluid className="banner-container p-0">
 				{movie && videoTrailer && isTabletDesktopResolution ? (
-					
 					<div className="video-wrapper">
 						<div className="volumeRatingContainer">
 							<div
@@ -103,7 +97,6 @@ export default function Banner() {
 							volume={volume}
 							muted={isMuted}
 							loop={true}
-							// || "IUN664s7N-c"
 							url={`${YOUTUBE_URL}${videoTrailer?.key}`}
 							config={{
 								youtube : {
@@ -125,8 +118,7 @@ export default function Banner() {
 
 						<div className="fadeBottom"></div>	
 					</div>
-					// TODO: style below
-				):(movie && !videoTrailer && isTabletDesktopResolution) ? (
+				):(movie && videoTrailer === undefined && isTabletDesktopResolution) ? (
 					<div className="posterBanner"
 						style={{
 							backgroundSize: "cover",
@@ -166,7 +158,10 @@ export default function Banner() {
 
 				<Container className="copyContainer">
 					<h1 className="title">{movie?.title || movie?.name || movie?.original_title}</h1>
-					<Row className="d-flex flex-wrap">
+					<p className="description pt-0">
+						{truncate(movie?.overview, 150)}
+					</p>
+					<Row className="d-flex flex-wrap pt-4">
 						<Col sm>
 							<Button className="d-flex justify-content-center align-items-center playButton p-0">
 								<FaPlay />
@@ -180,9 +175,6 @@ export default function Banner() {
 							</Button>
 						</Col>
 					</Row>
-					<p className="description pt-4">
-						{truncate(movie?.overview, 150)}
-					</p>
 				</Container>
 			</Container>
 		</>

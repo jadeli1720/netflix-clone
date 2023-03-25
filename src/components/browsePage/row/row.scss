@@ -1,5 +1,7 @@
 @import "../../../styles/mixins.scss";
 
+
+// TODO: style poster images for smaller screen sizes, especially mobile
 .moviesContainer {
 	display: flex;
 	overflow-y: hidden !important;

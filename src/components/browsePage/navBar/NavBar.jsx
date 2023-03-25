@@ -20,6 +20,7 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 		return () => window.removeEventListener("scroll", transitionNavBar);
 	}, []);
 
+	//TODO: switch out full Netflix logo for just the "N" for smaller screens. Can use "useMatchMedia to make this easier"
 	return (
 		<>
 			<Navbar  expand="lg" fixed='top'  className={`nav ${show && "navBlack"}`}>
