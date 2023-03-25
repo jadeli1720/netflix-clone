@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
+import FeatureModal from "../featureModal/FeatureModal";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { MdVolumeOff, MdVolumeUp } from "react-icons/md";
 import { FaPlay } from "react-icons/fa";
@@ -17,8 +18,18 @@ export default function Banner() {
 	const [volume, setVolume] = useState(0)
 	const [mediaRating, setMediaRating] = useState("");
 	const [videoTrailer, setVideoTrailer] = useState([])
+	const [showMovieModal, setShowMovieModal] = useState(false)
 
-	const isTabletDesktopResolution = useMatchMedia("(min-width:601px), true")
+	const isTabletDesktopResolution = useMatchMedia("(min-width:601px), true");
+	const mediaType = 'movie'
+
+	const handleMobileModal = (m) => {
+		if(!showMovieModal) {
+			setShowMovieModal(true)
+		}else {
+			setShowMovieModal(false)
+		}
+	}
 
 	useEffect(() => {
 		async function fetchData() {
@@ -28,7 +39,6 @@ export default function Banner() {
 			const bannerMovie =
 				request[Math.floor(Math.random() * request.length - 1)];
 
-				
 			setMovie(bannerMovie);
 		}
 
@@ -75,6 +85,7 @@ export default function Banner() {
 	const truncate = (string, n) =>
 		string?.length > n ? string.substr(0, n - 1) + "..." : string;
 	
+
 	return (
 		<>
 			<Container fluid className="banner-container p-0">
@@ -147,7 +158,9 @@ export default function Banner() {
 									<FaPlay />
 									<p>Play</p>
 								</Col>
-								<Col className="button d-flex flex-column justify-content-center align-items-center">
+								<Col className="button d-flex flex-column justify-content-center align-items-center"
+								onClick={() => handleMobileModal(movie)}
+								>
 									<BsInfoCircle className="icons"/>
 									<p>info</p>
 								</Col>
@@ -177,6 +190,17 @@ export default function Banner() {
 					</Row>
 				</Container>
 			</Container>
+			{
+				showMovieModal && (
+					<FeatureModal
+					show={showMovieModal}
+					setShow={setShowMovieModal}
+					closeFeatureModal={setShowMovieModal}
+					details={movie}
+					mediaType={mediaType}
+				/>
+				)
+			}
 		</>
 	);
 }

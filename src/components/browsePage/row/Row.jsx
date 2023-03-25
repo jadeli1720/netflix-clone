@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HTTP from "../../../services/axios";
 import { BASE_IMAGE_URL } from "../../../constants/urls";
+import { useMatchMedia } from "../../../helpers/useMatchMedia";
 import FeatureModal from "../featureModal/FeatureModal";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import './row.scss';
@@ -12,8 +13,9 @@ function Row({ rowId, category, type, url }) {
 	//When the above state is true, this shows the SINGLE detail for a SINGLE card that is clicked and not all of them opening at once.
 	const [featureDetails, setFeatureDetails] = useState([]);
 	const [mediaType, setMediaType] = useState("");
+	const isTabletDesktopResolution = useMatchMedia("(min-width:601px), true")
 
-	const handleMovieModal = (m) => {
+	const handleFeatureModal = (m) => {
 		if (!show) {
 			setShow(true);
 			setFeatureDetails(m);
@@ -57,6 +59,7 @@ function Row({ rowId, category, type, url }) {
 		}
 	};
 
+
 	return (
 		<>
 			<h3 style={{ marginTop: "10px" }}>{category}</h3>
@@ -72,7 +75,7 @@ function Row({ rowId, category, type, url }) {
 						<div
 							key={movie.id}
 							className={`posterContainer ${show}`}
-							onClick={() => handleMovieModal(movie)}
+							onClick={() => handleFeatureModal(movie)}
 						>
 							<img
 								className= "posterLarge"
