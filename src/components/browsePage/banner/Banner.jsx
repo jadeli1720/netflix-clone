@@ -85,7 +85,6 @@ export default function Banner() {
 	const truncate = (string, n) =>
 		string?.length > n ? string.substr(0, n - 1) + "..." : string;
 	
-
 	return (
 		<>
 			<Container fluid className="banner-container p-0">
@@ -126,7 +125,6 @@ export default function Banner() {
 							// prevents player from being paused by mouseClick event
 							style={{ pointerEvents: 'none' }}
 						/>
-
 						<div className="fadeBottom"></div>	
 					</div>
 				):(movie && videoTrailer === undefined && isTabletDesktopResolution) ? (

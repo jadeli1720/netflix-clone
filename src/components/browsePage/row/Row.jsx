@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HTTP from "../../../services/axios";
 import { BASE_IMAGE_URL } from "../../../constants/urls";
-import { useMatchMedia } from "../../../helpers/useMatchMedia";
 import FeatureModal from "../featureModal/FeatureModal";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import './row.scss';
@@ -13,7 +12,6 @@ function Row({ rowId, category, type, url }) {
 	//When the above state is true, this shows the SINGLE detail for a SINGLE card that is clicked and not all of them opening at once.
 	const [featureDetails, setFeatureDetails] = useState([]);
 	const [mediaType, setMediaType] = useState("");
-	const isTabletDesktopResolution = useMatchMedia("(min-width:601px), true")
 
 	const handleFeatureModal = (m) => {
 		if (!show) {
@@ -30,7 +28,6 @@ function Row({ rowId, category, type, url }) {
 	useEffect(() => {
 		async function fetchData() {
 			const request = (await HTTP.get(url)).data.results;
-
 			setMovies(request);
 		}
 
@@ -58,7 +55,6 @@ function Row({ rowId, category, type, url }) {
 			slider.scrollLeft = slider.scrollLeft - viewportWidth;
 		}
 	};
-
 
 	return (
 		<>

@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./header/Header";
 import Jumbotron from "./jumbotron/JumboTron";
-// import faqData from "../../json/faqs.json";
 import FaqAccordion from "./faqAccordion/FaqAccordion";
 import OptForm from "../Forms/optForm/OptForm";
 import Footer from "./footer/Footer";
