@@ -15,7 +15,7 @@ function HeaderNav() {
 						/>
 				</Navbar.Brand>
 				<Nav>
-					<Nav.Link href={ROUTES.SIGN_IN} className="px-4">Sign In</Nav.Link>
+					<Nav.Link href={ROUTES.SIGN_IN} >Sign In</Nav.Link>
 				</Nav>
 			</Container>
 		</Navbar>

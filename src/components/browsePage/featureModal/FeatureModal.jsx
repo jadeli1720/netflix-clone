@@ -155,12 +155,13 @@ export default function FeatureModal({
 										config={{
 											youtube: {
 												color: `white`,
+												rel: 0,
 												modestbranding: 1,
 											},
 										}}
 										width="100%"
 										height="100%"
-										style={{ zIndex: "120" }}
+										style={{ zIndex: "120"}}
 									/>
 								</div>
 							) : null}

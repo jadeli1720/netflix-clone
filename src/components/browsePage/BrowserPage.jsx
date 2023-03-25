@@ -30,6 +30,7 @@ export default function BrowsePage() {
 	//     const fuse =  Fuse()
 	// }, [searchTerm]);
 	// console.log(typeof(mediaRequests))
+	//TODO: Need to change row poster sizing for tablets and mobile, make Netflix logo go to single,change modal sizing and display different and get rid of mobile maybe
 
 	return profile?.displayName ? (
 		<>
@@ -38,7 +39,7 @@ export default function BrowsePage() {
 			) : (
 				<div className="releaseBody"></div>
 			)}
-			<Container fluid className="homeScreen">
+			<Container fluid className="homeScreen p-0">
 				<NavBar
 					user={user}
 					searchTerm={searchTerm}
@@ -47,13 +48,12 @@ export default function BrowsePage() {
 				<Banner />
 				<Container fluid className="row-container ">
 					{mediaRequests.map(
-						({ rowId, category, isLargeRow, type, url }) => {
+						({ rowId, category, type, url }) => {
 							return (
 								<Row
 									key={rowId}
 									rowId={rowId}
 									category={category}
-									isLargeRow={isLargeRow}
 									type={type}
 									url={url}
 								/>

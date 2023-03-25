@@ -22,7 +22,7 @@
 		);
 		height: 70%;
 
-		@include media-query('tablet-xs') {
+		@include max-media-query($tablet-xs) {
 			height: 80%;
 		}
 	}
@@ -34,11 +34,22 @@
 	}
 
 	.headerNav {
+		@include max-media-query($mobile-lg){
+			margin: 0 !important;
+		}
+
 		.container-fluid {
 			height: 4rem;
 			max-width: 120rem;
 			width: 98%;
+			
+			@include max-media-query($mobile-sm){
+				margin: 0 !important;
+				padding: 0 !important;
+				width: 100%;
+			}
 		}
+
 		.netflixLogo,
 		img {
 			cursor: pointer;
@@ -47,15 +58,34 @@
 			height: auto;
 		}
 
+		.navLogo {
+			@include max-media-query($tablet-xs){
+				width: 6.75rem;
+			}
+		}
+
 		.navbar-nav {
 			background-color: $netflix-red;
 			border: none;
 			border-radius: 0.188rem;
 			cursor: pointer;
+			padding: 0.5rem 1.5rem;
 			text-decoration: none;
 
+			@include max-media-query($tablet-xs) {
+				padding: 0.25rem 1rem;
+			}
+
+			@include max-media-query($mobile-lg) {
+				padding: 0.25rem 0.5rem;
+			}
+
 			a {
+				padding: 0;
 				color: white;
+				@include max-media-query($tablet-xs){
+					@include body(regular);
+				}
 			}
 		}
 	}
@@ -64,7 +94,7 @@
 		text-align: center;
 		padding: 7.75rem 2.813rem 9.5rem;
 
-		@include media-query('mobile-lg') {
+		@include max-media-query($mobile-lg) {
 			padding: 10.375rem 0rem;
 		}
 
@@ -74,17 +104,17 @@
 			@include jumbotronHeader();
 			margin: auto;
 
-			@include media-query('desktop-md') {
+			@include max-media-query($desktop-md) {
 				@include header();
 			}
 
-			@include media-query('tablet-xs'){
+			@include max-media-query($tablet-xs) {
 				@include headerMobile();
 			}
 
-			@include media-query('mobile-lg') {
+			@include max-media-query($mobile-lg) {
 				@include subHeader();
-				line-height: 2.125rem
+				line-height: 2.125rem;
 			}
 		}
 
@@ -92,7 +122,7 @@
 			color: white;
 			@include subTitle(medium);
 
-			@include media-query('mobile-lg') {
+			@include max-media-query($mobile-lg) {
 				font-size: 1.125rem;
 			}
 		}

@@ -1,16 +1,12 @@
-@import '../../../styles/mixins.scss';
+@import "../../../styles/mixins.scss";
 
-.rowContainer {
-	h3 {
-		@include subTitle('medium') ;
-	}
-}
 
+// TODO: style poster images for smaller screen sizes, especially mobile
 .moviesContainer {
 	display: flex;
 	overflow-y: hidden !important;
 	overflow-x: scroll;
-	padding: 0.25rem 0px 1.75rem ;
+	padding: 0.25rem 0px 1.75rem;
 	scroll-behavior: smooth;
 	cursor: pointer;
 
@@ -18,27 +14,24 @@
 		display: none !important;
 	}
 
-	.isLarge {
-		height: 18.125rem;
-	}
-
-	.arrow-container-left, .arrow-container-right {
+	.arrow-container-left,
+	.arrow-container-right {
 		position: absolute;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: rgba(0, 0, 0, 0.70);
-		height: 8.75rem;
+		background-color: rgba(0, 0, 0, 0.7);
+		height: 21rem;
 		width: 3.75rem;
 		z-index: 10;
 		cursor: pointer;
 		opacity: 0;
 		transition: all 450ms;
-		
+
 		&:hover {
 			opacity: 1;
 		}
-		
+
 		svg {
 			font-size: 1.25rem;
 			padding-right: 0.25rem;
@@ -53,93 +46,23 @@
 		right: 0;
 	}
 
-	.isLarge{
-		height: 18.125rem;
-	}
-
 	.posterContainer {
 		position: relative;
 		border-radius: 0.313rem;
 		object-fit: contain;
 		margin-right: 0.625rem;
 		height: 100%;
-		width:100%;
-	}
-
-	.poster {
-		height: 8.75rem;
-		width: auto;
-		margin-right: 0.625rem;
-		transition: transform 450ms;
-
-		&:hover {
-			transform: scale(1.08);
-			opacity: 1;
-		}
+		width: 100%;
 	}
 
 	.posterLarge {
-		height: 18.125rem;
+		height: 21rem;
 		width: auto;
+		transition: transform 450ms;
 
-		&:hover{
+		&:hover {
 			transform: scale(1.09);
 			opacity: 1;
 		}
-	}
-
-	.title-container {
-		position: absolute;
-		left: 0;
-		bottom: 0.125rem;
-		height: 8.906rem;
-		width: 15.563rem;
-		display: none;
-	}
-
-	.posterSmall {
-		background: #10101067;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		opacity: 0;
-		transition: all ease-in-out 450ms;
-
-		.title {
-			font-weight: bold;
-			text-align: center;
-			width: 96%;
-		}
-
-		&:hover {
-			opacity: 1;
-			transform: scale(1.08);
-			z-index: 100;
-		}
-	}
-
-	.subtitle, .description{
-		display: none;
-		user-select: none;
-	}
-
-	.subtitle {
-		color: #fff;
-		font-size: 0.75rem;
-		font-weight: 700;
-		margin-top: 0.313rem;
-		margin-bottom: 0;
-		margin-left: 0.625rem;
-		margin-right: 0.625rem;
-	}
-
-	.description {
-		color: #fff;
-		font-size: 0.625rem;
-		line-height: normal;
-		margin-top: 0.313rem;
-		margin-bottom: 0;
-		margin-left: 0.625rem;
-		margin-right: 0.625rem;
 	}
 }

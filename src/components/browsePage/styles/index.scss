@@ -4,4 +4,32 @@
   padding: 0rem 0.5rem 0rem  !important;
   position: relative;
   z-index: 2;
+
+  @include max-media-query($desktop-xxl){
+		margin-top: -10rem  !important
+	}
+
+  @include max-media-query($desktop-xl){
+		margin-top: -8rem  !important
+	}
+
+  @include max-media-query($desktop-md){
+		margin-top: -4rem  !important
+	}
+
+  @include max-media-query($tablet-md){
+		margin-top: -2rem  !important
+	}
+
+  @include max-media-query($tablet-sm){
+		margin-top: -4rem  !important
+	}
+
+	@include max-media-query($mobile-lg){
+    margin-top: 2.5rem !important;
+	}
+
+  @include max-media-query($mobile-lg){
+    margin-top: 4rem !important;
+	}
 }

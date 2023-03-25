@@ -1,7 +1,8 @@
 @import "../../../styles/mixins.scss";
 
-#signInGradient, #signUpGradient {
-	height: 100% ;
+#signInGradient,
+#signUpGradient {
+	height: 100%;
 }
 
 .signInUpContainer {
@@ -21,12 +22,12 @@
 	width: 100%;
 	z-index: 2;
 
-	@include media-query('mobile-lg') {
+	@include max-media-query($mobile-lg) {
 		max-width: 36.125rem;
 		padding: 3.75rem 2.25rem 2.5rem;
 	}
 
-	@include media-query('mobile-sm') {
+	@include max-media-query($mobile-sm) {
 		padding: 3.75rem 1rem 2.5rem;
 	}
 
@@ -45,7 +46,7 @@
 		max-width: 28.125rem;
 		width: 100%;
 
-		@include media-query('mobile-lg'){
+		@include max-media-query($mobile-lg) {
 			max-width: unset;
 		}
 	}
@@ -77,11 +78,11 @@
 			margin-bottom: 1.875rem;
 		}
 		@include inputPlaceholder() {
-			@include body('regular');	
+			@include body("regular");
 		}
 
-		@include media-query('mobile-lg') {
-			max-width: unset
+		@include max-media-query($mobile-lg) {
+			max-width: unset;
 		}
 	}
 
@@ -90,7 +91,7 @@
 		border-radius: 0.25rem;
 		border: 0;
 		color: white;
-		@include body('medium');	
+		@include body("medium");
 		margin: 1.5rem 0;
 		padding: 1rem;
 		cursor: pointer;
@@ -102,7 +103,7 @@
 			opacity: 0.5;
 		}
 
-		@include media-query('mobile-lg'){
+		@include max-media-query($mobile-lg) {
 			max-width: unset;
 		}
 	}
@@ -110,7 +111,7 @@
 	.signUpText,
 	.signInText {
 		color: #737373;
-		@include body('regular');	
+		@include body("regular");
 		margin-bottom: 1.5rem;
 
 		a {
@@ -124,7 +125,7 @@
 
 	.recaptchaText {
 		margin-top: 0.625rem;
-		@include caption('regular');
+		@include caption("regular");
 		color: $lt-medium-gray;
 	}
 
@@ -146,10 +147,8 @@
 			color: $lt-medium-gray;
 
 			a {
-				color: $links
+				color: $links;
 			}
 		}
 	}
 }
-
-

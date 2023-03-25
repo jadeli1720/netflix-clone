@@ -24,11 +24,9 @@ const Recommendations = ({id, mediaType}) => {
     fetchData()
   }, [id, mediaType]);
 
-
-  // console.log(recommendedData, mediaType)
   
   return(
-    <div className='content similar-movies d-flex flex-wrap justify-content-start'>
+    <div className='content similar-movies d-flex flex-wrap justify-content-center'>
       {recommendedData.map((rec) => (
         rec?.poster_path && (
           <div 

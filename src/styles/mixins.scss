@@ -1,14 +1,31 @@
-@import './fonts.scss';
-@import './variables.scss';
-
+@import "./fonts.scss";
+@import "./variables.scss";
 
 //Font Weights
-@mixin extra-light(){font-weight: 100; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
-@mixin light(){font-weight: 300; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
-@mixin regular(){font-weight: 400; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
-@mixin medium(){font-weight: 700;font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
-@mixin bold(){font-weight:800; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
-@mixin heavy(){font-weight: 900; font-family:'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+@mixin extra-light() {
+	font-weight: 100;
+	font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@mixin light() {
+	font-weight: 300;
+	font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@mixin regular() {
+	font-weight: 400;
+	font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@mixin medium() {
+	font-weight: 700;
+	font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@mixin bold() {
+	font-weight: 800;
+	font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@mixin heavy() {
+	font-weight: 900;
+	font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 //Font Styling
 //64px
@@ -19,7 +36,7 @@
 }
 
 //50px
-@mixin header(){
+@mixin header() {
 	@include medium();
 	font-size: 3.125rem;
 	line-height: 3.438rem;
@@ -33,23 +50,21 @@
 }
 
 //32px
-@mixin subHeader(){
+@mixin subHeader() {
 	@include medium();
 	font-size: 2rem;
 }
 
 //26px
-@mixin subTitle($weight){
+@mixin subTitle($weight) {
 	font-size: 1.625rem;
-	
-	@if $weight == 'bold' {
-		@include bold()
-	}
-	@else if $weight == 'medium' {
-			@include medium()
-	}
-	@else if $weight == 'regular' {
-			@include regular()
+
+	@if $weight == "bold" {
+		@include bold();
+	} @else if $weight == "medium" {
+		@include medium();
+	} @else if $weight == "regular" {
+		@include regular();
 	}
 }
 
@@ -57,14 +72,12 @@
 @mixin subTitleMobile($weight) {
 	font-size: 1.25rem;
 
-	@if $weight == 'bold' {
-		@include bold()
-	}
-	@else if $weight == 'medium' {
-			@include medium()
-	}
-	@else if $weight == 'regular' {
-			@include regular()
+	@if $weight == "bold" {
+		@include bold();
+	} @else if $weight == "medium" {
+		@include medium();
+	} @else if $weight == "regular" {
+		@include regular();
 	}
 }
 
@@ -73,17 +86,14 @@
 	font-size: 1rem;
 	line-height: 1.563rem;
 
-	@if $weight == 'bold' {
-		@include bold()
-	}
-	@else if $weight == 'medium' {
-			@include medium()
-	}
-	@else if $weight == 'regular' {
-			@include regular()
-	}
-	@else if $weight == 'light' {
-		@include light()
+	@if $weight == "bold" {
+		@include bold();
+	} @else if $weight == "medium" {
+		@include medium();
+	} @else if $weight == "regular" {
+		@include regular();
+	} @else if $weight == "light" {
+		@include light();
 	}
 }
 
@@ -92,17 +102,14 @@
 	font-size: 0.813rem;
 	line-height: 1.25rem;
 
-	@if $weight == 'bold' {
-		@include bold()
-	}
-	@else if $weight == 'medium' {
-			@include medium()
-	}
-	@else if $weight == 'regular' {
-			@include regular()
-	}
-	@else if $weight == 'light' {
-		@include light()
+	@if $weight == "bold" {
+		@include bold();
+	} @else if $weight == "medium" {
+		@include medium();
+	} @else if $weight == "regular" {
+		@include regular();
+	} @else if $weight == "light" {
+		@include light();
 	}
 }
 
@@ -135,35 +142,19 @@
 }
 
 //Media Queries
-@mixin media-query($size) {
-	@if ($size == 'mobile-sm') {
-		@media (max-width: $mobile-sm) {@content;}
-	}
-	@else if ($size == 'mobile-lg'){
-		@media (max-width: $mobile-lg) {@content;}
-	}
-	@else if ($size == 'tablet-xs'){
-		@media (max-width: $tablet-xs) {@content;}
-	}
-	@else if ($size == 'tablet-sm'){
-		@media (max-width: $tablet-sm) {@content;}
-	}
-	@else if ($size == 'tablet-md'){
-		@media (max-width: $tablet-md) {@content;}
-	}
-	@else if ($size == 'tablet-lg'){
-		@media (max-width: $tablet-lg) {@content;}
-	}
-	@else if ($size == 'desktop-sm'){
-		@media (max-width: $desktop-sm) {@content;}
-	}
-	@else if ($size == 'desktop-md'){
-		@media (max-width: $desktop-md) {@content;}
-	}
-	@else if ($size == 'desktop-lg'){
-		@media (max-width: $desktop-lg) {@content;}
-	}
-	@else if ($size == 'desktop-xl'){
-		@media (max-width: $desktop-xl) {@content;}
+@mixin max-media-query($size) {
+	@if ($size) {
+		@media (max-width: $size) {
+			@content;
+		}
 	}
 }
+
+@mixin min-media-query ($size) {
+	@if ($size) {
+		@media (min-width: $size) {
+			@content;
+		}
+	}
+}
+
