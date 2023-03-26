@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container } from 'react-bootstrap';
-// import Fuse from 'fuse.js';
 import NavBar from "./navBar/NavBar";
 import Banner from "./banner/Banner";
 import Row from "./row/Row";
@@ -25,12 +24,6 @@ export default function BrowsePage() {
 		}, 3000);
 	}, [profile?.displayName]);
 
-	//I don't think I can do this because the data fetching happens in the child component. Not this component. May need to use redux or context to pass props around easier.
-	// useEffect(() => {
-	//     const fuse =  Fuse()
-	// }, [searchTerm]);
-	// console.log(typeof(mediaRequests))
-	//TODO: Need to change row poster sizing for tablets and mobile, make Netflix logo go to single,change modal sizing and display different and get rid of mobile maybe
 
 	return profile?.displayName ? (
 		<>

@@ -17,8 +17,14 @@
 
 	.navLogo{
 		cursor: pointer;
-		width: 10.5rem;
 		height: auto;
+		width: 10.5rem;
+	}
+
+	.navMobileLogo {
+		cursor: pointer;
+		height: auto;
+		width: 2rem;
 	}
 }
 

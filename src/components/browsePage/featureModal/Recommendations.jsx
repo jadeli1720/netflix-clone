@@ -8,35 +8,31 @@ const Recommendations = ({id, mediaType}) => {
   useEffect(() => {
     async function fetchData() {
 
-      const recommendedMediaRequest = (await HTTP.get(`/${mediaType}/${id}/recommendations?api_key=${API_KEY}&language=en-US`))?.data.results
-      
-      if(recommendedMediaRequest.length === 0 || recommendedMediaRequest.length < 9) {
-        
-        const similarMediaRequest = (await HTTP.get(`/${mediaType}/${id}/similar?api_key=${API_KEY}&language=en-US`))?.data.results
+      const recommendedMediaRequest = (await HTTP.get(`/${mediaType}/${id}/recommendations?api_key=${API_KEY}&language=en-US`))?.data.results.slice(0,15);
 
-        setRecommendedData(similarMediaRequest.slice(0,9))
+      if(recommendedMediaRequest.length === 0) {
+        const similarMediaRequest = (await HTTP.get(`/${mediaType}/${id}/similar?api_key=${API_KEY}&language=en-US`))?.data.results.slice(0,15)
+        setRecommendedData(similarMediaRequest)
       } else {
-        setRecommendedData(recommendedMediaRequest.slice(0,9))
+        setRecommendedData(recommendedMediaRequest)
       }
-      
     }
 
     fetchData()
   }, [id, mediaType]);
 
-  
+
   return(
-    <div className='content similar-movies d-flex flex-wrap justify-content-center'>
+    <div className='content similar-movies '>
       {recommendedData.map((rec) => (
         rec?.poster_path && (
           <div 
             key={rec?.id}
             className="rec-container"
-            
           >
             <img
               className='detailsPoster'
-              src={`${ BASE_IMAGE_URL}/${rec?.poster_path}`}
+              src={`${ BASE_IMAGE_URL}${rec?.poster_path}`}
               alt={rec?.title || rec?.original_title}
             />
           </div>

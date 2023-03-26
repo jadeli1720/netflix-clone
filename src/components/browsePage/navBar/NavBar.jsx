@@ -3,12 +3,15 @@ import { Container, Dropdown, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import {BsThreeDots} from 'react-icons/bs';
 import { FirebaseContext } from "../../../context/firebase";
 import * as ROUTES from "../../../constants/routes";
+import { useMatchMedia } from "../../../helpers/useMatchMedia";
 import SearchForm from "../../Forms/SearchForm";
 import './navBar.scss';
 
 function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 	const [show, handleShow] = useState(false);
 	const { firebase } = useContext(FirebaseContext);
+	const isTabletDesktopResolution = useMatchMedia("(min-width:601px), true");
+	
 
 	const transitionNavBar = () =>
 		window.scrollY > 100 ? handleShow(true) : handleShow(false);
@@ -20,17 +23,25 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 		return () => window.removeEventListener("scroll", transitionNavBar);
 	}, []);
 
-	//TODO: switch out full Netflix logo for just the "N" for smaller screens. Can use "useMatchMedia to make this easier"
 	return (
 		<>
 			<Navbar  expand="lg" fixed='top'  className={`nav ${show && "navBlack"}`}>
 				<Container fluid className="py-0 px-3">
 					<Navbar.Brand className="netflixLogo" to={ROUTES.HOME}>
-						<img
-								className="navLogo"
-								src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
-								alt="Netflix logo"
-							/>
+					{
+						isTabletDesktopResolution ? (
+							<img
+									className="navLogo"
+									src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+									alt="Netflix logo"
+								/>
+						):(
+							<img
+									className="navMobileLogo"
+									src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Netflix_2015_N_logo.svg/1200px-Netflix_2015_N_logo.svg.png"
+									alt="Netflix Mobile logo"
+								/>
+						)}
 					</Navbar.Brand>
 					<Navbar.Toggle  aria-controls="offcanvasNavbar-expand-lg"/>
 					<Navbar.Offcanvas 

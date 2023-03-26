@@ -30,7 +30,6 @@ export default function FeatureModal({
 	const handleModelCloseButton = () => {
 		setCast([]);
 		setRuntime("");
-		// setMediaRating("");
 		setMediaTrailer([]);
 		setShow(false)
 	};
