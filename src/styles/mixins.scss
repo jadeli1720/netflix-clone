@@ -113,6 +113,19 @@
 	}
 }
 
+//Buttons
+@mixin buttons() {
+	background-color: $netflix-red !important;
+	border: 0;
+	border-radius: 0.125rem;
+	cursor: pointer;
+	transition: 0.5s;
+
+	&:hover {
+		filter: brightness(80%);
+	}
+}
+
 @mixin inputPlaceholder() {
 	$selector: "";
 	$prefixes: (

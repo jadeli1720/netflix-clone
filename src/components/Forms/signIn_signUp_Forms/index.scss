@@ -87,14 +87,10 @@
 	}
 
 	button {
-		background-color: $netflix-red !important;
-		border-radius: 0.25rem;
-		border: 0;
-		color: white;
+		@include buttons();
 		@include body("medium");
 		margin: 1.5rem 0;
 		padding: 1rem;
-		cursor: pointer;
 		max-width: 28.125rem;
 		width: 100%;
 
