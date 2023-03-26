@@ -13,17 +13,14 @@
   }
 
 	a {
-		display: flex;
+    @include buttons();
+    @include subTitle(regular);
+    display: flex;
 		align-items: center;
     justify-content: center;
-		background: $netflix-red;
-		border: 0;
-		border-radius: 2px;
-    @include subTitle(regular);
     height: 3.625rem !important;
     margin: 0 !important;
-    padding: 0 0 0 2px;
-		cursor: pointer;
+    padding: 0 0 0 0.125rem;
     
     @media (max-width: 767px){
       margin-top: 1rem !important;
