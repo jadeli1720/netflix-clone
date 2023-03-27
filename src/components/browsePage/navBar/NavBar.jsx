@@ -32,13 +32,13 @@ function NavBar({ user, setProfile, searchTerm, setSearchTerm }) {
 						isTabletDesktopResolution ? (
 							<img
 									className="navLogo"
-									src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+									src="/images/misc/netflix_desktop_logo.png"
 									alt="Netflix logo"
 								/>
 						):(
 							<img
 									className="navMobileLogo"
-									src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Netflix_2015_N_logo.svg/1200px-Netflix_2015_N_logo.svg.png"
+									src="/images/misc/netflix_2015_n_logo.png"
 									alt="Netflix Mobile logo"
 								/>
 						)}
