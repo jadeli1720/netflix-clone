@@ -9,6 +9,7 @@
 </br>
 <a href="https://flickfinder-jadeli1720.vercel.app/" target="_blank">VIEW DEMO</a>
 
+<!-- 1 or 2 gifs or images need to go here -->
 
 </div>
 
@@ -19,19 +20,24 @@
 ## :package: Current Features
 
 - [x] Sign in and log out of the application.
-- [x] Banner shows a trailer video if available or a an still image if it is not.
+- [x] Banner displays a looped trailer if available or a still image if it is not.
 - [x] Browse the rows of movies/tv shows that are organized by various genres.
 - [x] Custom button sliders for each row.
-- [x] Click on a particular movie to see that movies/tv shows details, including a movie trailer in a feature modal.
-- [x] Feature modal shows a list of recommended movies/tv shows that are similar to the selection
+- [x] Click on a particular movie/tv to see that movies/tvs show details, including a trailer in a feature modal.
+- [x] Feature modal also shows a list of recommended movies/tv shows that are similar to the selection.
 
-## :crystal_ball: Future
+## :crystal_ball: Future Features/Improvements
 
 - [ ] Search Bar functionality.
 - [ ] Refactor with Redux or Context to handle state.
+- [ ] Error handling.
 - [ ] When user clicks on a movie in the list of recommended movies/tv shows, navigate to it in a new feature modal.
+- [ ] Add tests.
+- [ ] Lighthouse testing and improvements.
+- [ ] Accessibility improvements.
+- [ ] Possible redesign and renaming.
 
-## Tech Stack
+## :computer: Tech & Libraries
 
 - Axios
 - [Firebase](https://firebase.google.com)
