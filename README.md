@@ -15,7 +15,7 @@ This react application is a clone of the Netflix app, and will be an ongoing and
 ### :package: Current
 
 - [x] Sign in and log out of the application.
-- [x] Banner shows a trailer if available or a banner if it is not.
+- [x] Banner shows a trailer video if available or a an still image if it is not.
 - [x] Browse the rows of movies/tv shows that are organized by various genres.
 - [x] Custom button sliders for each row.
 - [x] Click on a particular movie to see that movies/tv shows details, including a movie trailer in a feature modal.
@@ -23,9 +23,9 @@ This react application is a clone of the Netflix app, and will be an ongoing and
 
 ### :crystal_ball: Future
 
-- [ ] Users can Register and use strip checkout.
 - [ ] Search Bar functionality.
 - [ ] Refactor with Redux or Context to handle state.
+- [ ] When user clicks on a movie in the list of recommended movies/tv shows, navigate to it in a new feature modal.
 
 ## Tech Stack
 
@@ -36,5 +36,4 @@ This react application is a clone of the Netflix app, and will be an ongoing and
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [React Player](https://www.npmjs.com/package/react-player)
 - [React Ratings Declarative](https://www.npmjs.com/package/react-ratings-declarative)
-- Sass
-- [video.js](https://videojs.com/)
+- [Sass](https://sass-lang.com/)
