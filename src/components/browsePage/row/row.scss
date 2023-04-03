@@ -5,7 +5,7 @@
 .moviesContainer {
 	display: flex;
 	overflow-y: hidden !important;
-	overflow-x: scroll;
+	overflow-x: hidden;
 	padding: 0.25rem 0px 1.75rem;
 	scroll-behavior: smooth;
 	cursor: pointer;
