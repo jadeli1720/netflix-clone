@@ -74,6 +74,7 @@
 	}
 
 }
+
 .poweredByContainer {
 	display: flex;
 	align-items: center;
@@ -106,14 +107,8 @@
 		}
 
 		a {
-			
 			@include subTitleMobile(bold);
 			cursor: pointer;
-			transition: all 0.22 ease-in-out;
-
-			&:hover {
-				transition: all 0.2s ease-in-out;
-			}
 		}
 
 		.tmdbLogo {
