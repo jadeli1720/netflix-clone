@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Nav, Navbar }from 'react-bootstrap/';
+import { Container, Nav, Navbar }from 'react-bootstrap/';
 import * as ROUTES from "../../../constants/routes";
 
 function HeaderNav() {
