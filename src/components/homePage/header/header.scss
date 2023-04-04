@@ -25,6 +25,18 @@
 		@include max-media-query($tablet-xs) {
 			height: 80%;
 		}
+
+		@include max-media-query($mobile-lg){
+			height: 80.75%;
+		}
+
+		@include max-media-query($mobile-md){
+			height: 85.45%;
+		}
+
+		@include max-media-query($mobile-sm){
+			height: 87.75%;
+		}
 	}
 
 	.headerNav,

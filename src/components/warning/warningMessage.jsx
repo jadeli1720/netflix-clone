@@ -14,29 +14,26 @@ function WarningMessage() {
 					</div>
 				</Collapse>
 				<div className="d-flex justify-content-center">
-				<Button
-					onClick={() => setOpen(!open)}
-					aria-controls="message"
-					aria-expanded={open}
-					id="messageButton"
-					className="py-1"
-				>
-          {
-            open ? (
-              <div className="closeContainer">
-                <BsX/>
-              </div>
-            ) : (
-              <div>
-                <p className="m-0">Powered By</p>
-                <img id='buttonLogo'  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="tmdb logo"  />
-              </div>
-            )
-          }
-
-					</Button>
+          <Button
+            onClick={() => setOpen(!open)}
+            aria-controls="message"
+            aria-expanded={open}
+            id="messageButton"
+            className="py-1"
+          >
+            { open ? (
+                <div className="closeContainer">
+                  <BsX/>
+                </div>
+              ) : (
+                <div>
+                  <p className="m-0">Powered By</p>
+                  <img id='buttonLogo'  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="tmdb logo"  />
+                </div>
+              )
+            }
+          </Button>
 				</div>
-
 			</Container>
     </>
   )

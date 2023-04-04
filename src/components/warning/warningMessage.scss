@@ -34,14 +34,14 @@
 			width: 100px !important;
 		}
 	}
+  
 	#messageButton {
 		position: absolute;
-		border: none;
+		border: 0.5px solid #00f6fe;
 		border-radius: 0px 0px 4px 4px !important;
 		height: 60px;
 		width: 160px;
 		
-
     .closeContainer {
       display: flex;
       justify-content: center;
@@ -54,11 +54,20 @@
 			font-size: 10px;
 			letter-spacing: 0.15rem;
 			text-transform: uppercase;
+
 		}
 	
 		#buttonLogo {
 			margin: -0.25rem 0 0 0;
 			width: 90% !important;
+      @include max-media-query($mobile-md){
+        margin-top: -0.5rem;
+      }
 		}
+
+    @include max-media-query($mobile-md){
+      padding: 0.25rem;
+      width: 100px;
+    }
 	}
 }
