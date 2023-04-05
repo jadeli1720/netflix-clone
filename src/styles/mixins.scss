@@ -58,6 +58,7 @@
 //26px
 @mixin subTitle($weight) {
 	font-size: 1.625rem;
+	line-height: 2.188rem;
 
 	@if $weight == "bold" {
 		@include bold();
@@ -71,6 +72,7 @@
 //20px
 @mixin subTitleMobile($weight) {
 	font-size: 1.25rem;
+	line-height: 1.875rem;
 
 	@if $weight == "bold" {
 		@include bold();

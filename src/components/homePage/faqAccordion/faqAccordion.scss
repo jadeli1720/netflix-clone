@@ -40,8 +40,13 @@ button,
 	}
 }
 
+.card-body {
+	border-top: black solid 0.5px !important;
+	padding: 1.25rem !important;
+}
+
 .card-header {
-	border-bottom: black solid 0.25px;
+	border: none !important;
 	cursor: pointer;
 	height: 4.75rem;
 
