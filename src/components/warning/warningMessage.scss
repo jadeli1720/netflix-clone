@@ -1,0 +1,77 @@
+@import "../../styles/mixins.scss";
+
+#messageWrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	z-index:4;
+
+	#message {
+		span{
+			@include bold();
+			letter-spacing: 0.125rem;
+			text-transform: uppercase;
+
+			&:first-of-type, &:nth-of-type(2) {
+        color: #fe0000;
+				text-decoration: underline;
+			}
+
+      &:nth-of-type(2){
+        margin-left: 2px;
+      }
+		}
+
+    a {
+      color: #00f6fe;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+		.messageLogo {
+			margin: 0 0.5rem 0 ;
+			width: 100px !important;
+		}
+	}
+  
+	#messageButton {
+		position: absolute;
+		border: 0.5px solid #01b4e4;
+    border-top: 0;
+		border-radius: 0px 0px 4px 4px !important;
+    -webkit-box-shadow: 0px 11px 15px 2px #0d253fb6;
+    -moz-box-shadow: 0px 11px 15px 2px #0d253fb6;
+    box-shadow: 0px 11px 15px 2px #0d253fb6;
+		height: 3.75rem;
+		width: 10rem;
+		
+    .closeContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.25rem;
+    }
+	
+		p{
+			@include medium();
+			font-size: 10px;
+			letter-spacing: 0.15rem;
+			text-transform: uppercase;
+
+		}
+	
+		#buttonLogo {
+			margin: -0.25rem 0 0 0;
+			width: 90% !important;
+      @include max-media-query($mobile-md){
+        margin-top: -0.5rem;
+      }
+		}
+
+    @include max-media-query($mobile-md){
+      padding: 0.25rem;
+      width: 100px;
+    }
+	}
+}

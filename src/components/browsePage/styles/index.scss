@@ -33,3 +33,45 @@
     margin-top: 4rem !important;
 	}
 }
+
+.tmdbContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@include subTitleMobile(medium);
+	padding: 3.125rem 0 4.375rem;
+
+	&::after, &::before{
+		position: relative;
+		width: 90%;
+		border-top: thin solid #222;
+		top: 50%;
+		content: "";
+		transform: translateY(50%);
+	}
+
+	.text-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-left: calc(0.6rem);
+		padding-right: calc(0.6rem);
+		max-width: 18rem;
+		min-width: 18rem;
+	}
+
+		p{
+			color: #5e5e5e;
+			margin: 0;
+			padding: 0 !important;
+		}
+
+		a {
+			cursor: pointer;
+		}
+
+		.tmdbLogo {
+			margin: 0rem 0rem 0rem 0.375rem!important;
+			width: 144px;
+		}
+}

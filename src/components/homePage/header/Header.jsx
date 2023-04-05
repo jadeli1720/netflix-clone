@@ -1,12 +1,16 @@
 import React from "react";
-import { Container } from "react-bootstrap"
+import { Container }from 'react-bootstrap/';
 import HeaderNav from "./HeaderNav";
 import OptForm from "../../Forms/optForm/OptForm";
 import "./header.scss";
+// import WarningMessage from "../../warning/warningMessage";
 
 function Header() {
+
 	return (
 		<>
+
+			{/* <WarningMessage/> */}
 			<Container fluid className="headerContainer ">
 				<HeaderNav />
 				<Container className="feature">
