@@ -30,11 +30,23 @@
 
 An iterative Netflix clone project that uses React, Firebase for authentication, the  <a href="https://www.themoviedb.org/?language=en-US" target="_blank"><img style="margin: 0px 4px 0px" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="tmdb logo" width="70px" /></a> API, React bootstrap and [other](#books-tech-stack) libraries
 
-<!-- Multiple gifs or images need to go here of the app. Make sure to push current changes without the warning on it and record it for gif.
-  1.Showing Homepage, FAQ, and sign up button mouse over
-  2.Switching between Sign up and Sign In, then loggin in
-  3. Show Browser page playing Trailer, scroll through rows, then select movie to show of feature modal functionality. 
- -->
+### Screenshots
+
+ <div align="center">
+  <video autoplay muted loop playsinline data-video="0">
+    <source src="https://content.bombbomb.com/HLS/a6781162-800c-4755-8451-c8014f9ab7d9/pls.m3u8" type="application/x-mpegURL">
+    <source src="https://content.bombbomb.com/a6781162-800c-4755-8451-c8014f9ab7d9_H264Main.mp4" type="video/mp4">
+  </video>
+
+  </br>
+  </br>
+
+  <video autoplay muted loop playsinline data-video="0">
+    <source src="https://content.bombbomb.com/HLS/4079def6-0286-4492-acca-520c8cad7948/pls.m3u8" type="application/x-mpegURL">
+    <source src="https://content.bombbomb.com/4079def6-0286-4492-acca-520c8cad7948_H264Main.mp4" type="video/mp4">
+  </video>
+ </div>
+
 ## :film_strip: Features
 
 <details>
