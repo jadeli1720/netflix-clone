@@ -8,9 +8,9 @@
 [![Firebase](https://img.shields.io/badge/firebase-9.8.1-F57C00.svg)](https://firebase.google.com)
 [![sass](https://img.shields.io/badge/Sass-1.52.1-ff369a.svg)](https://sass-lang.com/)
 
-![](https://img.shields.io/badge/Maintained-Yes-indigo)
-![](https://img.shields.io/github/stars/jadeli1720/netflix-clone.svg)
-![](https://img.shields.io/github/last-commit/jadeli1720/netflix-clone.svg)
+![Repo Maintained Badge](https://img.shields.io/badge/Maintained-Yes-indigo)
+![Number of times this repo has been starred badge](https://img.shields.io/github/stars/jadeli1720/netflix-clone.svg)
+![Last commit badge](https://img.shields.io/github/last-commit/jadeli1720/netflix-clone.svg)
 
 <a href="https://flickfinder-jadeli1720.vercel.app/" target="_blank">VIEW DEMO</a>
 
@@ -19,6 +19,7 @@
 </br>
 
 ## :scroll: Table of Contents
+
 - [About the Project](#sparkles-about-the-project)
 - [Features](#film_strip-features)
 - [Tech Stack](#books-tech-stack)
@@ -36,16 +37,14 @@ An iterative Netflix clone project that uses React, Firebase for authentication,
   
 #### Homepage
 
-  <video autoplay muted loop playsinline  src="https://content.bombbomb.com/a6781162-800c-4755-8451-c8014f9ab7d9_H264Main.mp4" width
-  ="100%"></video>
+ <img src="https://github.com/jadeli1720/jadeli1720_public/blob/main/home-page.gif" alt="Home page demo">
 
   </br>
 
-#### Browser Page
+#### Movie Browser Page
 
-  <video autoplay muted loop playsinline  src="https://content.bombbomb.com/4079def6-0286-4492-acca-520c8cad7948_H264Main.mp4" width
-  ="100%"></video>
-  
+<img src="https://github.com/jadeli1720/jadeli1720_public/blob/main/browser-page.gif" alt="Movie broweser page demo">
+
  </div>
 
 ## :film_strip: Features
