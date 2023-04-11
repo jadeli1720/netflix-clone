@@ -8,9 +8,9 @@
 [![Firebase](https://img.shields.io/badge/firebase-9.8.1-F57C00.svg)](https://firebase.google.com)
 [![sass](https://img.shields.io/badge/Sass-1.52.1-ff369a.svg)](https://sass-lang.com/)
 
-![](https://img.shields.io/badge/Maintained-Yes-indigo)
-![](https://img.shields.io/github/stars/jadeli1720/netflix-clone.svg)
-![](https://img.shields.io/github/last-commit/jadeli1720/netflix-clone.svg)
+![Repo Maintained Badge](https://img.shields.io/badge/Maintained-Yes-indigo)
+![Number of times this repo has been starred badge](https://img.shields.io/github/stars/jadeli1720/netflix-clone.svg)
+![Last commit badge](https://img.shields.io/github/last-commit/jadeli1720/netflix-clone.svg)
 
 <a href="https://flickfinder-jadeli1720.vercel.app/" target="_blank">VIEW DEMO</a>
 
@@ -19,6 +19,7 @@
 </br>
 
 ## :scroll: Table of Contents
+
 - [About the Project](#sparkles-about-the-project)
 - [Features](#film_strip-features)
 - [Tech Stack](#books-tech-stack)
@@ -30,11 +31,22 @@
 
 An iterative Netflix clone project that uses React, Firebase for authentication, the  <a href="https://www.themoviedb.org/?language=en-US" target="_blank"><img style="margin: 0px 4px 0px" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="tmdb logo" width="70px" /></a> API, React bootstrap and [other](#books-tech-stack) libraries
 
-<!-- Multiple gifs or images need to go here of the app. Make sure to push current changes without the warning on it and record it for gif.
-  1.Showing Homepage, FAQ, and sign up button mouse over
-  2.Switching between Sign up and Sign In, then loggin in
-  3. Show Browser page playing Trailer, scroll through rows, then select movie to show of feature modal functionality. 
- -->
+### :camera_flash: Screenshots
+
+ <div align="center">
+  
+#### Homepage
+
+ <img src="https://github.com/jadeli1720/jadeli1720_public/blob/main/home-page.gif" alt="Home page demo">
+
+  </br>
+
+#### Movie Browser Page
+
+<img src="https://github.com/jadeli1720/jadeli1720_public/blob/main/browser-page.gif" alt="Movie broweser page demo">
+
+ </div>
+
 ## :film_strip: Features
 
 <details>
