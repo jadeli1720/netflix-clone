@@ -36,13 +36,16 @@ An iterative Netflix clone project that uses React, Firebase for authentication,
   
 #### Homepage
 
-  <video autoplay muted loop playsinline  src="https://content.bombbomb.com/a6781162-800c-4755-8451-c8014f9ab7d9_H264Main.mp4" type="video/mp4"></video>
+  <video autoplay muted loop playsinline  src="https://content.bombbomb.com/a6781162-800c-4755-8451-c8014f9ab7d9_H264Main.mp4" width
+  ="100%"></video>
 
   </br>
 
 #### Browser Page
 
-  <video autoplay muted loop playsinline  src="https://content.bombbomb.com/4079def6-0286-4492-acca-520c8cad7948_H264Main.mp4" type="video/mp4"></video>
+  <video autoplay muted loop playsinline  src="https://content.bombbomb.com/4079def6-0286-4492-acca-520c8cad7948_H264Main.mp4" width
+  ="100%"></video>
+  
  </div>
 
 ## :film_strip: Features
