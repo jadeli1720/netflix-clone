@@ -33,10 +33,11 @@ An iterative Netflix clone project that uses React, Firebase for authentication,
 ### Screenshots
 
  <div align="center">
-  <video autoplay muted loop playsinline data-video="0">
+  <!-- <video autoplay muted loop playsinline data-video="0">
     <source src="https://content.bombbomb.com/HLS/a6781162-800c-4755-8451-c8014f9ab7d9/pls.m3u8" type="application/x-mpegURL">
     <source src="https://content.bombbomb.com/a6781162-800c-4755-8451-c8014f9ab7d9_H264Main.mp4" type="video/mp4">
-  </video>
+  </video> -->
+  <img src="./netflix-app-recording-homscreen.gif">
 
   </br>
   </br>
