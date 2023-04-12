@@ -41,7 +41,7 @@ An iterative Netflix clone project that uses React, Firebase for authentication,
 
   </br>
 
-#### Movie Browser Page
+#### Movie/TV-show Browser Page
 
 <img src="https://github.com/jadeli1720/jadeli1720_public/blob/main/browser-page.gif" alt="Movie broweser page demo">
 
@@ -55,10 +55,10 @@ An iterative Netflix clone project that uses React, Firebase for authentication,
     <li>Homepage with GIF's and a FAQ accordion</li>
     <li>User Authentication and account creation supported by Firebase</li>
     <li>Profile page</li>
-    <li>A Browser page containing a banner that shows a randomly selected trailer that loops and can be un-muted by the user. If a trailer is not provided, then a poster image takes its place</li>
-    <li>A carousel row of movies sorted by various categories and genres</li>
-    <li>User can click on a particular movie/tv show and a feature modal displays the media's details including a trailer</li>
-    <li>Feature modal also includes a list of recommended movies/tv shows that are similar to the selection</li>
+    <li>The Browser page contains a banner that shows a randomly selected trailer that loops and can be un-muted by the user. If a trailer is not provided, then a poster image takes its place</li>
+    <li>Carousel row of movies/tv-shows sorted by various categories and genres</li>
+    <li>A User can click on a particular movie/tv-show and a feature modal displays the media's details including a trailer</li>
+    <li>Feature modal also includes a list of recommended movies/tv-shows that are similar to the selection</li>
   </ul>
 </details>
 
