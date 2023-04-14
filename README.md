@@ -3,14 +3,16 @@
 <img src="https://user-images.githubusercontent.com/99184393/211183762-03b6e9b4-9fcd-4874-a0e4-20cf00537c06.gif" alt="logo" width="400px" height="auto" />
   
 </br>
+</br>
 
-[![React](https://img.shields.io/badge/react-v18.1.0-fc2323.svg)](https://reactjs.org/)
-[![Firebase](https://img.shields.io/badge/firebase-9.8.1-F57C00.svg)](https://firebase.google.com)
-[![sass](https://img.shields.io/badge/Sass-1.52.1-ff369a.svg)](https://sass-lang.com/)
+![React](https://img.shields.io/badge/react-v18.1.0-61DAFB.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![SASS](https://img.shields.io/badge/SASS-1.52.1-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-9.8.1-F57C00.svg?style=for-the-badge&logo=firebase)
+[![The Movie Databse](https://img.shields.io/badge/TMDB-v3-00C7B7.svg?&style=for-the-badge&logo=themoviedatabase&logoColor=white)](https://www.themoviedb.org)
 
-![Repo Maintained Badge](https://img.shields.io/badge/Maintained-Yes-indigo)
-![Number of times this repo has been starred badge](https://img.shields.io/github/stars/jadeli1720/netflix-clone.svg)
-![Last commit badge](https://img.shields.io/github/last-commit/jadeli1720/netflix-clone.svg)
+![Repo Maintained Badge](https://img.shields.io/badge/Maintained-Yes-brightgreen?style=for-the-badge)
+![Number of times this repo has been starred badge](https://img.shields.io/github/stars/jadeli1720/netflix-clone.svg?style=for-the-badge&color=fff700)
+![Last commit badge](https://img.shields.io/github/last-commit/jadeli1720/netflix-clone.svg?style=for-the-badge&color=EF2D5E)
 
 <a href="https://flickfinder-jadeli1720.vercel.app/" target="_blank">VIEW DEMO</a>
 
@@ -163,4 +165,4 @@ npm start
 
 ## Licenses
 
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg?style=for-the-badge)
