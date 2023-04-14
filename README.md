@@ -10,9 +10,9 @@
 ![Firebase](https://img.shields.io/badge/firebase-9.8.1-F57C00.svg?style=for-the-badge&logo=firebase)
 [![The Movie Databse](https://img.shields.io/badge/TMDB-v3-00C7B7.svg?&style=for-the-badge&logo=themoviedatabase&logoColor=white)](https://www.themoviedb.org)
 
-![Repo Maintained Badge](https://img.shields.io/badge/Maintained-Yes-brightgreen?style=for-the-badge)
-![Number of times this repo has been starred badge](https://img.shields.io/github/stars/jadeli1720/netflix-clone.svg?style=for-the-badge&color=fff700)
-![Last commit badge](https://img.shields.io/github/last-commit/jadeli1720/netflix-clone.svg?style=for-the-badge&color=EF2D5E)
+![Repo Maintained Badge](https://custom-icon-badges.demolab.com/badge/Maintained-Yes-brightgreen?style=for-the-badge&logo=tools&logoColor=white)
+![Number of times this repo has been starred badge](https://custom-icon-badges.demolab.com/github/stars/jadeli1720/netflix-clone?style=for-the-badge&logo=star&logoColor=white&color=fff700)
+![Last commit badge](https://custom-icon-badges.demolab.com/github/last-commit/jadeli1720/netflix-clone.svg?style=for-the-badge&color=EF2D5E&logo=git-commit)
 
 <a href="https://flickfinder-jadeli1720.vercel.app/" target="_blank">VIEW DEMO</a>
 
