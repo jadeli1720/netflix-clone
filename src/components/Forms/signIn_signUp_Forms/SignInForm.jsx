@@ -76,16 +76,6 @@ export default function SignInForm() {
             Already a user?  <Link to={ROUTES.SIGN_UP}>
               Sign up now.</Link>
           </p>
-          <p className='recaptchaText'>This page is protected by Google reCAPTCHA to ensure you're not a bot.
-          <Button
-          onClick={() => setVisible(!visible)}
-          >Learn more.</Button>
-          </p>
-          {visible && (
-            <div className='terms'>
-              <p>The information collected by Google reCAPTCHA is subject to the Google<a href='https://policies.google.com/privacy' target="_blank" rel="noreferrer"> Privacy Policy</a> and <a href='https://policies.google.com/terms' target="_blank" rel="noreferrer">Terms of Service</a>, and is used for providing, maintaining, and improving the reCAPTCHA service and for general security purposes (it is not used for personalized advertising by Google). </p>
-            </div>
-          )}
       </div>
     </div>
   )
