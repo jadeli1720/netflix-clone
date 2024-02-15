@@ -15,7 +15,7 @@
 ![Last commit badge](https://custom-icon-badges.demolab.com/github/last-commit/jadeli1720/netflix-clone.svg?style=for-the-badge&color=EF2D5E&logo=git-commit)
 
 
-<p>NOTE: Because this app looks identical to the web browser version of Netflix (at the time of publishing), Google has tagged it as a Dangerous/Deceptive site. I have tried to remedy this issue by putting at the top of the page the TMDB Logo and a clear label stating that this is not the Netflix app, however, this has not removed the warning. Please know that this is the only reason for the warning and nothing else. I have plans to completely rebuild and rebrand this app in the future, but until then, please check out the demo link above; or the gifs below to view it. Thanks for visiting!</p>
+<p>NOTE: Because this app looks identical to the web browser version of Netflix (at the time of publishing), Google has tagged it as a Dangerous/Deceptive site. I have tried to remedy this issue by putting at the top of the page the TMDB Logo and a clear label stating that this is not the Netflix app, however, this has not removed the warning. Please know that this is the only reason for the warning and nothing else. I have plans to completely rebuild and rebrand this app in the future, but until then, please check out the gifs below to view it. Thanks for visiting!</p>
 
 </div>
 
